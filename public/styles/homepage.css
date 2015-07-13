@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CSS Document */
+
+@font-face {
+	font-family:Roboto Condensed;
+	font-style:light;
+	font-weight: 300;
+	src: url(../fonts/RobotoCondensed-Light.ttf);
+}
+
+@font-face {
+	font-family:Roboto Condensed;
+	font-style:normal;
+	font-weight: 400;
+	src: url(../fonts/RobotoCondensed-Regular.ttf);
+}
+
+@font-face {
+	font-family:Roboto Condensed;
+	font-style:normal;
+	font-weight: 700;
+	src: url(../fonts/RobotoCondensed-Bold.ttf);
+}
+
+body {
+	background-color: #E7E6E6;
+	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+	font-weight: 300;
+	margin: 0;
+	padding: 0;
+	font-size: 18px;
+}
+
+header.mainheader {
+	position:fixed;
+	background-color: #0AB2F8;
+	font-size: 60px;
+	font-weight: 400;
+	color: #FFFFFF;
+	margin: 0;
+	width: 100%;
+	height: 300px;
+	z-index: 8;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+
+header.small {
+	font-size: 38px;
+	height: 80px;
+	z-index: 8;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+#headtitle {
+	position:relative;
+	padding-top: 1.5em;
+	width: 800px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+header.small #headtitle {
+	padding-top: 0.5em;
+}
+
+#maincontent {
+	position: absolute;
+	top: -200px;
+	width: 100%;
+	min-height: 600px;
+	height: auto;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+#maincontent.showForm {
+	top:80px;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+#formcontent {
+	position: absolute;
+	width: 80%;
+	min-height: 500px;
+	height: auto;
+	top: 20px;
+	left: 50%;
+	margin-left: -40%;
+	-webkit-perspective: 3000px;
+	perspective: 3000px;
+}
+
+#startbtn {
+	position: absolute;
+	background-color: #0A4E9B;
+	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+	font-size: 25px;
+	width: 150px;
+	height: 50px;
+	border: thin solid #06468F;
+	bottom: 30px;
+	left: 50%;
+	margin-left: -75px;
+	color: #FFFFFF;
+}
+
+.hide {
+	display: none;
+}

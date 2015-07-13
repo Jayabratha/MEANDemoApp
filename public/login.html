@@ -1,0 +1,44 @@
+<div id="loginform" ng-class="[loginstate.state, loginstate.preload]">
+<header class="contentheader">
+Please Log In
+</header>
+<body>
+<form name="loginForm" ng-submit="submitLoginForm(loginForm.$valid)" novalidate >
+<table>
+	<tr>
+		<td  class="level"><br /></td>
+		<td class="inputfield"><br /></td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'error' : loginForm.email.$invalid && loginForm.email.$touched , 'correct' : loginForm.email.$valid } ">
+			<div class="message_default" ng-cloak ng-cloack ng-show="loginForm.email.$invalid && loginForm.email.$touched"> Invalid email id</div>
+			<label for="username">* Email: </label>
+		</td>
+		<td class="inputfield">
+			<input id="email" name="email" type="email" placeholder="Enter your email id" ng-model="loginDetail.email" required autofocus /> 
+		</td>
+	</tr> 
+	<tr>
+		<td class="level" ng-class="{'error' : loginForm.password.$invalid && loginForm.password.$touched , 'correct' : loginForm.password.$valid } ">
+			<div class="message_default" ng-cloak ng-cloack ng-show="loginForm.password.$invalid && loginForm.password.$touched"> Wrong Password</div>
+			<label for="username">* Passwords: </label>
+		</td>
+		<td class="inputfield">
+			<input id="password" name="password" type="password" placeholder="Enter your password" ng-model="loginDetail.password" required autofocus /> 
+		</td>
+	</tr> 
+	<tr>
+		<td  class="level"><br /></td>
+		<td class="inputfield"><br /></td>
+	</tr>
+	<tr>
+		<td colspan="2"><div id="container"><input class="submitbtn" name="submit" type="submit" value="LogIn" ng-disabled="registerForm.$invalid" /></div></td>
+	</tr>
+</table>
+</form>
+<div id="loginfooter">
+	<div> Not yet started? </div>
+	<button id="joinusbtn" ng-click="showRegisterForm()"> Register </button>
+</div>
+</body>
+</div>

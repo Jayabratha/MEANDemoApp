@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML 5 Forms Demo</title>
+	<meta name="viewport" content="width=device-width" />
+	<link rel="stylesheet" type="text/css" href="styles/formdemostyles.css">
+	<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<div id="header"><span>HTML 5 Forms demo</span></div>
+	<div id="content_container">
+		<div id="sidecontent">
+			<div class="sideitem">This is a Sample HTML5 form using MEAN stack technologies.</div>
+			<div class="sideitem"></div>
+			<div class="sideitem"></div> 
+		</div>
+		<div id="maincontent">
+			<header>Please Fill Up the form</header>
+			<div ng-app="app" ng-controller="mainController">
+			<form name="registerForm" ng-submit="submitForm(registerForm.$valid)" novalidate>
+			<table>
+				<tr>
+					<td class="level" ng-class="{'error' : registerForm.username.$invalid && registerForm.username.$touched , 'correct' : registerForm.username.$valid } ">
+						<div class="message_default" ng-cloak ng-cloack ng-show="registerForm.username.$invalid && registerForm.username.$touched"> This field can't be empty</div>
+						<label for="username">* Name: </label>
+					</td>
+					<td class="inputfield">
+						<input id="username" name="username" type="text" placeholder="Enter your name" ng-model="username" required autofocus /> 
+					</td>
+				</tr> 
+				<tr>
+					<td rowspan="2" class="level" ng-class="{'correct' : registerForm.username.$valid }">Sex: </td>
+					<td class="inputfield"><input name="sex" type="radio" value="Male" checked /><label> Male</label></td>
+				</tr>
+				<tr>
+					<td class="inputfield"><input name="sex" type="radio" value="Female" /><label> Female</label></td>
+				</tr>
+				<tr>
+					<td class="level" ng-class="{'error' : registerForm.dob.$invalid && registerForm.dob.$touched , 'correct' : registerForm.dob.$valid }">
+						<div class="message_default" ng-cloak ng-show="registerForm.dob.$invalid && registerForm.dob.$touched"> Please provide valid date</div>
+						<label for="dob">*Date of Birth: </label>
+					</td>
+					<td class="inputfield">
+						<input id="dob" name="dob" type="date" placeholder="yyyy-mm-dd" ng-model="dob" required />
+					</td>
+				</tr>
+				<tr>
+					<td class="level" ng-class="{'error' : registerForm.addr.$invalid && registerForm.addr.$touched , 'correct' : registerForm.addr.$valid }">
+						<div class="message_default" ng-cloak ng-show="registerForm.addr.$invalid && registerForm.addr.$touched"> Please provide your address</div>
+						<label for="addr">*Address: </label></td>
+					<td class="inputfield"><textarea id="addr" name="addr" ng-model="addr" required ></textarea></td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="level" ng-class="{'error' : !checkboxModel.designer && !checkboxModel.developer && registerForm.email.$touched , 'correct' : checkboxModel.designer || checkboxModel.developer }">
+						<div class="message_default" ng-cloak ng-show="!checkboxModel.designer && !checkboxModel.developer && registerForm.role.$touched"> Please select your role</div>
+						<label>*Role: </label>
+					</td>
+					<td class="inputfield"><input name="role" type="checkbox" ng-model="checkboxModel.designer" value="Designer" /><label> Designer</label></td>
+				</tr>
+				<tr>
+					<td class="inputfield"><input name="role" type="checkbox" ng-model="checkboxModel.developer" value="Developer" /><label> Developer</label></td>
+				</tr>
+				<tr>
+					<td rowspan="2" class="level" ng-class="{'correct' : registerForm.email.$valid }"><label for="salary" >Current Salary: </label></td>
+					<td class="inputfield"><input id="salary" name="salary" type="range" ng-model="salary" min="0" max="100" step="10" /></td>
+				</tr>
+				<tr>
+					<td id="salarypreview" class="inputfield"><input name="salarypreview" type="number" disabled value="{{salary}}" /><span style="font-size:18px"> lacs</span></td>
+				</tr>
+				<tr>
+					<td  class="level" ng-class="{'error' : registerForm.email.$invalid && registerForm.email.$touched , 'correct' : registerForm.email.$valid }">
+						<div class="message_default" ng-cloak ng-show="registerForm.email.$invalid && registerForm.email.$touched"> Please provide valid email</div>
+						<label for="email" >e-mail: </label></td>
+					<td class="inputfield"><input id="email" name="email" ng-model="email" required type="email" /></td>
+				</tr>
+				<tr>
+					<td  class="level" ng-class="{'error' : registerForm.password.$invalid && registerForm.password.$touched, 'correct' : registerForm.password.$valid && registerForm.password.$touched}" >
+						<div class="message_default" ng-cloak ng-show="registerForm.password.$invalid && registerForm.password.$touched"> Please provide password</div><label for="password" >Password: </label></td>
+					<td class="inputfield"><input id="password" name="password" type="password" ng-model="password" required /></td>
+				</tr>
+				<tr>
+					<td  class="level" ng-class="{'error' : password != '' && password != conpassword && registerForm.conpassword.$touched, 'correct' : password == conpassword && registerForm.conpassword.$touched}" >
+						<div class="message_default" ng-cloak ng-show="password != '' && password != conpassword && registerForm.conpassword.$touched"> Password doesn't match</div>
+						<label for="conpassword" >Confirm Password: </label></td>
+					<td class="inputfield"><input id="conpassword" name="conpassword" type="password" ng-model="conpassword" required /></td>
+				</tr>
+				<tr>
+					<td  class="level"><br /></td>
+					<td class="inputfield"><br /></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div id="container"><input id="submitbtn" name="submit" type="submit" value="Submit" ng-disabled="registerForm.$invalid" /></div></td>
+				</tr>
+
+			</table>
+		</form>
+
+		</div>
+	</div>
+	<footer><div class="div1" style="height:3em"></div><div class="div1" style="height:5em"></div></footer>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+	<script src="js/formcontroller.js"></script>
+</body>
+</html>
