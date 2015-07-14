@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope', '$location', '$timeout', 'AuthUser', function($scope, $location, $timeout, AuthUser){
+app.controller('loginController', ['$scope', '$rootScope', '$location', '$timeout', 'AuthUser', function($scope, $rootScope, $location, $timeout, AuthUser){
 	if (console) console.log("In Login Controller");
 	$scope.setVars();
 
@@ -11,18 +11,20 @@ app.controller('loginController', ['$scope', '$location', '$timeout', 'AuthUser'
 	$scope.submitLoginForm = function(formStatus){
 		if(formStatus == true){
 			if (console) console.log("Authenticating .. " + $scope.loginDetail.email);
-			$scope.displayModal();	
+			$rootScope.displayModal();	
 			if (console) console.log(AuthUser);
-			AuthUser.authenticateUser( $scope.loginDetail, function(response){
+			$timeout(function(){
+				AuthUser.authenticateUser( $scope.loginDetail, function(response){
 				if(response.success){
 						//$scope.hideModal();
 						$location.path('profile');
 				}
 				else {
-					$scope.setMessage(response.message, 'Try Again', 'login', false);
+					$rootScope.setMessage(response.message, 'Try Again', 'login', false);
 				}
 				
-			});
+				});
+			}, 1000);
 		}	
 
 	}

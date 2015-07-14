@@ -52,7 +52,7 @@
 					<td class="inputfield"><input id="salary" name="salary" type="range" ng-model="userData.salary" min="0" max="100" step="10" /></td>
 				</tr>
 				<tr>
-					<td id="salarypreview" class="inputfield"><input name="salarypreview" type="number" disabled value="{{salary}}" /><span style="font-size:18px"> lacs</span></td>
+					<td id="salarypreview" class="inputfield"><input name="salarypreview" type="number" disabled value="{{userData.salary}}" /><span style="font-size:18px"> lacs</span></td>
 				</tr>
 				<tr>
 					<td  class="level" ng-class="{'error' : registerForm.email.$invalid && registerForm.email.$touched , 'correct' : registerForm.email.$valid }">

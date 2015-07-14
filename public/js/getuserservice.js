@@ -23,20 +23,15 @@ app.factory('getUserService', ['$q','$http', '$cookies', function( $q, $http, $c
 					if(response.success){
 						var userdata = response.userObj;
 						console.log("Profile Data Received for: " + userdata.username);
-						//var user = new User(userdata.username, userdata.sex, userdata.dob, userdata.address, userdata.role.designer, userdata.role.developer, userdata.salary, userdata.email, userdata.password, userdata.created_at, userdata.updated_at);
 						deferred.resolve(userdata);
 					}
 					else {
 						if (console) console.log("Error Occurred!");
-						//$scope.displayModal();
-						//$scope.setMessage(response.message, 'Try Again', 'login', false);
 						deferred.reject(response.message);
 					}
 				}).
 				error( function(error){
 					console.error("Error Occured" + error);
-					//$scope.displayModal();
-					//$scope.setMessage("Sorry! We encountered an error", 'Try Again', 'login', false);
 					deferred.reject("Sorry! We encountered an error");
 				})
 			}

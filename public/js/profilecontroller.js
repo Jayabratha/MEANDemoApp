@@ -1,6 +1,7 @@
-app.controller('profileController', ['$scope', '$http', '$cookies', '$location', 'userdata', function($scope, $http, $cookies, $location, userdata){
+app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies', '$location', 'userdata', function($scope, $rootScope, $http, $cookies, $location, userdata){
 	if (console) console.log("In Profile Controller");
-/*	$scope.pushPath();*/
+	$scope.setVars();
+	
 	$scope.activeView = "active";
 	$scope.activePhotos = "";
 	$scope.activeEdit = "";
@@ -42,7 +43,8 @@ app.controller('profileController', ['$scope', '$http', '$cookies', '$location',
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
-
 	$scope.user = new User(userdata.username, userdata.sex, userdata.dob, userdata.address, userdata.role.designer, userdata.role.developer, userdata.salary, userdata.email, userdata.password, userdata.created_at, userdata.updated_at);
-	$scope.hideModal();
+	$rootScope.hideModal();
+	
+	
 }]);
