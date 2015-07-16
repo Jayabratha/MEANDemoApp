@@ -3,7 +3,7 @@ app.factory('getUserService', ['$q','$http', '$cookies', function( $q, $http, $c
 		getUserDetails: function() {
 			$cookies.testcookie = 'MySessionCookie';
 			if (console) console.log($cookies);
-			var currentuser = $cookies.user;
+			var currentuser = $cookies.get('user');
 			if (console) console.log(currentuser);
 			var deferred = $q.defer();
 			if(currentuser != null && currentuser != "" ){

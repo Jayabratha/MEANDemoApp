@@ -1,0 +1,25 @@
+{
+  "name": "MEANDemoApp",
+  "version": "0.0.0",
+  "description": "MEAN Stack Demo App with Bower",
+  "main": "appcontroller.js",
+  "keywords": [
+    "mean"
+  ],
+  "authors": [
+    "Jayabratha Saha"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-cookies": "~1.4.3",
+    "angular": "~1.4.3",
+    "angular-ui-router": "~0.2.15"
+  }
+}
