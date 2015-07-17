@@ -6,13 +6,13 @@
 			<div id="profile_info">
 				<nav id="profilecontrols">
 					<ul>
-						<li ng-class="activeView" ui-sref="profile" ng-click="showProfile()"> Profile View </li>
+						<li ng-class="activeView" ui-sref="profile" ng-click="showProfile()"> Profile Home </li>
 						<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()"> Photos </li>
 						<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()"> Edit Profile </li>
 						<li ng-click="logOut()"> Logout </li>
 					</ul>
 				</nav>
-				<table>
+				<table id="dptile">
 					<tr>
 						<td  class="level correct" ><div id="profile_pic"></div></td>
 						<td class="inputfield" id="profile_title">
@@ -20,38 +20,9 @@
 								<div class="role" ng-show="user.role.designer"> Designer </div><div class="role" ng-show="user.role.designer && user.role.developer" >&nbsp; &amp; &nbsp;</div><div class="role" ng-show="user.role.developer" > Developer </div>
 						</td>
 					</tr>
-					<tr>
-						<td  class="level"><br /></td>
-						<td class="inputfield spacer"><br /></td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.username}" > Name: </td><td class="inputfield" >{{user.username}}</td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.sex}" > Sex: </td><td class="inputfield" >{{user.sex}}</td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.dob}" > Date of Birth: </td><td class="inputfield" >{{user.dob}}</td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.role.designer || user.role.developer}"> Roles: </td><td class="inputfield" ><span ng-show="user.role.designer"> Designer </span><span ng-show="user.role.designer && user.role.developer" > , </span><span ng-show="user.role.developer" > Developer </span> </td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.email}" > email:  </td><td class="inputfield" >{{user.email}}</td>
-					</tr>
-					<tr>
-						<td class="level" ng-class="{'correct': user.salary}" > Current salary: </td><td class="inputfield" >{{user.salary}}</td>
-					</tr>
-					<tr>
-						<td  class="level"><br /></td>
-						<td class="inputfield"><br /></td>
-					</tr>
-					<tr>
-						<td colspan="2"><div id="container"><input id="submitupdate" class="submitbtn" name="submit" type="submit" value="Submit Change" ng-disabled="registerForm.$invalid" /></div></td>
-					</tr>
-
 				</table>
-				<section id="photos_tab" ui-view ng-class="hidePhotosTab">
+				<ng-include src="timeline.html"></ng-include>
+				<section id="profile_tabs" ui-view="content" >
 				</section>
 			</div>
 		</div>

@@ -38,8 +38,8 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						getUserService.getUserDetails().then(function(responsedata){
 							defer.resolve(responsedata);
 						}, function(responsedata){
-							//alert("Error" + responsedata.message);
-							$rootScope.setMessage("Error Occurred", 'Try Again', 'login', false);
+							$rootScope.displayModal();
+							$rootScope.setMessage(responsedata, 'Log In', 'login', false);
 							$rootScope.loginstate.flipShow();
 							defer.reject(responsedata);
 						});

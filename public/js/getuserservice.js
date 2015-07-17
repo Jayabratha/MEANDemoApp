@@ -1,8 +1,6 @@
-app.factory('getUserService', ['$q','$http', '$cookies', function( $q, $http, $cookies ){
+app.factory('getUserService', ['$q','$http', '$cookies', '$rootScope', function( $q, $http, $cookies, $rootScope){
 	return {
 		getUserDetails: function() {
-			$cookies.testcookie = 'MySessionCookie';
-			if (console) console.log($cookies);
 			var currentuser = $cookies.get('user');
 			if (console) console.log(currentuser);
 			var deferred = $q.defer();
@@ -37,9 +35,9 @@ app.factory('getUserService', ['$q','$http', '$cookies', function( $q, $http, $c
 			}
 			else {
 				if (console) console.log("No User Logged In");
-				$scope.displayModal();
-				$scope.setMessage('Please login first.', 'LogIn', 'login', false);
-				deferred.reject("error");
+				/*$rootScope.displayModal();
+				$rootScope.setMessage('Please login first.', 'LogIn', 'login', false);*/
+				deferred.reject("Please login first");
 			}
 
 			return deferred.promise;

@@ -1,0 +1,14 @@
+.timeline_template {
+	position: relative;
+	width: 20em;
+	height: auto;
+	border-right: medium solid #29C20B;;
+}
+
+.infocontainer {
+	position: relative;
+	width: 90%;
+	min-height: 20em;
+	max-height: 50em;
+	background-color: #FFFFFF;
+}

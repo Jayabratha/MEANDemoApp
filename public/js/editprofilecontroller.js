@@ -1,3 +1,3 @@
-app.controller('profileEditController', function(){
-	
-})
+app.controller('profileEditController', [ '$scope', function($scope){
+	$scope.showEditProfile();	
+}])

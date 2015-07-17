@@ -1,3 +1,3 @@
-app.controller('photosController', function(){
-	
-})
+app.controller('photosController', [ '$scope', function($scope){
+	$scope.showPhotos();
+}])

@@ -181,13 +181,13 @@ input.submitbtn {
 	position:fixed;
 	width: 30%;
 	height: 200px;
-	top: -200px;
+	top: -210px;
 	left: 50%;
 	margin-left: -15%;
 	background-color: #FFFFFF;
 	border: solid thin #C6C6C7;
 	box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-	z-index:7;
+	z-index:10;
 	opacity: 1;
 	-webkit-transition: top 0.5s;
 	transition: top 0.5s;
@@ -237,7 +237,7 @@ input.submitbtn {
 	right: 0;
 	padding: 5px 5px 5px 5px;
 	opacity: 0.5;
-	z-index:1;
+	z-index: 1;
 }
 
 #closemodal:hover {

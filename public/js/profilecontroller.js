@@ -5,27 +5,24 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 	$scope.activeView = "active";
 	$scope.activePhotos = "";
 	$scope.activeEdit = "";
-	$scope.hidePhotosTab = "hide";
+	
 	$scope.showProfile = function(){
 		$scope.activeView = "active";
 		$scope.activeEdit = "";
 		$scope.activePhotos = "";
-		$scope.hidePhotosTab = "hide";
 	};
 	$scope.showPhotos = function(){
 		$scope.activeView = "";
 		$scope.activeEdit = "";
 		$scope.activePhotos = "active";
-		$scope.hidePhotosTab = "";
 	};
 	$scope.showEditProfile = function(){
 		$scope.activeView = "";
 		$scope.activeEdit = "active";
 		$scope.activePhotos = "";
-		$scope.hidePhotosTab = "hide";
 	};
 	$scope.logOut = function(){
-		$cookies.user = "";
+		$cookies.put('user', '');
 		$location.path('login');
 	}
 	var User = function(username, sex, dob, address, designer, developer, salary, email, password, created_at, updated_at){

@@ -1,0 +1,45 @@
+<table id="edittable">
+	<tr>
+		<td  class="level"><br /></td>
+		<td class="inputfield spacer"><br /></td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.username}" > Name: </td>
+		<td class="inputfield" >{{user.username}}</td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.sex}" > Sex: </td>
+		<td class="inputfield" >{{user.sex}}</td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.dob}" > Date of Birth: </td>
+		<td class="inputfield" >{{user.dob}}</td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.role.designer || user.role.developer}"> Roles: </td>
+		<td class="inputfield" >
+			<span ng-show="user.role.designer"> Designer </span>
+			<span ng-show="user.role.designer && user.role.developer" > , </span>
+			<span ng-show="user.role.developer" > Developer </span>
+		</td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.email}" > email:  </td>
+		<td class="inputfield" >{{user.email}}</td>
+	</tr>
+	<tr>
+		<td class="level" ng-class="{'correct': user.salary}" > Current salary: </td>
+		<td class="inputfield" >{{user.salary}}</td>
+	</tr>
+	<tr>
+		<td  class="level"><br /></td>
+		<td class="inputfield"><br /></td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div id="container">
+				<input id="submitupdate" class="submitbtn" name="submit" type="submit" value="Submit Change" ng-disabled="registerForm.$invalid" />
+			</div>
+		</td>
+	</tr>
+</table>

@@ -22,7 +22,7 @@
 #profilecontainer {
 	position: relative;
 	font-size: 18px;
-	height: 50em;
+	height: auto;
 }
 
 #profile_cover {
@@ -56,7 +56,7 @@
 
 #profile_title h1 {
 	font-weight: 700;
-	text-shadow: 0 1px 3px rgba(0,0,0,0.3);;
+	text-shadow: 0 1px 3px rgba(0,0,0,0.3);
 	margin-bottom: 0.2em;
 }
 
@@ -69,10 +69,15 @@
 	position: relative;
 }
 
-#profile_info table {
+#profile_info #dptile {
 	position: absolute;
 	width: 60%;
 	margin-top: -8.8em;
+	z-index: 3;
+}
+
+#profile_info #edittable {
+	width: 60%;
 	z-index: 3;
 }
 
@@ -84,9 +89,11 @@ nav#profilecontrols {
 	position: relative;
 	height: 2.5em;
 	background-color: #FFFFFF;
+	border-bottom: thin solid #D2D1D1;
 }
 
 nav#profilecontrols ul {
+	display: inline-block;
 	position: absolute;
 	right: 0;
 	margin: 0;
@@ -113,14 +120,14 @@ nav#profilecontrols ul li.active {
 	box-shadow: 0 3px #4162DE inset;
 	font-weight: 400;
 	background-color: #FFFFFF;
-	height: 2.09em;
+	height: 2em;
 }
 
 #submitupdate {
 	margin-left: -1.7em;
 }
 
-#photos_tab {
+#profile_tabs {
 	position: relative;
 	min-height: 37.5em;
 	height: auto;
@@ -134,12 +141,11 @@ nav#profilecontrols ul li.active {
 	display: none;
 }
 
-#photos_tab header {
+#profile_tabs header {
 	position: relative;
 	height: 2em;
 	font-size: 16px; 
-	padding: 2.8em 0em;
-	box-shadow: 0 8px 10px -8px rgba(0,0,0,0.3);
+	padding: 1em 0em;
 }
 
 #photopicker {
@@ -181,7 +187,6 @@ nav#profilecontrols ul li.active {
 	height:auto;
 	padding: 1em 0;
 	margin-bottom: 2em;
-	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
 }
 
 .photocontainer {
@@ -191,7 +196,6 @@ nav#profilecontrols ul li.active {
 	width: 29%;
 	height: 10em;
 	margin: 1em 1em;
-	box-shadow: 0 1px 2px rgba(0,0,0,0.4);
 }
 
 #phototab_content footer {
