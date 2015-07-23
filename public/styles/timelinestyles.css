@@ -1,14 +1,140 @@
-.timeline_template {
+.timelinepage {
+	/*background: -webkit-linear-gradient(#FFFFFF , #CCCCCC);*/
+}
+
+.timlineheader {
+	width: 100%;
+	text-align: center;
+	color: grey;
+}
+
+.timlinespacer {
 	position: relative;
-	width: 20em;
+	width: 50%;
+	height: 2em;
+	border-right: medium solid #4162DE;
+}
+.timlinespacer.top {
+	margin-top: -2px;
+}
+.timlinespacer.down {
+	margin-top: 2px;
+}
+
+.timelinecontainer {
+	position: relative;
+	width: 60%;
+	z-index: 3;
+}
+
+#timelinetemplates {
+	position: relative;
+	margin-left: -0.5em;
+}
+
+.timelineelemcontainer {
+	position: relative;
+	width: 100%;
 	height: auto;
-	border-right: medium solid #29C20B;;
+}
+
+.timeline_template{
+	-webkit-perspective: 4000px;
+	perspective: 4000px;
+}
+
+.metainfo {
+	position: absolute;
+	top: 25%;
+	display: inline-block;
+	background-color: #FFFFFF;
+	width: 40% !important;
+	height: 3em;
+}
+
+.metainfo.left {
+	left: 55%;
+}
+
+.metainfo.right {
+	right: 55%;
+}
+
+.timeline_template.left{
+	position: relative;
+	width: 50%;
+	min-height: 5em;
+	height: auto;
+	border-right: medium solid #29C20B;
+}
+
+.timeline_template.right{
+	position: relative;
+	width: 50%;
+	min-height: 5em;
+	margin-left: 50%;
+	height: auto;
+	border-left: medium solid #29C20B;
+}
+
+.timelinebullet {
+	position: absolute;
+	background-color: #29C20B;
+	height: 0.6em;
+	width: 0.6em;
+	border-radius: 0.3em;
+	top: 45%;
+}
+
+.timelinebullet:hover {
+	box-shadow: 0 0.5em 0.2em #29C20B;
+}
+
+.timeline_template.left .timelinebullet {
+	right: -7px;
+}
+
+.timeline_template.right .timelinebullet {
+	left: -6.5px;
 }
 
 .infocontainer {
 	position: relative;
-	width: 90%;
-	min-height: 20em;
-	max-height: 50em;
+	width: 85%;
+	min-height: 5em;
+	max-height: 20em;
 	background-color: #FFFFFF;
+	padding: 1em 5% 1em;
+	border: thin solid #CCCCCC;
+}
+
+.timeline_template.left .infocontainer {
+	margin-right: 5%;
+	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.15);
+	-webkit-transform: rotateY(-92deg);
+	transform: rotateY(-92deg);
+	-webkit-transform-origin: right;
+	transform-origin: right;
+}
+
+.timeline_template.right .infocontainer {
+	margin-left: 5%;
+	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.15);
+	-webkit-transform: rotateY(92deg);
+	transform: rotateY(92deg);
+	-webkit-transform-origin: left;
+	transform-origin: left;
+}
+
+.infocontainer.show {
+	-webkit-transform: rotateY(0deg) !important;
+	transform: rotateY(0deg) !important;
+}
+
+.infocontainer.active {
+	 -webkit-transition: all 0.5s;
+	 -moz-transition: all 0.5s;
+	 -ms-transition: all 0.5s;
+	 -o-transition: all 0.5s;
+	 transition: all 0.5s;
 }

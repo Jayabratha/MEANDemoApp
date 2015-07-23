@@ -1,4 +1,4 @@
-app.controller('loginController', ['$scope', '$rootScope', '$location', '$timeout', 'AuthUser', function($scope, $rootScope, $location, $timeout, AuthUser){
+app.controller('loginController', ['$scope', '$rootScope', '$state', '$timeout', 'AuthUser', function($scope, $rootScope, $state, $timeout, AuthUser){
 	if (console) console.log("In Login Controller");
 	$scope.setVars();
 
@@ -17,7 +17,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$location', '$timeou
 				AuthUser.authenticateUser( $scope.loginDetail, function(response){
 				if(response.success){
 						//$scope.hideModal();
-						$location.path('profile');
+						$state.go('profile.timeline');
 				}
 				else {
 					$rootScope.setMessage(response.message, 'Try Again', 'login', false);

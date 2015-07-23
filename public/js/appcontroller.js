@@ -31,6 +31,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		state('profile', {
 				url: '/profile',
 				templateUrl: 'profile.html',
+				abstract: true,
 				controller: 'profileController',
 				resolve: {
 					userdata : function($q, getUserService, $rootScope){
@@ -47,6 +48,11 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						return defer.promise;
 					}
 				}
+		}).
+		state('profile.timeline', {
+				url: '',
+				templateUrl: 'timeline.html',
+				controller: 'timelineController'
 		}).
 		state('profile.photos', {
 				url: '/photos',

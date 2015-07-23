@@ -18,18 +18,18 @@ header.contentheader {
 }
 
 table .level {
-	width: 50%;
+	width: 49.95%;
 	text-align: right;
 	padding-right: 3%;
 	border-right: medium solid #4162DE;
 
 }
 
-table .level.error {
+.level.error {
 	border-right: medium solid #E83535;
 }
 
-table .level.correct {
+.level.correct {
 	border-right: medium solid #29C20B;
 }
 

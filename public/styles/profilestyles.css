@@ -38,9 +38,15 @@
 	height: auto;
 }
 
+.inlinediv {
+	display: inline-block;
+	width: 49.3%;
+}
+
 #profile_pic {
 	position: relative;
-	display: inline-block;
+	float: right;
+	margin-right: 1em;
 	width: 10em;
 	height: 10em;
 	background-color: #FFFFFF;
@@ -52,6 +58,8 @@
 	color: #FFFFFF;
 	padding: 0 1em;
 	font-size: 1.2em;
+	width: 40%;
+	top: -0.8em;
 }
 
 #profile_title h1 {
@@ -69,20 +77,16 @@
 	position: relative;
 }
 
-#profile_info #dptile {
+#dptile {
 	position: absolute;
 	width: 60%;
-	margin-top: -8.8em;
-	z-index: 3;
+	margin-top: -7.5em;
+	z-index: 10;
 }
 
 #profile_info #edittable {
 	width: 60%;
 	z-index: 3;
-}
-
-#profile_info td {
-	padding-left: 5%;
 }
 
 nav#profilecontrols {
@@ -119,7 +123,7 @@ nav#profilecontrols ul li:hover {
 nav#profilecontrols ul li.active {
 	box-shadow: 0 3px #4162DE inset;
 	font-weight: 400;
-	background-color: #FFFFFF;
+	background: -webkit-linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, #E5E5E5);
 	height: 2em;
 }
 
@@ -131,10 +135,9 @@ nav#profilecontrols ul li.active {
 	position: relative;
 	min-height: 37.5em;
 	height: auto;
-	background-color: #FFFFFF;
+	background-color: #E5E5E5;
 	z-index: 4;
-	margin-top: 1.8em;
-	/*border-top: thin solid #D2D1D1;*/
+	margin-top:2px;
 }
 
 .hide {
@@ -200,4 +203,13 @@ nav#profilecontrols ul li.active {
 
 #phototab_content footer {
 	clear: both;
+}
+
+.testdiv {
+	position: absolute;
+	top:10px;
+	height: 10px;
+	width: 10px;
+	background-color: red;
+	z-index: 15;
 }

@@ -5,6 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/homepage.css" /> 
 	<link rel="stylesheet" type="text/css" href="styles/formstyles.css">
 	<link rel="stylesheet" type="text/css" href="styles/profilestyles.css">
+	<link rel="stylesheet" type="text/css" href="styles/timelinestyles.css">
 	<!-- <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'> -->
 </head>
 <body ng-app="app" ng-controller="appController">
@@ -15,7 +16,7 @@
 <!-- Modal- start -->
 	<div id="main_modal" ng-class="showModal">
 	</div>
-	<div id="main_message" ng-class="showModal" message-div messageobj = 'messageObj' on-close='hideModal()' pop-action='popAction()' >
+	<div id="main_message" ng-class="showModal" message-div messageobj= 'messageObj' on-close='hideModal()' pop-action='popAction()' >
 	</div>
 <!-- Modal- end -->
 <!-- Main View Content -start -->
@@ -23,6 +24,7 @@
 <!-- Main View Content -end -->
 	<button id="startbtn" ng-class="homestate.showButton" ui-sref="login" > Let's Start </button>
 </div>
+<script src="js/bower_components/jquery/dist/jquery.min.js" ></script>
 <script src="js/bower_components/angular/angular.js" ></script>
 <script src="js/bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
 <script src="js/bower_components/angular-cookies/angular-cookies.js" ></script>
@@ -34,6 +36,8 @@
 <script src="js/registercontroller.js"></script>
 <script src="js/profilecontroller.js"></script>
 <script src="js/photoscontroller.js"></script>
+<script src="js/timelinecontroller.js"></script>
+<script src="js/timelinedirective.js"></script>
 <script src="js/editprofilecontroller.js"></script>
 <script src="js/messagedirectives.js"></script>
 <script src="js/flipservice.js"></script>
