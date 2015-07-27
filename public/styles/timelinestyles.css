@@ -50,14 +50,24 @@
 	background-color: #FFFFFF;
 	width: 40% !important;
 	height: 3em;
+	border: thin solid #CCCCCC;
+	border-radius: 5px;
+	opacity: 0;
+	-webkit-transition: all 1s;
+	 -moz-transition: all 1s;
+	 -ms-transition: all 1s;
+	 -o-transition: all 1s;
+	 transition: all 1s;
 }
 
 .metainfo.left {
-	left: 55%;
+	left: 53%;
+	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.1);
 }
 
 .metainfo.right {
-	right: 55%;
+	right: 52%;
+	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.1);
 }
 
 .timeline_template.left{
@@ -110,7 +120,7 @@
 
 .timeline_template.left .infocontainer {
 	margin-right: 5%;
-	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.15);
+	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.1);
 	-webkit-transform: rotateY(-92deg);
 	transform: rotateY(-92deg);
 	-webkit-transform-origin: right;
@@ -119,7 +129,7 @@
 
 .timeline_template.right .infocontainer {
 	margin-left: 5%;
-	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.15);
+	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.1);
 	-webkit-transform: rotateY(92deg);
 	transform: rotateY(92deg);
 	-webkit-transform-origin: left;
@@ -131,10 +141,26 @@
 	transform: rotateY(0deg) !important;
 }
 
+.metainfo.show {
+	opacity: 1;
+}
+
 .infocontainer.active {
 	 -webkit-transition: all 0.5s;
 	 -moz-transition: all 0.5s;
 	 -ms-transition: all 0.5s;
 	 -o-transition: all 0.5s;
 	 transition: all 0.5s;
+}
+
+#suggestions {
+	position: absolute;
+	width: 35%;
+	height: 30em;
+	top: 1em;
+	right: 1em;
+	background-color: #FFFFFF;
+	border: thin solid #CCCCCC;
+	border-radius: 2px;
+	box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
 }

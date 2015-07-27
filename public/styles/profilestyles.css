@@ -123,7 +123,7 @@ nav#profilecontrols ul li:hover {
 nav#profilecontrols ul li.active {
 	box-shadow: 0 3px #4162DE inset;
 	font-weight: 400;
-	background: -webkit-linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, #E5E5E5);
+	background: -webkit-linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, #F2F3F3);
 	height: 2em;
 }
 
@@ -135,7 +135,7 @@ nav#profilecontrols ul li.active {
 	position: relative;
 	min-height: 37.5em;
 	height: auto;
-	background-color: #E5E5E5;
+	background-color: #F2F3F3;
 	z-index: 4;
 	margin-top:2px;
 }

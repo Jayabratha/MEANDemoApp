@@ -3,8 +3,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', '$timeout',
 	$scope.setVars();
 
 	$scope.showRegisterForm = function(){
-		//$timeout(function() {$location.path('register');$scope.loginstate.flipHide();}, 500);
-		$location.path('register');
+		$state.go('register');
 	}
 
 
