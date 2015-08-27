@@ -127,6 +127,14 @@ nav#profilecontrols ul li.active {
 	height: 2em;
 }
 
+.menu-icon {
+	position: absolute;
+	right: 10px;
+	top: 2px;
+	cursor: pointer;
+	display: none;
+}
+
 #submitupdate {
 	margin-left: -1.7em;
 }

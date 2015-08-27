@@ -1,4 +1,4 @@
-app.directive('timelineTemplate', function($window, $timeout, debounce){
+app.directive('timelineTemplate', function($window, $timeout, throttle){
 	return {
 		restrict: 'E',
 		scope: {
@@ -7,16 +7,17 @@ app.directive('timelineTemplate', function($window, $timeout, debounce){
 		templateUrl: 'timelinetemplate.html',
 		link: function(scope, elems, attr){
 			var elem = elems[0];
+			var throttleCall = throttle();
 			$timeout(function(){
 				var elemtop = $(elem).find('.timelinebullet').offset().top;
 				var viewTop = angular.element($(window)).scrollTop();
 				var viewBottom = viewTop + angular.element($window).height();
 				$(elem).find('.infocontainer').addClass('active');
-				if((elemtop) < (viewBottom - 100)){
+				if((elemtop) < (viewBottom - 90)){
 					$(elem).find('.infocontainer').addClass('show');
 					$(elem).find('.metainfo').addClass('show');
 				}
-			}, 600);
+			}, 500);
 
 			scope.showUpdates = function(){
 				var viewTop = angular.element($(window)).scrollTop();
@@ -24,10 +25,9 @@ app.directive('timelineTemplate', function($window, $timeout, debounce){
 				var elems = angular.element('.timelinebullet');
 				for(var index = 0; index < elems.length; index ++ ){
 					var elemoffsettop = angular.element('.timelinebullet:eq('+index+')').offset().top;
-					console.log("Outer Top: " + elemoffsettop);
 					var infoelem = angular.element('.timeline_template:eq('+index+') .infocontainer');
 					var metainfoelem = angular.element('.timelineelemcontainer:eq('+index+') .metainfo');
-					if(elemoffsettop < (viewBottom - 100)){
+					if(elemoffsettop < (viewBottom - 90)){
 						infoelem.addClass('show');
 						metainfoelem.addClass('show');
 					}
@@ -38,7 +38,7 @@ app.directive('timelineTemplate', function($window, $timeout, debounce){
 				}
 			}
 
-			angular.element($window).bind("scroll", function(){debounce(scope.showUpdates, 100, false);})
+			angular.element($window).bind("scroll", function(){throttleCall(scope.showUpdates, 600);})
 		}
 	};
 });

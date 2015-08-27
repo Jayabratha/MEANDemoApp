@@ -1,0 +1,21 @@
+@media only screen and (min-width:321px) and (max-width:1000px) {
+	#formcontent {
+		width: 100%;
+	}
+
+	#dptile {
+		width: 80%;
+	}
+
+	.timelinecontainer {
+		width: 80%;
+	}
+
+	nav#profilecontrols ul {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+}

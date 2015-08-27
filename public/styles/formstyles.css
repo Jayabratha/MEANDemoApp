@@ -59,7 +59,7 @@ td #container {
 	margin: 0 auto;
 }
 
-input.submitbtn {
+.submitbtn {
 	position:absolute;
 	display:block;
 	min-width: 5em;

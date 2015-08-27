@@ -41,10 +41,15 @@ header.mainheader {
 	width: 100%;
 	height: 300px;
 	z-index: 8;
+	border-bottom: 1px solid #0BA2E1;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 }
 
+button {
+	border-radius: 2px;
+}
 
 header.small {
 	font-size: 38px;
@@ -57,8 +62,6 @@ header.small {
 #headtitle {
 	position:relative;
 	padding-top: 1.5em;
-	width: 800px;
-	margin: 0 auto;
 	text-align: center;
 }
 
@@ -83,13 +86,12 @@ header.small #headtitle {
 }
 
 #formcontent {
-	position: absolute;
-	width: 80%;
+	position: relative;
+	width: 1000px;
 	min-height: 500px;
 	height: auto;
 	top: 20px;
-	left: 50%;
-	margin-left: -40%;
+	margin: auto;
 	-webkit-perspective: 3000px;
 	perspective: 3000px;
 }
