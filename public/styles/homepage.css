@@ -18,7 +18,7 @@
 @font-face {
 	font-family:Roboto Condensed;
 	font-style:normal;
-	font-weight: 700;
+	font-weight: 700;	
 	src: url(../fonts/RobotoCondensed-Bold.ttf);
 }
 
@@ -34,7 +34,7 @@ body {
 header.mainheader {
 	position:fixed;
 	background-color: #0AB2F8;
-	font-size: 60px;
+	font-size: 3.5em;
 	font-weight: 400;
 	color: #FFFFFF;
 	margin: 0;
@@ -52,8 +52,8 @@ button {
 }
 
 header.small {
-	font-size: 38px;
-	height: 80px;
+	font-size: 2em;
+	height: 2.3em;
 	z-index: 8;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
@@ -71,7 +71,7 @@ header.small #headtitle {
 
 #maincontent {
 	position: absolute;
-	top: -200px;
+	top: -10em;
 	width: 100%;
 	min-height: 600px;
 	height: auto;
@@ -80,7 +80,7 @@ header.small #headtitle {
 }
 
 #maincontent.showForm {
-	top:80px;
+	top: 4em;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 }
@@ -90,7 +90,7 @@ header.small #headtitle {
 	width: 1000px;
 	min-height: 500px;
 	height: auto;
-	top: 20px;
+	top: 1em;
 	margin: auto;
 	-webkit-perspective: 3000px;
 	perspective: 3000px;
@@ -112,4 +112,9 @@ header.small #headtitle {
 
 .hide {
 	display: none;
+}
+
+button {
+	font-size: 18px;
+	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 }

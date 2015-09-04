@@ -60,16 +60,14 @@ td #container {
 }
 
 .submitbtn {
-	position:absolute;
+	position:relative;
 	display:block;
-	min-width: 5em;
-	width: auto;
+	width: 5em;
 	height: 2em;
 	background-color: #0AB2F8;
 	color: #FFFFFF;
 	border: thin solid #099DDB;
-	font-size: 20px;
-	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+	margin: auto;
 }
 
 .message_default {
@@ -86,13 +84,12 @@ td #container {
 
 #loginform {
 	position:relative;
-	min-width: 27em;
+	min-width: 600px;
 	width: 60%;
 	height: 500px;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
-	left: 50%;
-	margin-left: -30%;
+	margin: auto;
 	z-index:9;
 	-webkit-transform: rotateY(0deg);
 	transform: rotateY(0deg);

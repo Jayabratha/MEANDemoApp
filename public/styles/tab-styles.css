@@ -1,14 +1,16 @@
-@media only screen and (min-width:321px) and (max-width:1000px) {
+@media only screen and (max-width:1000px) {
 	#formcontent {
 		width: 100%;
 	}
+}
 
+@media only screen and (min-width:701px) and (max-width:900px) {
 	#dptile {
-		width: 80%;
+		width: 70%;
 	}
 
 	.timelinecontainer {
-		width: 80%;
+		width: 70%;
 	}
 
 	nav#profilecontrols ul {
@@ -18,4 +20,92 @@
 	.menu-icon {
 		display: block;
 	}
+
 }
+
+
+@media only screen and (min-width:601px) and (max-width:700px) {
+	body {
+		font-size: 0.9em;
+	}
+
+	#dptile {
+		width: 90%;
+	}
+
+	.timelinecontainer {
+		width: 90%;
+	}
+
+	#suggestions {
+		display: none;
+	}
+
+	nav#profilecontrols ul {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+
+}
+
+@media only screen and (max-width:600px) {
+
+	body {
+		font-size: 0.8em;
+	}
+
+	#loginform {
+		min-width: inherit;
+		width: 100%;
+	}
+
+	#profile_cover {
+		height: 8em;
+	}
+
+	#profile_pic {
+		width: 8em;
+		height: 8em;
+	}
+
+	#dptile {
+		width: 100%;
+		margin-top: -5.5em;
+	}
+
+	#profile_title {
+		font-size: 1.1em;
+		padding: 0;
+	}
+
+	.timlinespacer {
+		height: 1em;
+	}
+
+	.timelinecontainer {
+		width: 100%;
+	}
+
+	#suggestions {
+		display: none;
+	}
+
+	nav#profilecontrols ul {
+		display: none;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+
+}
+
+@media only screen and (max-width:400px) {
+	#profile_title {
+		top: -0.3em;
+	}
+}
+

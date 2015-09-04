@@ -21,7 +21,6 @@
 
 #profilecontainer {
 	position: relative;
-	font-size: 18px;
 	height: auto;
 }
 
@@ -130,7 +129,7 @@ nav#profilecontrols ul li.active {
 .menu-icon {
 	position: absolute;
 	right: 10px;
-	top: 2px;
+	top: 4px;
 	cursor: pointer;
 	display: none;
 }
