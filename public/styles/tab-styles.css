@@ -89,7 +89,12 @@
 	}
 
 	#profile_title h1 {
-		bottom: 0.6em;
+		bottom: 1em;
+	}
+
+	.user_title {
+		height: 3em;
+		bottom: 0.3em;
 	}
 
 	.timlinespacer {
@@ -104,7 +109,7 @@
 		display: none;
 	}
 
-	nav#profilecontrols ul {
+	nav.profilecontrols ul {
 		display: none;
 	}
 

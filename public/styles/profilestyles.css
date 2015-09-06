@@ -85,8 +85,14 @@
 
 .user_title {
 	position: absolute;
+	display: table;
+	height: 2em;
 	bottom: 0;
-	margin-bottom: 0.5em;
+}
+
+.user_title span {
+	display: table-cell;
+	vertical-align: middle;
 }
 
 #profile_info #edittable {
@@ -94,14 +100,15 @@
 	z-index: 3;
 }
 
-nav#profilecontrols {
+nav.profilecontrols {
 	position: relative;
 	height: 2.5em;
 	background-color: #FFFFFF;
 	border-bottom: thin solid #D2D1D1;
 }
 
-nav#profilecontrols ul {
+
+nav.profilecontrols ul {
 	display: inline-block;
 	position: absolute;
 	right: 0;
@@ -110,7 +117,7 @@ nav#profilecontrols ul {
 	z-index: 5;
 }
 
-nav#profilecontrols ul li {
+nav.profilecontrols ul li {
 	list-style: none;
 	height: 80%;
 	min-width: 4.5em;
@@ -121,11 +128,11 @@ nav#profilecontrols ul li {
 	border-left: thin solid #D2D1D1;
 }
 
-nav#profilecontrols ul li:hover {
+nav.profilecontrols ul li:hover {
 	background-color: #E5E5E5;
 }
 
-nav#profilecontrols ul li.active {
+nav.profilecontrols ul li.active {
 	box-shadow: 0 3px #4162DE inset;
 	font-weight: 400;
 	background: -webkit-linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, #F2F3F3);
