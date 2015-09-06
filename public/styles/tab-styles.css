@@ -26,7 +26,7 @@
 
 @media only screen and (min-width:601px) and (max-width:700px) {
 	body {
-		font-size: 0.9em;
+		font-size: 15px;
 	}
 
 	#dptile {
@@ -54,10 +54,15 @@
 @media only screen and (max-width:600px) {
 
 	body {
-		font-size: 0.8em;
+		font-size: 14px;
 	}
 
-	#loginform {
+	#main_message {
+		width: 100%;
+		margin-left: -50%;
+	}
+
+	#loginform, #registerform {
 		min-width: inherit;
 		width: 100%;
 	}
@@ -73,12 +78,18 @@
 
 	#dptile {
 		width: 100%;
-		margin-top: -5.5em;
+		margin-top: -7.5em;
+		font-size: 0.9em;
 	}
 
 	#profile_title {
 		font-size: 1.1em;
 		padding: 0;
+		margin-left: 0.5em;
+	}
+
+	#profile_title h1 {
+		bottom: 0.6em;
 	}
 
 	.timlinespacer {
@@ -99,6 +110,10 @@
 
 	.menu-icon {
 		display: block;
+	}
+
+	#loginform {
+		height: 400px;
 	}
 
 }

@@ -28,7 +28,7 @@ body {
 	font-weight: 300;
 	margin: 0;
 	padding: 0;
-	font-size: 18px;
+	font-size: 16px;
 }
 
 header.mainheader {
@@ -57,6 +57,10 @@ header.small {
 	z-index: 8;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
+}
+
+input {
+	padding: 0.2em;
 }
 
 #headtitle {
