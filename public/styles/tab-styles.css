@@ -13,8 +13,12 @@
 		width: 70%;
 	}
 
-	nav#profilecontrols ul {
+	#for-big-screen ul {
 		display: none;
+	}
+
+	#for-phone-tab {
+		display: block;
 	}
 
 	.menu-icon {
@@ -41,8 +45,21 @@
 		display: none;
 	}
 
-	nav#profilecontrols ul {
+	#for-big-screen ul {
 		display: none;
+	}
+
+	#for-phone-tab {
+		display: block;
+	}
+
+	nav.profilecontrols ul {
+		width: 55%;
+	}
+
+	nav.profilecontrols ul li {
+		min-width: 33%;
+		padding: 0.5em 0 0 0;
 	}
 
 	.menu-icon {
@@ -109,8 +126,21 @@
 		display: none;
 	}
 
-	nav.profilecontrols ul {
+	#for-big-screen ul {
 		display: none;
+	}
+
+	#for-phone-tab {
+		display: block;
+	}
+
+	nav.profilecontrols ul {
+		width: 100%;
+	}
+
+	nav.profilecontrols ul li {
+		min-width: 33%;
+		padding: 0.5em 0 0 0;
 	}
 
 	.menu-icon {

@@ -19,27 +19,23 @@
 		</div>
 		<div id="profile_content">
 			<div id="profile_info">
-				<nav class="profilecontrols">
+				<nav id="for-big-screen" class="profilecontrols">
 					<ul>
 						<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()"> Profile Home </li>
 						<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()"> Photos </li>
 						<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()"> Edit Profile </li>
 						<li ng-click="logOut()"> Logout </li>
 					</ul>
-					<div class="menu-icon">
+					<div ng-click="showMenu()" class="menu-icon">
 						<img src="images/menu-icon.png" />
 					</div>
 				</nav>
-				<nav class="profilecontrols for-phone-tab">
+				<nav id="for-phone-tab" class="profilecontrols" ng-class="showMenu" >
 					<ul>
 						<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()"> Profile Home </li>
 						<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()"> Photos </li>
 						<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()"> Edit Profile </li>
-						<li ng-click="logOut()"> Logout </li>
 					</ul>
-					<div class="menu-icon">
-						<img src="images/menu-icon.png" />
-					</div>
 				</nav>
 				<section id="profile_tabs" ui-view >
 				</section>
