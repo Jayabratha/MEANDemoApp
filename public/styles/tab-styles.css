@@ -17,11 +17,7 @@
 		display: none;
 	}
 
-	#for-phone-tab {
-		display: block;
-	}
-
-	.menu-icon {
+	.menu_icon {
 		display: block;
 	}
 
@@ -49,10 +45,6 @@
 		display: none;
 	}
 
-	#for-phone-tab {
-		display: block;
-	}
-
 	nav.profilecontrols ul {
 		width: 55%;
 	}
@@ -62,7 +54,7 @@
 		padding: 0.5em 0 0 0;
 	}
 
-	.menu-icon {
+	.menu_icon {
 		display: block;
 	}
 
@@ -94,15 +86,20 @@
 	}
 
 	#dptile {
-		width: 100%;
+		width: 85%;
 		margin-top: -7.5em;
 		font-size: 0.9em;
+	}
+
+	#dptile .level {
+		width: 56%;
 	}
 
 	#profile_title {
 		font-size: 1.1em;
 		padding: 0;
 		margin-left: 0.5em;
+		width: 35%;
 	}
 
 	#profile_title h1 {
@@ -126,6 +123,10 @@
 		display: none;
 	}
 
+	#for-big-screen {
+		border-bottom: 2px solid #D2D1D1;
+	}
+
 	#for-big-screen ul {
 		display: none;
 	}
@@ -143,7 +144,7 @@
 		padding: 0.5em 0 0 0;
 	}
 
-	.menu-icon {
+	.menu_icon {
 		display: block;
 	}
 
@@ -154,6 +155,9 @@
 }
 
 @media only screen and (max-width:400px) {
+	.user_title {
+	    height: 2.5em;
+	}
 	#profile_title {
 		top: -0.3em;
 	}

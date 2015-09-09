@@ -25,15 +25,15 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 	$scope.logOut = function(){
 		$cookies.put('user', '');
 		$location.path('login');
-	}
-	$scope.showMenu = function(){
+	};
+	$scope.showMenuFunc = function(){
 		if($scope.showMenu === "show"){
 			$scope.showMenu = "";
 		}
 		else {
 			$scope.showMenu = "show";
 		}
-	}
+	};
 	var User = function(username, sex, dob, address, designer, developer, salary, email, password, created_at, updated_at){
 		this.username = username;
 		this.sex = sex;
