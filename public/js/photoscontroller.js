@@ -1,7 +1,6 @@
-app.controller('photosController', [ '$scope', 'fileReaderService', function($scope, fileReaderService){
-	var i,
-		preview,
-		file;
+app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUploadService',
+									 function($scope, fileReaderService, photoUploadService){
+	var i, sizeIndex = 0, preview, file, totalSize = 0, fSExt = new Array('bytes', 'KB', 'MB', 'GB');;
 
 	function Photo(file, preview){
 		this.file = file;
@@ -11,6 +10,8 @@ app.controller('photosController', [ '$scope', 'fileReaderService', function($sc
 	$scope.showPhotos();
 	$scope.photoFiles;
 	$scope.photosList = [];
+	$scope.fileCount = 0;
+	$scope.totalFileSize = 0;
 
 	$scope.createPreview = function(){
 		var files = $scope.photoFiles,
@@ -23,7 +24,19 @@ app.controller('photosController', [ '$scope', 'fileReaderService', function($sc
 			                    preview = result.src;
 			                    $scope.photosList.push(new Photo(file, preview));
 			                 });
+			    totalSize += file.size;
 		}
+    	while(totalSize>900){
+    		totalSize/=1024;
+    		sizeIndex++;
+    	}
+
+    	$scope.fileCount += i;
+    	$scope.totalFileSize = (Math.round(totalSize*100)/100) + ' ' + fSExt[sizeIndex];
+	};
+
+	$scope.uploadPhotos = function(){
+		photoUploadService.uploadPhotos($scope.photoFiles[0]);
 	}
 
 }])

@@ -1,16 +1,17 @@
 var express = require('express');
+var app = express();
+
 var path = require('path');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
-var multer = require('multer');
 var mongoDAO = require('./dao/mongodao');
-
-var app = express();
+var multer = require('multer'); // for parsing multipart/form-data
+var upload = multer({dest: './public/images/userimages/'});
+console.log(upload);
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));  // for parsing application/x-www-form-urlencoded
 app.use(cookieParser());
-app.use(multer()); // for parsing multipart/form-data
 
 
 app.use('/', express.static(path.join(__dirname, 'public')));
@@ -36,7 +37,10 @@ app.get('/profile', function(req, res, next){
 		console.log("No user logged in");
 		res.send("Profile Info Not Found");
 	}
+})
 
+app.post('/photoupload', upload.array('photo'), function(req, res, next){
+	 res.status(204).end();
 })
 
 /*Create Server and Listen on 1337*/
