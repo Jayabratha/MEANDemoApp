@@ -2,12 +2,29 @@ var express = require('express');
 var app = express();
 
 var path = require('path');
+var fs = require('fs');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoDAO = require('./dao/mongodao');
 var multer = require('multer'); // for parsing multipart/form-data
-var upload = multer({dest: './public/images/userimages/'});
-console.log(upload);
+var storage = multer.diskStorage({
+        destination: function (req, file, cb) {
+            cb(null, 'public/images/userimages/')
+        },
+        filename: function (req, file, cb) {
+            var getFileExt = function(fileName){
+                var fileExt = fileName.split(".");
+                if( fileExt.length === 1 || ( fileExt[0] === "" && fileExt.length === 2 ) ) {
+                    return "";
+                }
+                return fileExt.pop();
+            }
+            fs.mkdir(path.join('public/images/userimages/', req.body.username), function(){
+            	cb(null, path.join(req.body.username, Date.now() + '.' + getFileExt(file.originalname)));
+            });
+        }
+    })
+var upload = multer({ storage: storage });
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));  // for parsing application/x-www-form-urlencoded
@@ -39,8 +56,25 @@ app.get('/profile', function(req, res, next){
 	}
 })
 
+//Add Photos
 app.post('/photoupload', upload.array('photo'), function(req, res, next){
 	 res.status(204).end();
+})
+
+//Remove Photo
+app.get('/removephoto', function(req, res, next){
+	var username = req.query.username,
+		filename = req.query.filename;
+	fs.unlink(path.join('public/images/userimages/', username, filename), function(err, files){
+		res.send("Files Deleted Successfully");
+	})
+
+})
+
+app.get('/photos', function(req, res, next){
+	fs.readdir(path.join('public/images/userimages/', req.query.username), function(err, files){
+		res.send(files);
+	})
 })
 
 /*Create Server and Listen on 1337*/

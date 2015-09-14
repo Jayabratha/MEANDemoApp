@@ -16,12 +16,23 @@
 	</header>
 	<div class="uploadProgress"></div>
 	<div id="phototab_content">
-		<div class="photocontainer" ng-repeat="photo in photosList">
+		<div class="photocontainer" ng-repeat="photo in newPhotosList">
 			<div class="displayPhoto">
-				<span class="helper"></span>
-				<img ng-src="{{photo.preview}}" />
-				<div>
-					Name: {{photo.file.name}}, Size: {{photo.file.size}}
+				<div class="photoWrapper">
+					<span class="helper"></span>
+					<img ng-src="{{photo.preview}}" />
+				</div>
+				<div class="photoControls"></div>
+			</div>
+		</div>
+		<div class="photocontainer" ng-repeat="photo in profilePhotos">
+			<div class="displayPhoto">
+				<div class="photoWrapper">
+					<span class="helper"></span>
+					<img ng-src="{{photo.src}}" />
+				</div>
+				<div class="photoControls">
+					<div class="deletePhoto" ng-click="removePhoto(photo.filename)">Remove</div>
 				</div>
 			</div>
 		</div>

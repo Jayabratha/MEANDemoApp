@@ -1,6 +1,10 @@
-app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUploadService',
-									 function($scope, fileReaderService, photoUploadService){
-	var i, sizeIndex = 0, preview, file, totalSize = 0, fSExt = new Array('bytes', 'KB', 'MB', 'GB');;
+app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUploadService', 'getPhotosService',
+									 'removePhotoService', '$cookies', function($scope, fileReaderService, photoUploadService,
+									  getPhotosService, removePhotoService, $cookies){
+	var i, profilePhotos,  preview, file, 
+		sizeIndex = 0,
+		totalSize = 0, 
+		fSExt = new Array('bytes', 'KB', 'MB', 'GB');;
 
 	function Photo(file, preview){
 		this.file = file;
@@ -9,7 +13,8 @@ app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUpload
 
 	$scope.showPhotos();
 	$scope.photoFiles;
-	$scope.photosList = [];
+	$scope.newPhotosList = [];
+	$scope.profilePhotos = [];
 	$scope.fileCount = 0;
 	$scope.totalFileSize = 0;
 
@@ -22,7 +27,7 @@ app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUpload
 							 .then(function(result) {
 							 	file = result.file
 			                    preview = result.src;
-			                    $scope.photosList.push(new Photo(file, preview));
+			                    $scope.newPhotosList.push(new Photo(file, preview));
 			                 });
 			    totalSize += file.size;
 		}
@@ -36,7 +41,14 @@ app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUpload
 	};
 
 	$scope.uploadPhotos = function(){
-		photoUploadService.uploadPhotos($scope.photoFiles[0]);
+		photoUploadService.uploadPhotos($scope.photoFiles, $cookies.get('user'));
 	}
+
+	$scope.removePhoto = function(filename){
+		removePhotoService.removePhoto($scope, $cookies.get('user'), filename);
+	}
+
+	//Get Profile Photos
+	getPhotosService.getPhotos($scope, $cookies.get('user'));
 
 }])
