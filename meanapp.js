@@ -19,8 +19,12 @@ var storage = multer.diskStorage({
                 }
                 return fileExt.pop();
             }
+            var getFileFirstName = function(fileName){
+            	var fileFirstName = fileName.split(".");
+            	return fileFirstName[0];
+            }
             fs.mkdir(path.join('public/images/userimages/', req.body.username), function(){
-            	cb(null, path.join(req.body.username, Date.now() + '.' + getFileExt(file.originalname)));
+            	cb(null, path.join(req.body.username, getFileFirstName(file.originalname) + Date.now() + '.' + getFileExt(file.originalname)));
             });
         }
     })
@@ -29,7 +33,6 @@ var upload = multer({ storage: storage });
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true }));  // for parsing application/x-www-form-urlencoded
 app.use(cookieParser());
-
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
@@ -58,7 +61,8 @@ app.get('/profile', function(req, res, next){
 
 //Add Photos
 app.post('/photoupload', upload.array('photo'), function(req, res, next){
-	 res.status(204).end();
+	console.log(req.files);
+	res.status(204).end();
 })
 
 //Remove Photo
@@ -71,8 +75,19 @@ app.get('/removephoto', function(req, res, next){
 
 })
 
+//Get Uploaded Photos
 app.get('/photos', function(req, res, next){
 	fs.readdir(path.join('public/images/userimages/', req.query.username), function(err, files){
+		var i, sortedFiles=[], fileStats, fileStatArray, filesLength = files.length;
+		//Sort files based on creation/change time 
+		for(i = 0; i<filesLength; i++){
+			fileStats = fs.statSync('public/images/userimages/' + files[i]);
+			fileStatArray.push({
+	            filename: file,
+	            ctime: fileStats.ctime
+	        });
+		}
+
 		res.send(files);
 	})
 })
