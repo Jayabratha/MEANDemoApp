@@ -12,6 +12,7 @@ var storage = multer.diskStorage({
             cb(null, 'public/images/userimages/')
         },
         filename: function (req, file, cb) {
+        	var userFolderName = req.body.username.split(' ')[0];
             var getFileExt = function(fileName){
                 var fileExt = fileName.split(".");
                 if( fileExt.length === 1 || ( fileExt[0] === "" && fileExt.length === 2 ) ) {
@@ -23,8 +24,8 @@ var storage = multer.diskStorage({
             	var fileFirstName = fileName.split(".");
             	return fileFirstName[0];
             }
-            fs.mkdir(path.join('public/images/userimages/', req.body.username), function(){
-            	cb(null, path.join(req.body.username, getFileFirstName(file.originalname) + Date.now() + '.' + getFileExt(file.originalname)));
+            fs.mkdir(path.join('public/images/userimages/', userFolderName), function(){
+            	cb(null, path.join(userFolderName, getFileFirstName(file.originalname) + Date.now() + '.' + getFileExt(file.originalname)));
             });
         }
     })
@@ -77,19 +78,26 @@ app.get('/removephoto', function(req, res, next){
 
 //Get Uploaded Photos
 app.get('/photos', function(req, res, next){
-	fs.readdir(path.join('public/images/userimages/', req.query.username), function(err, files){
-		var i, sortedFiles=[], fileStats, fileStatArray, filesLength = files.length;
-		//Sort files based on creation/change time 
-		for(i = 0; i<filesLength; i++){
-			fileStats = fs.statSync('public/images/userimages/' + files[i]);
-			fileStatArray.push({
-	            filename: file,
-	            ctime: fileStats.ctime
-	        });
+	var userFolderName = req.query.username.split(' ')[0];
+	fs.readdir(path.join('public/images/userimages/', userFolderName), function(err, files){
+		var i, sortedFiles=[], fileStats, fileStatArray=[], filesLength;
+		if(files){
+			console.log(files);
+			filesLength = files.length;
+			//Sort files based on creation/change time 
+			for(i = 0; i<filesLength; i++){
+				fileStats = fs.statSync('public/images/userimages/' + userFolderName + '/' + files[i]);
+				fileStatArray.push({
+		            filename: files[i],
+		            ctime: fileStats.ctime
+		        });
+			}
+			res.send(files);
 		}
-
-		res.send(files);
-	})
+		else {
+			res.send('No Files Uploaded');
+		}		
+	});
 })
 
 /*Create Server and Listen on 1337*/

@@ -41,11 +41,13 @@ app.factory('getPhotosService', ['$http', function($http){
 				params  : {'username': username}
 			}).
 			success( function(response){
-				var i, photo, filePath = 'images/userimages/' + username + '/',
+				if(response !== 'No Files Uploaded'){
+					var i, photo, filePath = 'images/userimages/' + username.split(' ')[0] + '/',
 					responseLength = response.length;
-				for(i =0; i<responseLength; i++){
-					photo = {'filename': response[i], 'src': filePath + response[i]};
-					scope.profilePhotos.push(photo);
+					for(i =0; i<responseLength; i++){
+						photo = {'filename': response[i], 'src': filePath + response[i]};
+						scope.profilePhotos.push(photo);
+					}
 				}
 			})
 		}
