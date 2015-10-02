@@ -1,0 +1,30 @@
+{
+  "name": "MEANDemoApp",
+  "main": "index.html",
+  "version": "1.0.0",
+  "homepage": "https://github.com/Jayabratha/MEANDemoApp",
+  "authors": [
+    "Jayabratha Saha <js.design@outlook.com>"
+  ],
+  "description": "Sample Demo app",
+  "moduleType": [],
+  "keywords": [
+    "man"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/js/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.3",
+    "angular-cookies": "~1.4.3",
+    "jquery": "~2.1.4",
+    "angular-ui-router": "~0.2.15"
+  }
+}
