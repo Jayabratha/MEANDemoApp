@@ -101,7 +101,7 @@ app.get('/photos', function(req, res, next){
 })
 
 /*Create Server and Listen on 1337*/
-var server = app.listen(1337, function() {
+var server = app.listen(process.env.PORT, function() {
   console.log('Server started on port 1337');
 });
 
