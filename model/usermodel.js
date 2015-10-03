@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
+mongoose.connect('mongodb://localhost/meanDB');
 
 var db = mongoose.connection;
 
