@@ -11,7 +11,7 @@ app.factory('throttle', function() {
         func.call();
         wait = true;
         setTimeout( function () {
-            wait = false;
+           wait = false;
         }, waitlimit);
       }
     };
