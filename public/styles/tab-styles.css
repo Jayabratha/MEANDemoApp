@@ -9,7 +9,7 @@
 		width: 70%;
 	}
 
-	.timelinecontainer {
+	.timelinecontainer, .timelineHeaderContainer {
 		width: 70%;
 	}
 
@@ -33,7 +33,7 @@
 		width: 90%;
 	}
 
-	.timelinecontainer {
+	.timelinecontainer, .timelineHeaderContainer {
 		width: 90%;
 	}
 
@@ -115,7 +115,7 @@
 		height: 1em;
 	}
 
-	.timelinecontainer {
+	.timelinecontainer, .timelineHeaderContainer {
 		width: 100%;
 	}
 

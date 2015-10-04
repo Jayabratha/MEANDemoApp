@@ -100,8 +100,11 @@ app.get('/photos', function(req, res, next){
 	});
 })
 
+//Set Environment Port
+app.set('port', process.env.PORT || 3000);
+
 /*Create Server and Listen on 1337*/
-var server = app.listen(process.env.PORT, function() {
-  console.log('Server started on port' + process.env.PORT);
+var server = app.listen(app.get('port'), function() {
+  console.log('Server started on port' + server.address().port);
 });
 

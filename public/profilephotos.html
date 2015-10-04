@@ -1,20 +1,24 @@
 <div class="profilePhotos">
-	<header>
-		<div class="fileInfo">
-			<span id="fileCount">{{fileCount}} 
-				<span ng-switch on="fileCount">
-					<span ng-switch-when="1"> file </span>
-					<span ng-switch-default> files </span>
-				</span>,
-			</span>
-			<span id="totalFileCount">{{totalFileSize}}</span>
-		</div>
+	<header class="tabHeader">
 		<div id="photopicker">
-			<div class="photoname"><input type="file" id="fileinput" file-model="photoFiles" multiple accept="image/*" /></div>
+			<div class="photoname">
+				<span id="file_input_container">
+				</span>
+				<input type="file" id="fileinput" file-model="photoFiles" multiple accept="image/*" />
+				<span class="fileInfo">
+					<span id="fileCount">{{fileCount}} 
+						<span ng-switch on="fileCount">
+							<span ng-switch-when="1"> file </span>
+							<span ng-switch-default> files </span>
+						</span>,
+					</span>
+					<span id="totalFileCount">{{totalFileSize}}</span>
+				</span>
+			</div>
 			<div class="upload" ng-click="uploadPhotos()"> Upload </div>
 		</div>
 	</header>
-	<div class="uploadProgress"></div>
+	<!-- <div class="uploadProgress"></div> -->
 	<div id="phototab_content">
 		<div class="photocontainer" ng-repeat="photo in newPhotosList">
 			<div class="displayPhoto">

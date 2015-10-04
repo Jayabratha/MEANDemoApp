@@ -8,10 +8,19 @@
 	color: grey;
 }
 
+.timelineHeaderContainer {
+	width: 60%;
+}
+
+.timelinepage header.tabHeader {
+	padding: 0;
+	height: 4em;
+}
+
 .timlinespacer {
 	position: relative;
 	width: 50%;
-	height: 2em;
+	height: 1.5em;
 	border-right: medium solid #4162DE;
 }
 .timlinespacer.top {
@@ -19,6 +28,10 @@
 }
 .timlinespacer.down {
 	margin-top: 2px;
+}
+.timlinespacer.green {
+	height: 2em;
+	border-color: #29C20B;
 }
 
 .timelinecontainer {
@@ -37,87 +50,100 @@
 	height: auto;
 }
 
-.timeline_template{
-	-webkit-perspective: 4000px;
-	perspective: 4000px;
-}
-
 .metainfo {
-	position: absolute;
-	top: 25%;
+	position: relative;
 	display: inline-block;
 	background-color: #FFFFFF;
 	width: 40% !important;
 	height: 3em;
+	margin: 10px 0px;
 	border: thin solid #CCCCCC;
-	border-radius: 5px;
+	border-radius: 2px;
 	opacity: 0;
-	-webkit-transition: all 1s;
-	 -moz-transition: all 1s;
-	 -ms-transition: all 1s;
-	 -o-transition: all 1s;
-	 transition: all 1s;
+	vertical-align: middle;
+	-webkit-transition: opacity 1s;
+	 -moz-transition: opacity 1s;
+	 -ms-transition: opacity 1s;
+	 -o-transition: opacity 1s;
+	 transition: opacity 1s;
 }
 
-.metainfo.left {
-	left: 53%;
+.timelineelemcontainer.left .metainfo {
+	left: -5px;
 	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.1);
 }
 
-.metainfo.right {
-	right: 52%;
+.timelineelemcontainer.right .metainfo {
+	right: 45%;
 	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.1);
 }
 
-.timeline_template.left{
+.timeline_template {
 	position: relative;
-	width: 50%;
+	display: inline-block;
+	width: 49%;
 	min-height: 5em;
 	height: auto;
-	border-right: medium solid #29C20B;
+	vertical-align: middle;
+	-webkit-perspective: 4000px;
+	perspective: 4000px;
 }
 
-.timeline_template.right{
-	position: relative;
-	width: 50%;
-	min-height: 5em;
-	margin-left: 50%;
-	height: auto;
-	border-left: medium solid #29C20B;
+.timelineelemcontainer.left .timeline_template{
+	margin-left: 1%;
+	/*border-right: medium solid #29C20B;*/
+}
+
+.timelineelemcontainer.right .timeline_template{
+	left: 50%;
+	/*border-left: medium solid #29C20B;
+*/}
+
+.bullet_container {
+	position: absolute;
+	width: 3px;
+	height: 100%;
+	background-color: #29C20B; 
+	top: 0;
+	left: 50%;
 }
 
 .timelinebullet {
-	position: absolute;
-	background-color: #29C20B;
-	height: 0.6em;
-	width: 0.6em;
-	border-radius: 0.3em;
-	top: 45%;
+	position: relative;
+	display: inline-block;
+	background-color: #4C4C4C;
+	border: medium solid #29C20B;
+	height: 0.5em;
+	width: 0.5em;
+	border-radius: 50%;
+	vertical-align: middle;
 }
 
 .timelinebullet:hover {
-	box-shadow: 0 0.5em 0.2em #29C20B;
+	background-color: #29C20B;
 }
 
-.timeline_template.left .timelinebullet {
-	right: -7px;
+.timelineelemcontainer.left .timelinebullet {
+	left: -9.5px;
 }
 
-.timeline_template.right .timelinebullet {
-	left: -6.5px;
+.timelineelemcontainer.right .timelinebullet {
+	left: -3.5px;
 }
 
 .infocontainer {
 	position: relative;
+	opacity: 0;
 	width: 85%;
 	min-height: 5em;
 	max-height: 20em;
 	background-color: #FFFFFF;
 	padding: 1em 5% 1em;
 	border: thin solid #CCCCCC;
+	border-radius: 2px;
 }
 
-.timeline_template.left .infocontainer {
+.timelineelemcontainer.left .infocontainer {
 	margin-right: 5%;
 	box-shadow: 3px 0px 0.5em rgba(0,0,0,0.1);
 	-webkit-transform: rotateY(-92deg);
@@ -126,8 +152,8 @@
 	transform-origin: right;
 }
 
-.timeline_template.right .infocontainer {
-	margin-left: 5%;
+.timelineelemcontainer.right .infocontainer {
+	margin-left: 6%;
 	box-shadow: -3px 0px 0.5em rgba(0,0,0,0.1);
 	-webkit-transform: rotateY(92deg);
 	transform: rotateY(92deg);
@@ -136,6 +162,7 @@
 }
 
 .infocontainer.show {
+	opacity: 1;
 	-webkit-transform: rotateY(0deg) !important;
 	transform: rotateY(0deg) !important;
 }
@@ -154,7 +181,7 @@
 
 #suggestions {
 	position: absolute;
-	width: 35%;
+	width: 32%;
 	height: 30em;
 	top: 1em;
 	right: 1em;
@@ -162,4 +189,10 @@
 	border: thin solid #CCCCCC;
 	border-radius: 2px;
 	box-shadow: 0 0 0.5em rgba(0,0,0,0.1);
+	padding: 20px 1.5%;
+}
+
+#suggestions header {
+	border-bottom: thin solid #CCCCCC;
+	padding: 0px 5px 10px;
 }
