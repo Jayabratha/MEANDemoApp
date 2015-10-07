@@ -1,11 +1,12 @@
-app.factory('photoUploadService', ['$http', function($http){
+app.factory('photoUploadService', ['$q', '$http', function($q, $http){
 	return {
-		uploadPhotos: function(photoArray, username){
-			var i, photoArrayLength = photoArray.length, fd = new FormData();
+		uploadPhotos: function(photoFile, username){
+			var i, uploadedFileName,
+				fd = new FormData(),
+				deferred = $q.defer();
 			fd.append('username', username);
-			for(i=0; i<photoArrayLength; i++){
-				fd.append('photo', photoArray[i]);
-			}
+			console.log(photoFile.file);
+			fd.append('photo', photoFile.file);
 			$http({
 					method  : 'POST',
 					url     : '/photoupload',
@@ -17,10 +18,20 @@ app.factory('photoUploadService', ['$http', function($http){
 	                     },
 	                data    : fd,
 					cache   : false
-				}).
-				success( function(response){
-					alert("Photo Uploaded");
+				}).	
+				then( function(response){
+					if(response.status === 200){
+						console.log(response);
+						uploadedFileName = response.data;						
+						console.log(uploadedFileName + " Uploaded");
+						deferred.resolve({'filename': uploadedFileName});					
+					}
+				},
+				function(response){
+					deferred.reject(response.status);
 				});
+
+			return deferred.promise;
 		}
 	}
 }]);
@@ -40,12 +51,13 @@ app.factory('getPhotosService', ['$http', function($http){
 				cache   : false,
 				params  : {'username': username}
 			}).
-			success( function(response){
-				if(response !== 'No Files Uploaded'){
+			then( function(response){
+				var imageData = response.data
+				if(imageData !== 'No Files Uploaded'){
 					var i, photo, filePath = 'images/userimages/' + username.split(' ')[0] + '/',
-					responseLength = response.length;
+					responseLength = imageData.length;
 					for(i =0; i<responseLength; i++){
-						photo = {'filename': response[i], 'src': filePath + response[i]};
+						photo = {'filename': imageData[i], 'src': filePath + imageData[i]};
 						scope.profilePhotos.push(photo);
 					}
 				}
@@ -69,13 +81,16 @@ app.factory('removePhotoService', ['$http', function($http){
 				cache   : false,
 				params  : { 'username': username, 'filename': filename }
 			}).
-			success( function(response){
-				var i, photoListLength = scope.profilePhotos.length;
-				for( i=0; i<photoListLength; i++){
-					if(scope.profilePhotos[i].filename === filename){
-						scope.profilePhotos.splice(i, 1);
-						break;
+			then( function(response){
+				if(response.status === 204){
+					var i, photoListLength = scope.profilePhotos.length;
+					for( i=0; i<photoListLength; i++){
+						if(scope.profilePhotos[i].filename === filename){
+							scope.profilePhotos.splice(i, 1);
+							break;
+						}
 					}
+					alert("Photo has been removed");
 				}
 			})
 		}
