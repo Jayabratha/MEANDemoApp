@@ -92,17 +92,26 @@ header.small #head-title {
 	padding-top: 0.5em;
 }
 
-#maincontent {
+.github-icon {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	color: #FFFFFF;
+	text-decoration: none;
+	font-size: 30px;
+}
+
+#main-content {
 	position: absolute;
 	top: -10em;
 	width: 100%;
-	min-height: 600px;
+	min-height: 500px;
 	height: auto;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 }
 
-#maincontent.showForm {
+#main-content.show-form {
 	top: 4em;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;

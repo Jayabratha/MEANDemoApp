@@ -117,7 +117,7 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 
 	$scope.setVars = function() {
 		$rootScope.homestate.headerClass = 'small';
-		$rootScope.homestate.contentClass = 'showForm';
+		$rootScope.homestate.contentClass = 'show-form';
 		$rootScope.homestate.showButton = 'hide';
 		document.body.scrollTop = 0;
 	}
