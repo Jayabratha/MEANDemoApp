@@ -39,6 +39,8 @@ header.content-header {
 	float: right;
     margin-top: 0.5em;
     font-weight: normal;
+    color: #696868;
+    font-size: 1.1em;
 }
 ::-ms-clear {
 display: none;

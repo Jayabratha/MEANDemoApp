@@ -81,7 +81,7 @@
 				<div  class="label-container">
 					<label for="email" >e-mail: </label></div>
 					<div class="input-container" ng-class="{'error' : registerForm.email.$invalid && registerForm.email.$touched , 'correct' : registerForm.email.$valid }">
-						<input id="email" name="email" ng-model="userData.email" required type="email" />
+						<input id="email" name="email" ng-model="userData.email" placeholder="Please enter email id" required type="email" />
 						<div class="message-default" ng-cloak ng-show="registerForm.email.$invalid && registerForm.email.$touched"> Please provide valid email</div>
 					</div>
 				</div>
@@ -90,7 +90,7 @@
 						<label for="password" >Password: </label>
 					</div>
 					<div class="input-container" ng-class="{'error' : registerForm.password.$invalid && registerForm.password.$touched, 'correct' : registerForm.password.$valid && registerForm.password.$touched}">
-						<input id="password" name="password" type="password" ng-model="userData.password" required />
+						<input id="password" name="password" type="password" placeholder="Please enter password" ng-model="userData.password" required />
 						<div class="message-default" ng-cloak ng-show="registerForm.password.$invalid && registerForm.password.$touched"> Please provide password</div>
 					</div>
 				</div>
@@ -98,7 +98,7 @@
 					<div  class="label-container">
 						<label for="conpassword" >Confirm Password: </label></div>
 						<div class="input-container" ng-class="{'error' : userData.password != '' && userData.password != userData.conpassword && registerForm.conpassword.$touched, 'correct' : userData.password == userData.conpassword && registerForm.conpassword.$touched}">
-							<input id="conpassword" name="conpassword" type="password" ng-model="userData.conpassword" required />
+							<input id="conpassword" name="conpassword" type="password" placeholder="Please re-enter password" ng-model="userData.conpassword" required />
 							<div class="message-default" ng-cloak ng-show="userData.password != '' && userData.password != userData.conpassword && registerForm.conpassword.$touched"> Password doesn't match</div>
 						</div>
 					</div>
