@@ -6,6 +6,6 @@ app.directive('messageDiv', function(){
 			close: '&onClose',
 			action: '&popAction'
 		},
-		templateUrl: 'message-modal.html',
+		templateUrl: 'templates/message_modal.html',
 	};
 });

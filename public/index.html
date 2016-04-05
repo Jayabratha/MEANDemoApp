@@ -2,17 +2,21 @@
 <html>
 <head>
 	<title>Welcome to MEAN Stack</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<!-- Include Styles - start -->
 	<link rel="stylesheet" type="text/css" href="styles/homepage.css" /> 
 	<link rel="stylesheet" type="text/css" href="styles/formstyles.css">
 	<link rel="stylesheet" type="text/css" href="styles/profilestyles.css">
 	<link rel="stylesheet" type="text/css" href="styles/timelinestyles.css">
 	<link rel="stylesheet" type="text/css" href="styles/tab-styles.css">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+	<!-- Include Styles - end -->
 </head>
 <body ng-app="app" ng-controller="appController">
-<header class="mainheader" ng-class="homestate.headerClass" >
-	<div id="headtitle"> Welcome to <strong>MEAN</strong> Stack </div>
+<header class="main-header" ng-class="homestate.headerClass" >
+	<div id="head-title"> Welcome to <strong>MEAN</strong> Stack </div>
+	<button id="start-btn" ng-class="homestate.showButton" ui-sref="login" > Let's Start </button>
 </header>
 <div id="maincontent" ng-class="homestate.contentClass">
 <!-- Modal- start -->
@@ -22,30 +26,38 @@
 	</div>
 <!-- Modal- end -->
 <!-- Main View Content -start -->
-	<div id="formcontent" ui-view ></div>
+	<div id="form-content" ui-view ></div>
 <!-- Main View Content -end -->
-	<button id="startbtn" ng-class="homestate.showButton" ui-sref="login" > Let's Start </button>
 </div>
-<script src="js/bower_components/jquery/dist/jquery.min.js" ></script>
-<script src="js/bower_components/angular/angular.js" ></script>
-<script src="js/bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
-<script src="js/bower_components/angular-cookies/angular-cookies.js" ></script>
-<script src="js/appcontroller.js"></script>
-<script src="js/homepagecontroller.js"></script>
-<script src="js/getuserservice.js"></script>
-<script src="js/authservice.js"></script>
-<script src="js/throttleservice.js"></script>
-<script src="js/logincontroller.js"></script>
-<script src="js/registercontroller.js"></script>
-<script src="js/profilecontroller.js"></script>
-<script src="js/photoPreviewService.js"></script>
-<script src="js/photosdirective.js"></script>
-<script src="js/photoscontroller.js"></script>
-<script src="js/timelinecontroller.js"></script>
-<script src="js/timelinedirective.js"></script>
-<script src="js/editprofilecontroller.js"></script>
-<script src="js/messagedirectives.js"></script>
-<script src="js/flipservice.js"></script>
-<script src="js/photoServices.js"></script>
+<!-- Include Dependencies - start -->
+<script src="bower_components/jquery/dist/jquery.min.js" ></script>
+<script src="bower_components/angular/angular.js" ></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
+<script src="bower_components/angular-cookies/angular-cookies.js" ></script>
+<!-- Include Dependencies - end -->
+<script src="scripts/app.js"></script>
+<!-- Include Controllers - start -->
+<script src="scripts/controllers/app_controller.js"></script>
+<script src="scripts/controllers/homepage_controller.js"></script>
+<script src="scripts/controllers/login_controller.js"></script>
+<script src="scripts/controllers/register_controller.js"></script>
+<script src="scripts/controllers/profile_controller.js"></script>
+<script src="scripts/controllers/photos_controller.js"></script>
+<script src="scripts/controllers/timeline_controller.js"></script>
+<script src="scripts/controllers/edit_profile_controller.js"></script>
+<!-- Include Controllers - end -->
+<!-- Include Services - start -->
+<script src="scripts/services/get_user_service.js"></script>
+<script src="scripts/services/auth_service.js"></script>
+<script src="scripts/services/throttle_service.js"></script>
+<script src="scripts/services/photo_preview_service.js"></script>
+<script src="scripts/services/flip_service.js"></script>
+<script src="scripts/services/photo_services.js"></script>
+<!-- Include Services - end -->
+<!-- Include Directives - start -->
+<script src="scripts/directives/photos_directive.js"></script>
+<script src="scripts/directives/timeline_directive.js"></script>
+<script src="scripts/directives/message_directives.js"></script>
+<!-- Include Directives - end -->
 </body>
 </html>

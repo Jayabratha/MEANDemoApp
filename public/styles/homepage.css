@@ -29,9 +29,11 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
-header.mainheader {
+header.main-header {
 	position:fixed;
 	background-color: #0AB2F8;
 	font-size: 3.5em;
@@ -45,14 +47,12 @@ header.mainheader {
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
-}
-
-button {
-	border-radius: 2px;
+	text-align: center;
 }
 
 header.small {
 	font-size: 2em;
+	min-height: 70px;
 	height: 70px;
 	z-index: 8;
 	-webkit-transition: all 0.5s;
@@ -63,13 +63,32 @@ input {
 	padding: 0.2em;
 }
 
-#headtitle {
+button {
+	font-size: 1em;
+	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
+	border-color: #0AB2F8;
+	border: thin solid #0AB2F8;
+	background-color: transparent;
+	color: #0AB2F8;
+	border-radius: 2px;
+	padding: 0.5em 1.2em;
+	margin: 0.5em;
+	line-height: 1em;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0AB2F8;
+	color: #FFFFFF;
+}
+
+#head-title {
 	position:relative;
 	padding-top: 1.5em;
 	text-align: center;
 }
 
-header.small #headtitle {
+header.small #head-title {
 	padding-top: 0.5em;
 }
 
@@ -89,7 +108,7 @@ header.small #headtitle {
 	transition: all 0.5s;
 }
 
-#formcontent {
+#form-content {
 	position: relative;
 	width: 1000px;
 	min-height: 500px;
@@ -100,25 +119,19 @@ header.small #headtitle {
 	perspective: 3000px;
 }
 
-#startbtn {
-	position: absolute;
-	background-color: #0A4E9B;
+#start-btn {
+	position: relative;
+	margin: 3em 0 1em;
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
-	font-size: 25px;
-	width: 150px;
-	height: 50px;
-	border: thin solid #06468F;
-	bottom: 30px;
-	left: 50%;
-	margin-left: -75px;
+	font-size: 22px;
 	color: #FFFFFF;
+	border: thin solid #FFFFFF;
+}
+
+.center-text {
+	text-align: center;
 }
 
 .hide {
 	display: none;
-}
-
-button {
-	font-size: 18px;
-	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 }

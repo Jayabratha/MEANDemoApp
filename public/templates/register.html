@@ -1,0 +1,114 @@
+<div id="register-form" ng-class="[registerstate.state,registerstate.preload]" >
+<header class="content-header">
+	<i class="back-button ion-android-arrow-back pull-left" onclick="history.back()"></i>
+	<span>Please Fill Up the form</span>
+</header>
+<form name="registerForm" ng-submit="submitRegisterForm(registerForm.$valid)" novalidate>
+	<div>
+		<div class="form-row">
+			<div  class="label-container"><br /></div>
+			<div class="input-container"><br /></div>
+		</div>
+		<div class="form-row">
+			<div class="label-container">
+				<label for="username">* Name: </label>
+			</div>
+			<div class="input-container" ng-class="{'error' : registerForm.username.$invalid && registerForm.username.$touched , 'correct' : registerForm.username.$valid } ">
+				<input id="username" name="username" type="text" placeholder="Enter your name" ng-model="userData.username" required />
+				<div class="message-default" ng-cloak ng-cloack ng-show = "registerForm.username.$invalid && registerForm.username.$touched"> This field can't be empty</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div rowspan="2" class="label-container" ng-class="{'correct' : registerForm.username.$valid }">
+				<label>Sex:</label>
+			</div>
+			<div class="input-container">
+				<div>
+					<input name="sex" type="radio" ng-model="userData.sex" value="Male" ng-checked="true" />
+					<label> Male</label>
+				</div>
+				<div>
+					<input name="sex" type="radio" ng-model="userData.sex" value="Female" />
+					<label> Female</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="label-container">
+				<label for="dob">*Date of Birth: </label>
+			</div>
+			<div class="input-container" ng-class="{'error' : registerForm.dob.$invalid && registerForm.dob.$touched , 'correct' : registerForm.dob.$valid }">
+				<input id="dob" name="dob" type="date" placeholder="yyyy-mm-dd" ng-model="userData.dob" required />
+				<div class="message-default" ng-cloak ng-show="registerForm.dob.$invalid && registerForm.dob.$touched"> Please provide valid date</div>
+			</div>
+		</div>
+		<div class="form-row">
+			<div class="label-container">
+				<label for="addr">*Address: </label></div>
+				<div class="input-container" ng-class="{'error' : registerForm.addr.$invalid && registerForm.addr.$touched , 'correct' : registerForm.addr.$valid }">
+					<textarea id="addr" name="addr" ng-model="userData.addr" required ></textarea>
+					<div class="message-default" ng-cloak ng-show="registerForm.addr.$invalid && registerForm.addr.$touched"> Please provide your address</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div rowspan="2" class="label-container">
+					<label>*Role: </label>
+				</div>
+				<div class="input-container" ng-class="{'error' : !userData.checkboxModel.designer && !userData.checkboxModel.developer && registerForm.email.$touched , 'correct' : userData.checkboxModel.designer || userData.checkboxModel.developer }">
+					<div>
+						<input name="role" type="checkbox" ng-model="userData.checkboxModel.designer" value="Designer" />
+						<label> Designer</label>
+					</div>
+					<div>
+						<input name="role" type="checkbox" ng-model="userData.checkboxModel.developer" value="Developer" />
+						<label> Developer</label>
+					</div>
+					<div class="message-default" ng-cloak ng-show="!userData.checkboxModel.designer && !userData.checkboxModel.developer && registerForm.role.$touched"> Please select your role</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="label-container" ng-class="{'correct' : registerForm.email.$valid }">
+					<label for="salary" >Current Salary: </label>
+				</div>
+				<div class="input-container">
+					<div>
+						<input id="salary" name="salary" type="range" ng-model="userData.salary" min="0" max="100" step="10" />
+						<span><b>{{userData.salary}}</b> lacs</span>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div  class="label-container">
+					<label for="email" >e-mail: </label></div>
+					<div class="input-container" ng-class="{'error' : registerForm.email.$invalid && registerForm.email.$touched , 'correct' : registerForm.email.$valid }">
+						<input id="email" name="email" ng-model="userData.email" required type="email" />
+						<div class="message-default" ng-cloak ng-show="registerForm.email.$invalid && registerForm.email.$touched"> Please provide valid email</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div  class="label-container">
+						<label for="password" >Password: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : registerForm.password.$invalid && registerForm.password.$touched, 'correct' : registerForm.password.$valid && registerForm.password.$touched}">
+						<input id="password" name="password" type="password" ng-model="userData.password" required />
+						<div class="message-default" ng-cloak ng-show="registerForm.password.$invalid && registerForm.password.$touched"> Please provide password</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div  class="label-container">
+						<label for="conpassword" >Confirm Password: </label></div>
+						<div class="input-container" ng-class="{'error' : userData.password != '' && userData.password != userData.conpassword && registerForm.conpassword.$touched, 'correct' : userData.password == userData.conpassword && registerForm.conpassword.$touched}">
+							<input id="conpassword" name="conpassword" type="password" ng-model="userData.conpassword" required />
+							<div class="message-default" ng-cloak ng-show="userData.password != '' && userData.password != userData.conpassword && registerForm.conpassword.$touched"> Password doesn't match</div>
+						</div>
+					</div>
+					<div class="form-row">
+						<div  class="label-container"></div>
+						<div class="input-container"></div>
+					</div>
+					<div class="center-text">
+						<button class="submit-btn" name="submit" type="submit" ng-disabled="registerForm.$invalid">Submit</button>
+					</div>
+				</div>
+			</form>
+		</div>

@@ -91,7 +91,7 @@ body {
 	font-size: 20px;
 }
 
-#maincontent table .level {
+#maincontent table .label-container {
 	width: 50%;
 	text-align: right;
 	padding-right: 3%;
@@ -111,12 +111,12 @@ body {
 display: none;
 }
 
-#maincontent table .inputfield {
+#maincontent table .input-field {
 	width: 50%;
 	text-align: left;
 }
 
-#maincontent table .inputfield input,textarea {
+#maincontent table .input-field input,textarea {
 	font-size: 18px;
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 	margin-left: 6%;
@@ -158,7 +158,7 @@ td #container {
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 }
 
-.message_default {
+.message-default {
 	display:inline-block;
 	padding: 0.5em 1em 0.5em 1em;
 	margin-right: 3%;
