@@ -1,5 +1,5 @@
 @media only screen and (max-width:1000px) {
-	#formcontent {
+	#form-content {
 		width: 100%;
 	}
 }
@@ -71,7 +71,7 @@
 		margin-left: -50%;
 	}
 
-	#loginform, #registerform {
+	#login-form, #registerform {
 		min-width: inherit;
 		width: 100%;
 	}
@@ -148,7 +148,7 @@
 		display: block;
 	}
 
-	#loginform {
+	#login-form {
 		height: 400px;
 	}
 

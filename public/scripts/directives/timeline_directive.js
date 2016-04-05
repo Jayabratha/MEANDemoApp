@@ -13,7 +13,7 @@ app.directive('timelineTemplate', function($window, $timeout, throttle){
 				var viewTop = angular.element($(window)).scrollTop();
 				var viewBottom = viewTop + angular.element($window).height();
 				$(elem).find('.infocontainer').addClass('active');
-				if((elemtop) < (viewBottom - 90)){
+				if((elemtop) < (viewBottom - 50)){
 					$(elem).find('.infocontainer').addClass('show');
 					$(elem).find('.metainfo').addClass('show');
 				}
@@ -27,7 +27,7 @@ app.directive('timelineTemplate', function($window, $timeout, throttle){
 					var elemoffsettop = angular.element('.timelinebullet:eq('+index+')').offset().top;
 					var infoelem = angular.element('.timeline_template:eq('+index+') .infocontainer');
 					var metainfoelem = angular.element('.timelineelemcontainer:eq('+index+') .metainfo');
-					if(elemoffsettop < (viewBottom - 90)){
+					if(elemoffsettop < (viewBottom - 50)){
 						infoelem.addClass('show');
 						metainfoelem.addClass('show');
 					}

@@ -7,25 +7,31 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoDAO = require('./dao/mongodao');
 var multer = require('multer'); // for parsing multipart/form-data
+
+/*var getNewFileName = function(originalFileName){
+	var newFileName = "";
+    var getFileExt = function(fileName){
+	    var fileExt = fileName.split(".");
+	    if( fileExt.length === 1 || ( fileExt[0] === "" && fileExt.length === 2 ) ) {
+	        return "";
+	    }
+	    return fileExt.pop();
+    }
+    var getFileFirstName = function(fileName){
+        var fileFirstName = fileName.split(".");
+        return fileFirstName[0];
+    }
+    return getFileFirstName(originalFileName) + '.' + getFileExt(originalFileName);
+};*/
+
 var storage = multer.diskStorage({
         destination: function (req, file, cb) {
             cb(null, 'public/images/userimages/')
         },
-        filename: function (req, file, cb) {
-        	var userFolderName = req.body.username.split(' ')[0];
-            var getFileExt = function(fileName){
-                var fileExt = fileName.split(".");
-                if( fileExt.length === 1 || ( fileExt[0] === "" && fileExt.length === 2 ) ) {
-                    return "";
-                }
-                return fileExt.pop();
-            }
-            var getFileFirstName = function(fileName){
-            	var fileFirstName = fileName.split(".");
-            	return fileFirstName[0];
-            }
+        filename: function (req, file, cb) { 
+        	var userFolderName = req.body.username.split(' ')[0];       	
             fs.mkdir(path.join('public/images/userimages/', userFolderName), function(){
-            	cb(null, path.join(userFolderName, getFileFirstName(file.originalname) + Date.now() + '.' + getFileExt(file.originalname)));
+            	cb(null, path.join(userFolderName, file.originalname));
             });
         }
     })
@@ -61,9 +67,11 @@ app.get('/profile', function(req, res, next){
 })
 
 //Add Photos
-app.post('/photoupload', upload.array('photo'), function(req, res, next){
-	console.log(req.files);
-	res.status(204).end();
+app.post('/photoupload', upload.single('photo'), function(req, res, next){
+	var newFileName = req.file.originalname;
+	console.log(req.file.originalname);
+	console.log(newFileName);
+	res.send(newFileName);
 })
 
 //Remove Photo
@@ -71,9 +79,8 @@ app.get('/removephoto', function(req, res, next){
 	var username = req.query.username,
 		filename = req.query.filename;
 	fs.unlink(path.join('public/images/userimages/', username, filename), function(err, files){
-		res.send("Files Deleted Successfully");
+		res.status(204).end();
 	})
-
 })
 
 //Get Uploaded Photos

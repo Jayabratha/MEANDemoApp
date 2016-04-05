@@ -6,9 +6,10 @@ app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUpload
 		totalSize = 0, 
 		fSExt = new Array('bytes', 'KB', 'MB', 'GB');;
 
-	function Photo(file, preview){
+	function Photo(file, preview, newFileName){
 		this.file = file;
 		this.preview = preview;
+		this.newFileName = newFileName;
 	}
 
 	$scope.showPhotos();
@@ -41,7 +42,18 @@ app.controller('photosController', [ '$scope', 'fileReaderService', 'photoUpload
 	};
 
 	$scope.uploadPhotos = function(){
-		photoUploadService.uploadPhotos($scope.photoFiles, $cookies.get('user'));
+		var i, photoToUpload, uploadedFileName, username = $cookies.get('user'),
+			filePath = 'images/userimages/' + username.split(' ')[0] + '/', 
+			photoArrayLength = $scope.newPhotosList.length;
+		for(i = 0; i<photoArrayLength; i++){
+			photoToUpload = $scope.newPhotosList[i];
+			photoUploadService.uploadPhotos(photoToUpload, username).then(function(uploadedFile){
+				uploadedFileName = uploadedFile.filename;
+				console.log(uploadedFileName);
+				$scope.profilePhotos.splice(0, 0, {'filename': uploadedFileName, 'src': filePath + uploadedFileName});
+				$scope.newPhotosList.splice(0, 1);
+			});
+		}		
 	}
 
 	$scope.removePhoto = function(filename){

@@ -1,4 +1,4 @@
-#loginform table {
+#login-form table {
 	width: 100%;
 }
 
@@ -6,100 +6,119 @@
 	width: 100%;
 }
 
-header.contentheader {
+header.content-header {
 	position:relative;
 	width: 100%;
-	height: 2.5em;
+	height: 3em;
+	line-height: 3em;
 	text-align: center;
 	font-size: 1.5em;
 	background-color: #0A4E9B;
 	color: #FEFDFD;
-	padding-top: 1em;
+	padding: 0 2em;
+	box-sizing: border-box;
 }
 
-.level {
+.content-header .back-button {
+	float: left;
+}
+
+/* Label Styles - start */
+.label-container {
 	position: relative;
 	display: inline-block;
-	width: 47%;
+	width: 49%;
 	min-height: 2em;
 	height: auto;
 	text-align: right;
 	padding: 0.5em 3% 0.5em 0;
-	border-right: medium solid #4162DE;
-	vertical-align: middle;
+	vertical-align: top;
+	box-sizing: border-box;
 }
-
-.level.error {
-	border-right: medium solid #E83535;
-}
-
-.level.correct {
-	border-right: medium solid #29C20B;
-}
-
-.level label {
+.label-container label {
 	float: right;
     margin-top: 0.5em;
+    font-weight: normal;
 }
-
 ::-ms-clear {
 display: none;
 }
 
-.inputfield {
+/* Label Styles - end */
+
+/* Input container Styles - start */
+.input-container {
 	display: inline-block;
-	width: 45%;
-	height: 2em;
+	width: 50%;
+	min-height: 2em;
 	text-align: left;
-	vertical-align: middle;
+	vertical-align: top;
 	padding: 0.5em 0 0.5em 3%;
+	border-left: medium solid #4162DE;
+	box-sizing: border-box;
 }
-
-.inputfield input:not([type="radio"]):not([type="checkbox"]):not([type='range']), textarea {
+.input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
-	font-size: 1em;
-	height: 70%;
-	padding: 0.2em;
-	width: 80%;
+    font-size: 1em;
+    padding: 0.5em;
+    width: 80%;
+    border: none;
+    border-bottom: thin solid #ccc;
 }
-
-.inputfield input[type='range'] {
+.input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']):focus {
+	border-bottom-color: #0ab2f8;
+	outline: none;
+}
+.input-container input[type='range'] {
 	width: 60%;
 }
+.input-container textarea {
+	height: 50px;
+	width: 80%;
+	border: thin solid #ccc;
+}
+.input-container textarea:focus {
+	border-color: #0ab2f8;
+	outline: none;
+}
+.input-container.error {
+	border-left: medium solid #E83535;
+}
+.input-container.correct {
+	border-left: medium solid #29C20B;
+}
+.input-container.error input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
+	border-bottom: thin solid #E83535;
+}
+/* Input container Styles - end */
 
 #salary+span {
 	position: relative;
 	top: -8px;
 }
 
-.divSpacer {
+.div-spacer {
 	margin-top: 1em;
 }
 
-.submitbtn {
-	position:relative;
-	display:block;
-	width: 5em;
-	height: 2em;
-	background-color: #0AB2F8;
-	color: #FFFFFF;
-	border: thin solid #099DDB;
-	margin: auto;
+.submit-btn {
+	font-size: 1.1em;
+    color: #FFFFFF;
+    background-color: #0AB2F8;
 }
 
-.message_default {
+.message-default {
 	display:inline-block;
-	padding: 0.2em 1em 0.2em 1em;
+	padding: 0.2em 0.5em;
 	margin-right: 3%;
 	font-size: 1em;
 	text-align: left;
-	border: solid thin #E83535;
 	color: #E83535;
 	vertical-align: middle;
 }
 
 
-#loginform {
+#login-form {
 	position:relative;
 	min-width: 600px;
 	width: 60%;
@@ -115,10 +134,10 @@ display: none;
 
 }
 
-#registerform {
+#register-form {
 	position:relative;
 	min-width: 600px;
-	width: 60%;
+	width: 70%;
 	height: auto;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
@@ -132,7 +151,7 @@ display: none;
 }
 
 
-#loginform.fliphide {
+#login-form.fliphide {
 	/*-webkit-transition: all 0.5s;
 	transition: all 0.5s;*/
 	-webkit-transform: rotateY(-90deg);
@@ -140,7 +159,7 @@ display: none;
 }
 
 
-#registerform.fliphide {
+#register-form.fliphide {
 	/*-webkit-transition: all 0.5s;
 	transition: all 0.5s;*/
 	-webkit-transform: rotateY(90deg);
@@ -162,18 +181,6 @@ display: none;
 	height: 6em;
 	bottom:0;
 	text-align: center;
-}
-
-#joinusbtn {
-	position: relative;
-	background-color: #0AB2F8;
-	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	width: 140px;
-	height: 45px;
-	border: thin solid #0BA0DE;
-	top: 0.5em;
-	color: #FFFFFF;
 }
 
 #main_modal {

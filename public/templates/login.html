@@ -1,0 +1,49 @@
+<div id="login-form" ng-class="[loginstate.state, loginstate.preload]">
+	<header class="content-header">
+		<i class="back-button ion-android-arrow-back pull-left" onclick="history.back()"></i>
+		<span>Please Log In</span>
+	</header>
+	<body>
+		<form name="loginForm" ng-submit="submitloginForm(loginForm.$valid)" novalidate >
+			<div>
+				<div class="form-row">
+					<div class="label-container"></div>
+					<div class="input-container"></div>
+				</div>
+				<div class="form-row">
+					<div class="label-container"></div>
+					<div class="input-container"></div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="email"> Email ID *</label>
+					</div>
+					<div class="input-container" ng-class="{'error' : loginForm.email.$invalid && loginForm.email.$touched , 'correct' : loginForm.email.$valid }">
+						<input id="email" name="email" type="email" placeholder="Enter your email id" ng-model="loginDetail.email" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show="loginForm.email.$invalid && loginForm.email.$touched"> Invalid email id</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="password"> Passwords *</label>
+					</div>
+					<div class="input-container" ng-class="{'error' : loginForm.password.$invalid && loginForm.password.$touched , 'correct' : loginForm.password.$valid }">
+						<input id="password" name="password" type="password" placeholder="Enter your password" ng-model="loginDetail.password" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show="loginForm.password.$invalid && loginForm.password.$touched"> Wrong Password</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container"></div>
+					<div class="input-container"></div>
+				</div>
+				<div class="center-text">
+					<button class="submit-btn" name="submit" type="submit" ng-disabled="registerForm.$invalid">Log In</button>
+				</div>
+			</table>
+		</form>
+		<div id="loginfooter">
+			<div> Not yet started? </div>
+			<button id="joinusbtn" ng-click="showRegisterForm()"> Register </button>
+		</div>
+	</body>
+</div>

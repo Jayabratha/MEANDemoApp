@@ -6,13 +6,17 @@
 				</span>
 				<input type="file" id="fileinput" file-model="photoFiles" multiple accept="image/*" />
 				<span class="fileInfo">
-					<span id="fileCount">{{fileCount}} 
-						<span ng-switch on="fileCount">
-							<span ng-switch-when="1"> file </span>
-							<span ng-switch-default> files </span>
-						</span>,
-					</span>
-					<span id="totalFileCount">{{totalFileSize}}</span>
+					<span ng-switch on="fileCount">
+						<span ng-switch-when="0"> No File Choosen </span>
+						<span ng-switch-default>
+							<span id="fileCount">{{fileCount}} 
+								<span ng-switch on="fileCount">
+									<span ng-switch-when="1"> file </span>
+									<span ng-switch-default> files </span>
+								</span>,
+							</span>
+							<span id="totalFileCount">{{totalFileSize}}</span>
+						</span>
 				</span>
 			</div>
 			<div class="upload" ng-click="uploadPhotos()"> Upload </div>
