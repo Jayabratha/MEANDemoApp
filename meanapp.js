@@ -45,7 +45,7 @@ app.use('/', express.static(path.join(__dirname, 'public')));
 
 app.post('/register', function(req, res, next){
 	console.log('Form Data Received for: ' + req.body.username );
-	mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.checkboxModel, req.body.salary, req.body.email, req.body.password );
+	mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.role, req.body.exp, req.body.email, req.body.password );
 })
 
 app.post('/auth', function(req, res, next){

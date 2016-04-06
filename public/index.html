@@ -13,15 +13,15 @@
 	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
 	<!-- Include Styles - end -->
 </head>
-<body ng-app="app" ng-controller="appController">
-<header class="main-header" ng-class="homestate.headerClass" >
+<body ng-app="app" ng-controller="appController as home">
+<header class="main-header" ng-class="home.layout.headerClass" >
 	<div id="head-title"> Welcome to <strong>MEAN</strong> Stack </div>
 	<a class="no-anchor github-icon" target="_blank" href="https://github.com/Jayabratha/MEANDemoApp">
 		<i class="ion-social-github" title="View on Github"></i>
 	</a>
-	<button id="start-btn" ng-class="homestate.showButton" ui-sref="login" > Let's Start </button>
+	<button id="start-btn" ng-class="home.layout.showButton" ui-sref="login" > Let's Start </button>
 </header>
-<div id="main-content" ng-class="homestate.contentClass">
+<div id="main-content" ng-class="home.layout.contentClass">
 <!-- Modal- start -->
 	<div id="main_modal" ng-class="showModal">
 	</div>

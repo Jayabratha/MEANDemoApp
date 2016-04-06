@@ -11,20 +11,20 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		state('login', {
 				url: '/login',
 				templateUrl: 'templates/login.html',
-				controller: 'loginController',
+				controller: 'loginController as loginCntrl',
 				resolve: {
 					go : function(flipService){
-						return flipService.flipLogin();
+						return flipService.flip();
 					}
 				}
 		}).
 		state('register', {
 				url: '/register',
 				templateUrl: 'templates/register.html',
-				controller: 'registerController',
+				controller: 'registerController as registerCntrl',
 				resolve: {
 					go : function(flipService){
-						return flipService.flipLogin();
+						return flipService.flip();
 					}
 				}
 		}).
@@ -71,19 +71,19 @@ app.run(['$rootScope', '$timeout', function($rootScope, $timeout){
 	$rootScope.$on('$stateChangeStart', function(event, toState, toParam, fromState, fromParams){
 		console.log("Route Change Started");
 		if(fromState.name === 'login'){
-			$rootScope.loginstate.flipHide();
+			$rootScope.loginState.leave();
 		}
 		else if(fromState.name === 'register'){
-			$rootScope.registerstate.flipHide();
+			$rootScope.registerState.leave();
 		}
 	});
 	$rootScope.$on('$stateChangeSuccess', function(event, toState, toParam, fromState, fromParams){
 		console.log("Route Change Success");
 		if(toState.name === 'register'){
-			$rootScope.registerstate.flipShow();
+			$rootScope.registerState.enter();
 		}
 		else if(toState.name === 'login'){
-			$rootScope.loginstate.flipShow();
+			$rootScope.loginState.enter();
 		}
 	});
 }]);

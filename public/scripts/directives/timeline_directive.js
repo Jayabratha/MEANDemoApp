@@ -4,7 +4,7 @@ app.directive('timelineTemplate', function($window, $timeout, throttle){
 		scope: {
 			infoalign : '='
 		},
-		templateUrl: 'timelinetemplate.html',
+		templateUrl: 'templates/timelinetemplate.html',
 		link: function(scope, elems, attr){
 			var elem = elems[0];
 			var throttleCall = throttle();

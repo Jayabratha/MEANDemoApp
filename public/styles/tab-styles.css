@@ -148,10 +148,6 @@
 		display: block;
 	}
 
-	#login-form {
-		height: 400px;
-	}
-
 }
 
 @media only screen and (max-width:400px) {
