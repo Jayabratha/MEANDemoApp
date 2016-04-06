@@ -7,7 +7,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', '$timeout',
 	}
 
 
-	$scope.submitloginform = function(formStatus){
+	$scope.submitLoginForm = function(formStatus){
 		if(formStatus == true){
 			if (console) console.log("Authenticating .. " + $scope.loginDetail.email);
 			$rootScope.displayModal();	
