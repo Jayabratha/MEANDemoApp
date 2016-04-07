@@ -56,7 +56,7 @@ app.post('/auth', function(req, res, next){
 app.get('/profile', function(req, res, next){
 	if(req.cookies.user){
 		var username = req.cookies.user;
-		var password = req.cookies.password;
+		var password = new Buffer(req.cookies.token, 'base64').toString().replace(username,'');
 		console.log("Profile Request for " + username + " received" );
 		mongoDAO.getUser(res, username, password);
 	}

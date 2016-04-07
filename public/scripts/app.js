@@ -30,7 +30,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 		}).
 		state('profile', {
 				url: '/profile',
-				templateUrl: 'templates/profile.html',
+				templateUrl: 'templates/new_profile.html',
 				abstract: true,
 				controller: 'profileController',
 				resolve: {
@@ -41,7 +41,7 @@ app.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $ur
 						}, function(responsedata){
 							$rootScope.displayModal();
 							$rootScope.setMessage(responsedata, 'Log In', 'login', false);
-							$rootScope.loginstate.flipShow();
+							$rootScope.loginState.enter();
 							defer.reject(responsedata);
 						});
 

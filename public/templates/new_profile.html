@@ -1,0 +1,18 @@
+<div id="profile" >
+	<header class="profile-header">
+	</header>
+	<aside class="profile-options">
+		<img class="profile-pic-container" src="../images/profilepic.jpg"/>
+		<div class="base-info">
+			<h1 class="user-name"> {{user.username}} </h1>
+			<div>
+				<span class="role" ng-show="user.role.designer"> Designer </span>
+				<span class="role" ng-show="user.role.designer && user.role.developer" >&amp;</span>
+				<span class="role" ng-show="user.role.developer" > Developer </span>
+			</div>
+			<button class="logout-btn" ng-click="logOut()">Logout</button>
+		</div>
+	</aside>
+	<section class="profile-body">
+	</section>
+</div>

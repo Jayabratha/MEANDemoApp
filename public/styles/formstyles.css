@@ -126,23 +126,24 @@ display: none;
 #login-form {
 	position:relative;
 	min-width: 600px;
-	width: 60%;
-	height: 500px;
+	width: 45%;
+	top: 5em;
+	min-height: 500px;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
 	margin: auto;
 	z-index:9;
 	-webkit-transform: rotateY(0deg);
 	transform: rotateY(0deg);
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
-
+	-webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
 }
 
 #register-form {
 	position:relative;
 	min-width: 600px;
-	width: 70%;
+	width: 55%;
+	top: 5em;
 	height: auto;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
@@ -151,10 +152,9 @@ display: none;
 	margin-bottom: 3em;
 	-webkit-transform: rotateY(0deg);
 	transform: rotateY(0deg);
-	-webkit-transition: all 0.5s;
-	transition: all 0.5s;
+	-webkit-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
 }
-
 
 #login-form.fliphide {
 	-webkit-transform: rotateY(-90deg);
@@ -180,7 +180,7 @@ display: none;
 	position: relative;
 	width: 100%;
 	text-align: center;
-	margin: 2em 0 1em;
+	padding: 2em 0 1em;
 }
 
 #main_modal {
@@ -231,18 +231,6 @@ display: none;
 	width: 100%;
 	height: 40%;
 	text-align: center;
-}
-
-#main_message .action .actionbtn {
-	position: relative;
-	background-color: #0AB2F8;
-	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
-	font-size: 20px;
-	min-width: 100px;
-	width: auto;
-	height: 35px;
-	border: thin solid #0BA0DE;
-	color: #FFFFFF;
 }
 
 #progressbar {

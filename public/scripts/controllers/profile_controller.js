@@ -1,7 +1,7 @@
 app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies', '$location', 'userdata',
 	function($scope, $rootScope, $http, $cookies, $location, userdata) {
 		var Profile, homeLayout = $scope.home.layout;
-		homeLayout.setVars();
+		homeLayout.setVars('line');
 
 		$scope.activeView = "active";
 		$scope.activePhotos = "";
@@ -25,6 +25,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 		};
 		$scope.logOut = function() {
 			$cookies.put('user', '');
+			$cookies.put('token', '');
 			$location.path('login');
 		};
 		$scope.showMenuFunc = function() {

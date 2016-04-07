@@ -2,10 +2,10 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 	function($q, $scope, $rootScope, $location, $timeout) {
 		var Animate;
 
-		Animate = function(animateClass) {
+		Animate = function(animateClass, preloadClass) {
 			var page = this;
 			page.state = animateClass;
-			page.preload = "preload";
+			page.preload = preloadClass;
 			this.enter = function() {
 				$timeout(function() {
 					page.preload = "";
@@ -30,7 +30,7 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 		$rootScope.loginState = new Animate('fliphide');
 
 		//Login Register Animation
-		$rootScope.registerState = new Animate('fliphide');
+		$rootScope.registerState = new Animate('fliphide', 'preload');
 
 		/*Homepage Layout variable*/
 		this.layout = {
@@ -43,8 +43,8 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 				this.contentClass = "";
 				this.showButton = "";
 			},
-			setVars : function() {
-				this.headerClass = 'small';
+			setVars : function(style) {
+				this.headerClass = style;
 				this.contentClass = 'show-form';
 				this.showButton = 'hide';
 				document.body.scrollTop = 0;

@@ -1,7 +1,7 @@
 app.controller('registerController', ['$scope', '$http', '$timeout',
 	function($scope, $http, $timeout) {
 		var homeLayout = $scope.home.layout;
-		homeLayout.setVars();
+		homeLayout.setVars('small');
 
 		/* Register Form Model */
 		this.userData = {
@@ -23,8 +23,6 @@ app.controller('registerController', ['$scope', '$http', '$timeout',
 
 		this.submitRegisterForm = function(formStatus, userData) {
 			if (formStatus) {
-				if (console) console.log("Sending request for: " + userData.username);
-				$scope.displayModal();
 				$http({
 					method: 'POST',
 					url: '/register',
@@ -33,15 +31,16 @@ app.controller('registerController', ['$scope', '$http', '$timeout',
 						'Content-Type': 'application/json'
 					}
 				}).then(function(response) {
-					if (console) console.log(response);
-					if (response.success) {
-						$scope.setMessage(response.message, 'View Profile', 'profile', false);
+					var responseData = response.data;
+					$scope.displayModal();
+					if (responseData.success) {
+						$scope.setMessage(responseData.message, 'View Profile', 'profile', false);
 					} else {
-						$scope.setMessage(response.message, 'Okay', '', false);
+						$scope.setMessage(responseData.message, 'Okay', 'login', false);
 					}
 				}, function(error){
 					alert('Error Occurred!');
-				})
+				});
 			} else {
 				this.notifyErrors = true;
 			}

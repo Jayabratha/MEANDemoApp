@@ -1,0 +1,66 @@
+#profile {
+	position: relative;
+	min-height: 700px;
+}
+
+header.profile-header {
+	position: relative;
+    width: 100%;
+    height: 250px;
+    background-color: #7448AD;
+}
+
+.profile-pic-container {
+	position: relative;
+	height: 10em;
+	width: 10em;
+	top: 70px;
+	left: 50%;
+    margin-left: -5em;
+	border: 3px solid #FFFFFF;
+	border-radius: 50%;
+	background-color: #FFFFFF;
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+	z-index: 2;
+}
+
+aside.profile-options {
+	position: absolute;
+	top: 0;
+	width: 350px;
+	height: 100%;
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.profile-body {
+	position: relative;
+}
+
+.base-info {
+	position: relative;
+    top: 85px;
+    text-align: center;
+    color: #565555;
+}
+
+.logout-btn {
+	top: 5em;
+}
+
+.user-name {
+	font-size: 2.2em;
+	padding: 0.25em 0;
+    margin: 0.25em 0;
+    border-bottom: thin solid #ccc;
+}
+
+.info-card {
+	position: relative;
+    width: 20em;
+    min-height: 15em;
+    background-color: #FFFFFF;
+    border: thin solid #E7E6E6;
+    border-radius: 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
