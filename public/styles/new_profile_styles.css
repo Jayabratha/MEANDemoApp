@@ -27,13 +27,18 @@ header.profile-header {
 aside.profile-options {
 	position: absolute;
 	top: 0;
-	width: 350px;
+	width: 30%;
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
 .profile-body {
 	position: relative;
+	min-height: 500px;
+	left: 30%;
+	width: 70%;
+	background-color: #FFFFFF;
+	color: #565555;
 }
 
 .base-info {
@@ -63,4 +68,32 @@ aside.profile-options {
     border-radius: 3px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
     z-index: 2;
+}
+
+.profile-content {
+	position: relative;
+}
+
+nav.profile-nav ul {
+	margin: 0;
+}
+
+nav.profile-nav li{
+	position: relative;
+	display: inline-block;
+	list-style: none;
+	padding: 1.5em;
+	width: 30%;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+nav.profile-nav i {
+	font-size: 1.5em;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+nav.profile-nav span {
+	font-weight: normal;
 }

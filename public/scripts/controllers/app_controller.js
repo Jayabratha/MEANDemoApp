@@ -27,7 +27,7 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 		};
 
 		//Login State Animation
-		$rootScope.loginState = new Animate('fliphide');
+		$rootScope.loginState = new Animate('fliphide', 'preload');
 
 		//Login Register Animation
 		$rootScope.registerState = new Animate('fliphide', 'preload');

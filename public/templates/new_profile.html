@@ -14,5 +14,22 @@
 		</div>
 	</aside>
 	<section class="profile-body">
+		<nav class="profile-nav">
+			<ul>
+				<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()">
+					<i class="ion-ios-paper"></i>
+					<span> My Feed </span>
+				</li>
+				<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()">
+					<i class="ion-image"></i>
+					<span> Photos </span>
+				</li>
+				<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()">
+					<i class="ion-ios-compose"></i>
+					<span> Edit Profile </span>
+				</li>
+			</ul>
+		</nav>
+		<section class="profile-content" ui-view ></section>
 	</section>
 </div>
