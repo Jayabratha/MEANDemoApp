@@ -6,7 +6,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 		$scope.activeView = "active";
 		$scope.activePhotos = "";
 		$scope.activeEdit = "";
-		$scope.showMenu = "";
+		$scope.showMenu = false;
 
 		$scope.showProfile = function() {
 			$scope.activeView = "active";

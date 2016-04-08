@@ -1,5 +1,11 @@
 <div id="profile" >
 	<header class="profile-header">
+		<div class="profile-menu" ng-class="{'show' : showMenu}">
+			<div class="menu-icon-container" ng-click="showMenu = !showMenu">
+				<div class="menu-icon" ng-class="{'close' : showMenu}"></i>
+			</div>
+			<button ng-click="logOut()">Logout</button>
+		</div>
 	</header>
 	<aside class="profile-options">
 		<img class="profile-pic-container" src="../images/profilepic.jpg"/>

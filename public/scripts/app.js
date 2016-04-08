@@ -68,8 +68,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
 ]);
 
 
-app.run(['$rootScope', '$timeout', '$cookies',
-	function($rootScope, $timeout, $cookies) {
+app.run(['$rootScope', '$timeout', '$cookies', '$state',
+	function($rootScope, $timeout, $cookies, $state) {
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParam, fromState, fromParams) {
 			var userName;
 			if (fromState.name === 'login') {
@@ -82,7 +82,7 @@ app.run(['$rootScope', '$timeout', '$cookies',
 				userName = $cookies.get('user');
 				if (userName) {
 					event.preventDefault();
-					$state.go('profile');
+					$state.go('profile.timeline');
 				}
 			}
 		});
