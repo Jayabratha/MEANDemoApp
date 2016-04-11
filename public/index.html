@@ -22,11 +22,19 @@
 	</a>
 	<button id="start-btn" ng-class="home.layout.showButton" ui-sref="login" > Let's Start </button>
 </header>
+<div id="icon-template">
+	<img class="nodejs-icon" src="images/nodejs.png" />
+</div>
+<div id="row-template">
+	<div class="row"></div>
+</div>
+<div id="node-background">
+</div>
 <div id="main-content" ng-class="home.layout.contentClass">
 <!-- Modal- start -->
 	<div id="main_modal" ng-class="showModal">
 	</div>
-	<div id="main_message" ng-class="showModal" message-div messageobj= 'messageObj' on-close='hideModal()' pop-action='popAction()' >
+	<div id="main_message" ng-class="showModal" message-div messageobj='messageObj' on-close='hideModal()' pop-action='popAction()' >
 	</div>
 <!-- Modal- end -->
 <!-- Main View Content -start -->

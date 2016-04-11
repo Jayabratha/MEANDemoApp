@@ -24,6 +24,7 @@
 
 body {
 	background-color: #F3F3F3;
+	/*background-image: url(../images/nodejs.png);*/
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
 	font-weight: 300;
 	margin: 0;
@@ -48,6 +49,24 @@ body {
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 	text-align: center;
+}
+
+#node-background {
+	position: fixed;
+	overflow: hidden;
+}
+
+#node-background .row {
+	position: relative;
+	width: 105%;
+	height: 40px;
+	overflow: hidden;
+	margin-top: -10px;
+}
+
+#node-background .row:nth-child(even) {
+	margin-top: -10px;
+	margin-left: -22px;
 }
 
 .main-header.small {
