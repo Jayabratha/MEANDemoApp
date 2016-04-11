@@ -51,6 +51,10 @@ body {
 	text-align: center;
 }
 
+.template {
+	display: none;
+}
+
 #node-background {
 	position: fixed;
 	overflow: hidden;
@@ -62,6 +66,20 @@ body {
 	height: 40px;
 	overflow: hidden;
 	margin-top: -10px;
+}
+
+#node-background .row img {
+	opacity: 0.8;
+	-webkit-transition: all 1s;
+	transition: all 1s;
+}
+
+#node-background .row img:hover {
+	opacity: 0;
+}
+
+#node-background .row img.filter {
+	opacity: 0.2;
 }
 
 #node-background .row:nth-child(even) {

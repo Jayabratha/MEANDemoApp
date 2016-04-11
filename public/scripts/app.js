@@ -1,31 +1,3 @@
-/* Create a Web Worker to create the bakground */
-$(document).ready(function() {
-	var i, j, background, screenWidth, screenHeight, numberOfRows, numberofCols;
-
-	/* Get Background Reference */
-	background = $('#node-background');
-	screenWidth = window.innerWidth;
-	screenHeight = window.innerHeight;
-
-	console.log(background, screenWidth, screenHeight);
-
-	numberOfRows = Math.ceil(screenHeight / 40) + 20;
-	numberofCols = Math.floor(screenWidth / 40) + 20;
-
-	console.log(numberOfRows, numberofCols);
-
-	/* Create Rows */
-	for (i = 0; i < numberOfRows; i++) {
-		background.append($('#row-template').html());
-	}
-
-	/* Create Icons per Row */
-	for (j = 0; j < numberofCols; j++) {
-		$('#node-background .row').append($('#icon-template').html());
-	}
-
-});
-
 /* Initialize The Angular App */
 var app = angular.module('app', ['ui.router', 'ngCookies']);
 
@@ -99,8 +71,16 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
 app.run(['$rootScope', '$timeout', '$cookies', '$state',
 	function($rootScope, $timeout, $cookies, $state) {
+		var backgroundAnimation = bgAnimate.getInstance();
+
+		/* Render and Start Background Animation*/
+		backgroundAnimation.renderBackground();
+		//backgroundAnimation.startAnimation();
+
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParam, fromState, fromParams) {
 			var userName;
+			//backgroundAnimation.stopAnimation();
+			//backgroundAnimation.clearBackground();
 			if (fromState.name === 'login') {
 				$rootScope.loginState.leave();
 			} else if (fromState.name === 'register') {
@@ -116,10 +96,19 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 			}
 		});
 		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParam, fromState, fromParams) {
+			/* Show Node Logo Background Animation for Home, Login and Register Screen */
+			if (toState.name === 'home' || toState.name === 'login') {
+				//backgroundAnimation.renderBackground();
+				//backgroundAnimation.startAnimation();
+			} else {
+				//backgroundAnimation.clearBackground();
+			}
 			if (toState.name === 'register') {
 				$rootScope.registerState.enter();
 			} else if (toState.name === 'login') {
 				$rootScope.loginState.enter();
+			} else if (toState.name === 'profile.timeline') {
+				backgroundAnimation.clearBackground();
 			}
 		});
 	}
