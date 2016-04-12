@@ -5,12 +5,11 @@ var bgAnimate = (function() {
 	function init() {
 		var background, screenWidth, screenHeight, numberOfRows, numberofCols, renderBackground, startAnimation,
 			stopAnimation, clearBackground, animation, draw, drawRow, opacityScale = [0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2],
-			opacityScaleLength = opacityScale.length, l = 0; count = 0;
+			opacityScaleLength = opacityScale.length, l = 0; count = 0, animateArray = [];
 
 		/* Render the Node Logo Background */
 		renderBackground = function(opacity) {
 			/* Get Background Reference */
-			// background = $('#node-background');
 			screenWidth = window.innerWidth;
 			screenHeight = window.innerHeight;
 
@@ -25,40 +24,50 @@ var bgAnimate = (function() {
 				var ctx = canvas.getContext('2d');
 			};
 
-			drawRow = function(indexArray, opacityIndex, rowIndex) {
+			drawRow = function(colIndex, rowIndex, opacityIndex) {
 				count++;
 				console.log(count);
-				console.log(indexArray, opacityScale[opacityIndex], rowIndex)
-				for (j = 0; j < numberofCols; j++) {
-					if (indexArray.indexOf(j) > 0) {
-						ctx.globalAlpha = opacityScale[opacityIndex];
-					}
-					if (rowIndex % 2 == 0) {
-						ctx.drawImage(img, (40 * j) - 20, (30 * rowIndex));
-					} else {
-						ctx.drawImage(img, (40 * j), (30 * rowIndex));
-					}
-					ctx.globalAlpha = 1;
-					setTimeout(function() {
-						l += 1;
-						if(l < opacityScaleLength) {
-							drawRow(indexArray, l, rowIndex);
-						}
-					}, 1000);
+				console.log(colIndex, opacityIndex, opacityScale[opacityIndex], rowIndex);
+				ctx.globalAlpha = opacityScale[opacityIndex];
+				if (rowIndex % 2 == 0) {
+					ctx.drawImage(img, (40 * colIndex) - 20, (30 * rowIndex));
+				} else {
+					ctx.drawImage(img, (40 * colIndex), (30 * rowIndex));
 				}
+				setTimeout(function() {
+					opacityIndex += 1;
+					if (opacityIndex < opacityScaleLength) {
+						animateArray.push(colIndex);
+						drawRow(colIndex, rowIndex, opacityIndex);
+					} else {
+						animateArray.splice(colIndex, 1);
+					}
+				}, 50);
+				
 			}
 
 			draw = function() {
 				var i, k, l = 0; indexArray = [];
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				//numberOfRows = 1;
+				//numberOfRows = 41;
 				console.log(numberOfRows);
 				for (i = 0; i < numberOfRows; i++) {
 					/* Generate Icon Indexes to animate */
 					for (k = 0; k < 40; k += 3) {
 						indexArray.push(Math.floor((3 * Math.random()) + k));
 					}
-					drawRow(indexArray, l, i);
+					for (j = 0; j < numberofCols; j++) {
+						if (indexArray.indexOf(j) > 0) {
+							drawRow(j, i, l);
+						} else {
+							ctx.globalAlpha = 1;
+							if (i % 2 == 0) {
+								ctx.drawImage(img, (40 * j) - 20, (30 * i));
+							} else {
+								ctx.drawImage(img, (40 * j), (30 * i));
+							}
+						}
+					}
 					indexArray.length = 0;
 				};
 			};
@@ -72,7 +81,7 @@ var bgAnimate = (function() {
 
 		/* Animate Background */
 		startAnimation = function() {
-			animation = setInterval(draw, 2000);
+			animation = setInterval(draw, 500);
 		}
 
 		/* Stop Background Animation */
