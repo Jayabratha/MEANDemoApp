@@ -75,12 +75,10 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 
 		/* Render and Start Background Animation*/
 		backgroundAnimation.renderBackground();
-		//backgroundAnimation.startAnimation();
+		backgroundAnimation.startAnimation();
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParam, fromState, fromParams) {
 			var userName;
-			//backgroundAnimation.stopAnimation();
-			//backgroundAnimation.clearBackground();
 			if (fromState.name === 'login') {
 				$rootScope.loginState.leave();
 			} else if (fromState.name === 'register') {
@@ -96,18 +94,12 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 			}
 		});
 		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParam, fromState, fromParams) {
-			/* Show Node Logo Background Animation for Home, Login and Register Screen */
-			if (toState.name === 'home' || toState.name === 'login') {
-				//backgroundAnimation.renderBackground();
-				//backgroundAnimation.startAnimation();
-			} else {
-				//backgroundAnimation.clearBackground();
-			}
 			if (toState.name === 'register') {
 				$rootScope.registerState.enter();
 			} else if (toState.name === 'login') {
 				$rootScope.loginState.enter();
 			} else if (toState.name === 'profile.timeline') {
+				backgroundAnimation.stopAnimation();
 				backgroundAnimation.clearBackground();
 			}
 		});

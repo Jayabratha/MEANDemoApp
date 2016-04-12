@@ -4,8 +4,26 @@ var bgAnimate = (function() {
 
 	function init() {
 		var background, screenWidth, screenHeight, numberOfRows, numberofCols, renderBackground, startAnimation,
-			stopAnimation, clearBackground, animation, draw, drawRow, opacityScale = [0.2, 0.4, 0.6, 0.8, 1, 0.8, 0.6, 0.4, 0.2],
-			opacityScaleLength = opacityScale.length, l = 0; count = 0, animateArray = [];
+			stopAnimation, clearBackground, animation, draw, opacityScale = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
+			opacityScaleLength = opacityScale.length,
+			imgStateArray = [],
+			ImgStateHolder;
+
+
+		ImgStateHolder = function(rowIndex, colIndex, opacityIndex, increment) {
+			this.rowIndex = rowIndex;
+			this.colIndex = colIndex;
+			this.opacityIndex = opacityIndex;
+			this.increment = increment;
+		}
+
+		ImgStateHolder.prototype.updateOpacityIndex = function(opacityIndex) {
+			this.opacityIndex = opacityIndex;
+		}
+
+		ImgStateHolder.prototype.updateIncrement = function(increment) {
+			this.increment = increment;
+		}
 
 		/* Render the Node Logo Background */
 		renderBackground = function(opacity) {
@@ -24,64 +42,70 @@ var bgAnimate = (function() {
 				var ctx = canvas.getContext('2d');
 			};
 
-			drawRow = function(colIndex, rowIndex, opacityIndex) {
-				count++;
-				console.log(count);
-				console.log(colIndex, opacityIndex, opacityScale[opacityIndex], rowIndex);
-				ctx.globalAlpha = opacityScale[opacityIndex];
-				if (rowIndex % 2 == 0) {
-					ctx.drawImage(img, (40 * colIndex) - 20, (30 * rowIndex));
-				} else {
-					ctx.drawImage(img, (40 * colIndex), (30 * rowIndex));
-				}
-				setTimeout(function() {
-					opacityIndex += 1;
-					if (opacityIndex < opacityScaleLength) {
-						animateArray.push(colIndex);
-						drawRow(colIndex, rowIndex, opacityIndex);
-					} else {
-						animateArray.splice(colIndex, 1);
-					}
-				}, 50);
-				
-			}
-
 			draw = function() {
-				var i, k, l = 0; indexArray = [];
+				var i, k, opacityIndex, opacity, rowImgHolderArray, imgHolder;
 				ctx.clearRect(0, 0, canvas.width, canvas.height);
-				//numberOfRows = 41;
-				console.log(numberOfRows);
 				for (i = 0; i < numberOfRows; i++) {
-					/* Generate Icon Indexes to animate */
-					for (k = 0; k < 40; k += 3) {
-						indexArray.push(Math.floor((3 * Math.random()) + k));
+					if (imgStateArray[i]) {
+						rowImgHolderArray = imgStateArray[i];
+					} else {
+						rowImgHolderArray = [];
+						imgStateArray.push(rowImgHolderArray);
 					}
+					//rowImgHolderArray = imgStateArray[i] || [];
 					for (j = 0; j < numberofCols; j++) {
-						if (indexArray.indexOf(j) > 0) {
-							drawRow(j, i, l);
+						if (rowImgHolderArray[j]) {
+							imgHolder = rowImgHolderArray[j];
 						} else {
-							ctx.globalAlpha = 1;
-							if (i % 2 == 0) {
-								ctx.drawImage(img, (40 * j) - 20, (30 * i));
-							} else {
-								ctx.drawImage(img, (40 * j), (30 * i));
-							}
+							imgHolder = new ImgStateHolder(i, j, Math.floor(10 * Math.random()), true);
+							rowImgHolderArray.push(imgHolder);
+						}
+						//imgHolder = rowImgHolderArray[j] || new ImgStateHolder(i, j, Math.floor(10 * Math.random()), true);
+
+						//Get Opacity Index from State Holder
+						opacityIndex = imgHolder.opacityIndex;
+
+						//Check and Set Increment to False
+						if (opacityIndex == 9) {
+							imgHolder.updateIncrement(false);
+						} else if (opacityIndex == 0) {
+							imgHolder.updateIncrement(true);
+						}
+
+						//Increment Or Decrement Opacity Index
+						if (imgHolder.increment) {
+							opacityIndex += 1;
+						} else {
+							opacityIndex -= 1;
+						}
+
+						//Update new Opacity in the Holder
+						imgHolder.updateOpacityIndex(opacityIndex);
+
+						//Get Opacity
+						opacity = opacityScale[opacityIndex];
+
+						//Set Draw Opacity
+						ctx.globalAlpha = opacity;
+						if (i % 2 == 0) {
+							ctx.drawImage(img, (40 * j) - 20, (30 * i));
+						} else {
+							ctx.drawImage(img, (40 * j), (30 * i));
 						}
 					}
-					indexArray.length = 0;
 				};
+				console.log(imgStateArray);
 			};
 
 			img.addEventListener("load", function() {
 				draw();
-				console.log(count);
 			}, false);
 
 		};
 
 		/* Animate Background */
 		startAnimation = function() {
-			animation = setInterval(draw, 500);
+			animation = setInterval(draw, 200);
 		}
 
 		/* Stop Background Animation */
