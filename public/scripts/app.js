@@ -97,6 +97,11 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 			if (toState.name === 'register') {
 				$rootScope.registerState.enter();
 			} else if (toState.name === 'login') {
+				if (fromState.name === 'profile.timeline' || fromState.name === 'profile.photos' || fromState.name === 'profile.edit') {
+					/* Render and Start Background Animation*/
+					backgroundAnimation.renderBackground();
+					backgroundAnimation.startAnimation();
+				}
 				$rootScope.loginState.enter();
 			} else if (toState.name === 'profile.timeline') {
 				backgroundAnimation.stopAnimation();

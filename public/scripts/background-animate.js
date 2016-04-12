@@ -3,12 +3,19 @@ var bgAnimate = (function() {
 	var instance;
 
 	function init() {
-		var background, screenWidth, screenHeight, numberOfRows, numberofCols, renderBackground, startAnimation,
+		var canvas, background, screenWidth, screenHeight, numberOfRows, numberofCols, renderBackground, startAnimation,
 			stopAnimation, clearBackground, animation, draw, opacityScale = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
 			opacityScaleLength = opacityScale.length,
 			imgStateArray = [],
 			ImgStateHolder;
 
+
+		canvas = document.getElementById('background-canvas');
+
+		//If canvas is supported get the context
+		if (canvas.getContext) {
+			var ctx = canvas.getContext('2d');
+		};
 
 		ImgStateHolder = function(rowIndex, colIndex, opacityIndex, increment) {
 			this.rowIndex = rowIndex;
@@ -36,11 +43,6 @@ var bgAnimate = (function() {
 
 			var img = new Image();
 			img.src = '../images/nodejs.png';
-
-			var canvas = document.getElementById('background-canvas');
-			if (canvas.getContext) {
-				var ctx = canvas.getContext('2d');
-			};
 
 			draw = function() {
 				var i, k, opacityIndex, opacity, rowImgHolderArray, imgHolder;
@@ -117,7 +119,7 @@ var bgAnimate = (function() {
 
 		/* Clear the Node logo Background */
 		clearBackground = function() {
-			$('#node-background').empty();
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		}
 
 		return {
