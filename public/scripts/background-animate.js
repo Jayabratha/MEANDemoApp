@@ -96,7 +96,6 @@ var bgAnimate = (function() {
 						}
 					}
 				};
-				console.log(imgStateArray);
 			};
 
 			img.addEventListener("load", function() {

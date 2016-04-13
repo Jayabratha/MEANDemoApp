@@ -1,9 +1,9 @@
 <div id="profile" >
 	<header class="profile-header">
+		<div class="menu-icon-container" ng-click="showMenu = !showMenu">
+			<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
+		</div>
 		<div class="profile-menu" ng-class="{'show' : showMenu}">
-			<div class="menu-icon-container" ng-click="showMenu = !showMenu">
-				<div class="menu-icon" ng-class="{'close' : showMenu}"></i>
-			</div>
 			<button ng-click="logOut()">Logout</button>
 		</div>
 	</header>
@@ -36,6 +36,6 @@
 				</li>
 			</ul>
 		</nav>
-		<section class="profile-content" ui-view ></section>
-	</section>
+	<section class="profile-content" ui-view ></section>
+</section>
 </div>
