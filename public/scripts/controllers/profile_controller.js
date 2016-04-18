@@ -3,6 +3,8 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 		var Profile, homeLayout = $scope.home.layout;
 		homeLayout.setVars('line');
 
+		homeLayout.showCanvas = false;
+
 		$scope.activeView = "active";
 		$scope.activePhotos = "";
 		$scope.activeEdit = "";

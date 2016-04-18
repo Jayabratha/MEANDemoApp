@@ -36,6 +36,7 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 		this.layout = {
 			headerClass: "",
 			contentClass: "",
+			showCanvas: true,
 			showButton: "",
 			showModal: "",
 			resetVars : function() {
