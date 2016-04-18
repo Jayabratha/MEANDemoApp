@@ -51,6 +51,12 @@ body {
 	text-align: center;
 }
 
+.clearfix:after, .clearfix:before {
+	display: table;
+	content: "";
+	clear: both;
+}
+
 .template {
 	display: none;
 }

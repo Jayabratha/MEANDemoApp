@@ -1,0 +1,21 @@
+.photo-container {
+	position: relative;
+	width: 100%;
+	min-height: 500px;
+	padding: 20px;
+    box-sizing: border-box;
+}
+
+.display-photo {
+	position: relative;
+    height: 160px;
+    padding: 4px;
+    box-sizing: border-box;
+}
+
+.display-photo img {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border-radius: 2px;
+}

@@ -1,8 +1,8 @@
 <div id="profile" >
+	<div class="menu-icon-container" ng-click="showMenu = !showMenu">
+		<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
+	</div>
 	<header class="profile-header">
-		<div class="menu-icon-container" ng-click="showMenu = !showMenu">
-			<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
-		</div>
 		<div class="profile-menu" ng-class="{'show' : showMenu}">
 			<button ng-click="logOut()">Logout</button>
 		</div>
@@ -21,18 +21,21 @@
 	</aside>
 	<section class="profile-body">
 		<nav class="profile-nav">
-			<ul>
+			<ul class="clearfix">
 				<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()">
 					<i class="ion-ios-paper"></i>
 					<span> My Feed </span>
+					<div class="underline"></div>
 				</li>
 				<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()">
 					<i class="ion-image"></i>
 					<span> Photos </span>
+					<div class="underline"></div>
 				</li>
 				<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()">
 					<i class="ion-ios-compose"></i>
 					<span> Edit Profile </span>
+					<div class="underline"></div>
 				</li>
 			</ul>
 		</nav>

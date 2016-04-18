@@ -57,7 +57,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		}).
 		state('profile.photos', {
 			url: '/photos',
-			templateUrl: 'templates/profilephotos.html',
+			templateUrl: 'templates/profile_photos.html',
 			controller: 'photosController'
 		}).
 		state('profile.edit', {

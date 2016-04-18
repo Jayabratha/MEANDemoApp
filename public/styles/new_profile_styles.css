@@ -14,23 +14,25 @@ header.profile-header {
 	position: absolute;
 	top: 0;
     background-color: #FFFFFF;
-    border: thin solid #ccc;
-    width: 149px;
-    min-height: 210px;
+    opacity: 0.85;
+    width: 180px;
+    min-height: 250px;
+    border-bottom: thin solid #ccc;
     z-index: 5;
-    margin: 10px 7px;
-    padding: 10px 5px;
-    box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    padding: 50px 5px 10px;
 	text-align: center;
-	left: -170px;
+	box-sizing: border-box;
+	left: -190px;
 	-webkit-transition: left 0.5s ease-out;
 	transition: left 0.5s ease-out;
 }
+
 .profile-menu.show {
 	left: 0;
 }
+
 .menu-icon-container {
-	position: relative;
+	position: fixed;
 	display: none;
 	width: 25px;
     height: 25px;
@@ -106,6 +108,7 @@ aside.profile-options {
 
 .base-info {
 	position: relative;
+	margin-top: 1em;
     text-align: center;
     color: #565555;
 }
@@ -138,22 +141,34 @@ aside.profile-options {
 
 nav.profile-nav ul {
 	margin: 0;
+	padding: 0;
+	clear: both;
 }
 
 nav.profile-nav li{
 	position: relative;
-	display: inline-block;
+	float: left;
 	list-style: none;
-	padding: 1.35em 0;
-	width: 30%;
+	padding: 1em 0;
+	width: 33%;
 	box-sizing: border-box;
 	text-align: center;
 	cursor: pointer;
 }
 
-nav.profile-nav li:hover {
-	border-bottom: 2px solid #0AB2F8;
+.underline {
+	position: relative;
+    height: 2px;
+    width: 25%;
+    margin: 10px auto 0;
+    -webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
 }
+
+li:hover .underline, li.active .underline {
+	background-color: #0ab2f8;
+	width: 60%;
+} 
 
 nav.profile-nav i {
 	font-size: 1.5em;
@@ -190,6 +205,9 @@ nav.profile-nav span {
 	}
 	.logout-btn {
 		display: none;
+	}
+	.base-info {
+		margin-top: 0;
 	}
 }
 

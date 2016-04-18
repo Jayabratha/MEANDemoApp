@@ -1,7 +1,7 @@
-<div class="profilePhotos">
+<div class="profile-photos">
 	<header class="tabHeader">
 		<div id="photopicker">
-			<div class="photoname">
+			<!-- <div class="photoname">
 				<span id="file_input_container">
 				</span>
 				<input type="file" id="fileinput" file-model="photoFiles" multiple accept="image/*" />
@@ -19,12 +19,12 @@
 						</span>
 				</span>
 			</div>
-			<div class="upload" ng-click="uploadPhotos()"> Upload </div>
+			<div class="upload" ng-click="uploadPhotos()"> Upload </div> -->
 		</div>
 	</header>
 	<!-- <div class="uploadProgress"></div> -->
-	<div id="phototab_content">
-		<div class="photocontainer" ng-repeat="photo in newPhotosList">
+	<div id="phototab-content">
+		<!-- <div class="photo-container" ng-repeat="photo in newPhotosList">
 			<div class="displayPhoto">
 				<div class="photoWrapper">
 					<span class="helper"></span>
@@ -32,13 +32,10 @@
 				</div>
 				<div class="photoControls"></div>
 			</div>
-		</div>
-		<div class="photocontainer" ng-repeat="photo in profilePhotos">
-			<div class="displayPhoto">
-				<div class="photoWrapper">
-					<span class="helper"></span>
-					<img ng-src="{{photo.src}}" />
-				</div>
+		</div> -->
+		<div class="photo-container clearfix">
+			<div class="display-photo col-xs-12 col-sm-4 col-md-4 col-lg-3" ng-repeat="photo in profilePhotos">
+				<img ng-src="{{photo.src}}" />
 				<div class="photoControls">
 					<div class="deletePhoto" ng-click="removePhoto(photo.filename)">Remove</div>
 				</div>
