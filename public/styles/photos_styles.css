@@ -19,3 +19,15 @@
 	height: 100%;
 	border-radius: 2px;
 }
+
+@media only screen and (max-width:425px) {
+	.display-photo {
+		height: 100px;
+	}
+}
+
+@media only screen and (max-width:320px) {
+	.display-photo.col-xs-4 {
+		width: 50%;
+	}
+}

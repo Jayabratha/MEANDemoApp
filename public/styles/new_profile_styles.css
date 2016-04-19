@@ -90,19 +90,24 @@ header.profile-header {
 }
 
 aside.profile-options {
-	position: fixed;
+	position: absolute;
 	top: 0;
 	width: 25%;
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.5);
 }
 
+.profile-main-content {
+	position: relative;
+	min-height: 1000px;
+	border-left: thin solid #ccc;
+	box-sizing: border-box;
+}
+
 .profile-body {
 	position: relative;
 	min-height: 1000px;
-	top: 250px;;
-	left: 25%;
-	width: 75%;
+	top: 250px;
 	color: #565555;
 	background-color: #FFFFFF;
 	border-left: thin solid #ccc;
@@ -110,9 +115,10 @@ aside.profile-options {
 
 .base-info {
 	position: relative;
-	margin-top: 1em;
+	margin: 0;
     text-align: center;
     color: #565555;
+    min-height: 1000px;
 }
 
 .logout-btn {
@@ -122,7 +128,7 @@ aside.profile-options {
 .user-name {
 	font-size: 2.2em;
 	padding: 0.25em 0;
-    margin: 0.25em 0;
+    margin: 0 0 0.25em;
     border-bottom: thin solid #ccc;
 }
 
@@ -141,17 +147,22 @@ aside.profile-options {
 	position: relative;
 }
 
+.fader {
+	height: 1em;
+	background: linear-gradient(#FFFFFF, transparent);
+}
 nav.profile-nav ul {
 	margin: 0;
 	padding: 0;
 	clear: both;
+	background-color: #FFFFFF;
 }
 
-nav.profile-nav li{
+nav.profile-nav li {
 	position: relative;
 	float: left;
 	list-style: none;
-	padding: 1em 0;
+	padding: 1.25em 0 0.5em;
 	width: 33%;
 	box-sizing: border-box;
 	text-align: center;
@@ -182,7 +193,45 @@ nav.profile-nav span {
 	font-weight: normal;
 }
 
-@media only screen and (max-width:768px) {
+/* Fixed Header Styles - Starts */
+
+.fixed .profile-body{
+	top: 0;
+}
+
+.fixed .base-info {
+	position: fixed;
+	top: 0;
+	left: 0;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.fixed .profile-main-content {
+	left: 25%;
+}
+
+.fixed nav.profile-nav {
+	position: fixed;
+	top: 0;
+	left: 25.5%;
+	width: 75%;
+	z-index: 5;
+	-webkit-transform: translateZ(0);
+	transform: translateZ(0);
+}
+
+.fixed .profile-content {
+	top: 60px;
+}
+
+.fixed .profile-pic-container {
+	display: none;
+}
+
+/* Fixed Header Styles - end */
+
+@media only screen and (max-width:1000px) {
 	header.profile-header {
 		position: absolute;
 	}
@@ -194,13 +243,17 @@ nav.profile-nav span {
 		display: inline-block;
 	    background-color: transparent;
 	    width: 100%;
-	    height: 18em;
 	    margin-top: 3.5em;
+	    padding-bottom: 0.5em;
 	}
 	.profile-pic-container {
 		margin-top: 1em;
 	}
+	.profile-main-content {
+		border-left: none;
+	}
 	.profile-body {
+		top: 0;
 		left: 0;
 		width: 100%;
 		border-left: none;
@@ -210,6 +263,9 @@ nav.profile-nav span {
 	}
 	.base-info {
 		margin-top: 0;
+	}
+	nav.profile-nav li {
+		padding: 2em 0 1em;
 	}
 }
 

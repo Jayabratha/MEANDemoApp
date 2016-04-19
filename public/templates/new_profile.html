@@ -1,4 +1,4 @@
-<div id="profile" >
+<div id="profile" class="fixed">
 	<div class="menu-icon-container" ng-click="showMenu = !showMenu">
 		<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
 	</div>
@@ -9,7 +9,9 @@
 	</header>
 	<aside class="profile-options">
 		<img class="profile-pic-container" src="../images/profilepic.jpg"/>
-		<div class="base-info">
+	</aside>
+	<section class="profile-body">
+		<div class="base-info col-md-3 col-lg-3">
 			<h1 class="user-name"> {{user.username}} </h1>
 			<div>
 				<span class="role" ng-show="user.role.designer"> Designer </span>
@@ -18,27 +20,28 @@
 			</div>
 			<button class="logout-btn" ng-click="logOut()">Logout</button>
 		</div>
-	</aside>
-	<section class="profile-body">
-		<nav class="profile-nav">
-			<ul class="clearfix">
-				<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()">
-					<i class="ion-ios-paper"></i>
-					<span> My Feed </span>
-					<div class="underline"></div>
-				</li>
-				<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()">
-					<i class="ion-image"></i>
-					<span> Photos </span>
-					<div class="underline"></div>
-				</li>
-				<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()">
-					<i class="ion-ios-compose"></i>
-					<span> Edit Profile </span>
-					<div class="underline"></div>
-				</li>
-			</ul>
-		</nav>
-	<section class="profile-content" ui-view ></section>
+		<div class="profile-main-content col-md-9 col-lg-9">
+			<nav class="profile-nav">
+				<ul class="clearfix">
+					<li ng-class="activeView" ui-sref="profile.timeline" ng-click="showProfile()">
+						<i class="ion-ios-paper"></i>
+						<span> My Feed </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="activePhotos" ui-sref="profile.photos" ng-click="showPhotos()">
+						<i class="ion-image"></i>
+						<span> Photos </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="activeEdit" ui-sref="profile.edit" ng-click="showEditProfile()">
+						<i class="ion-ios-compose"></i>
+						<span> Edit Profile </span>
+						<div class="underline"></div>
+					</li>
+				</ul>
+				<div class="fader"></div>
+			</nav>
+			<section class="profile-content" ui-view ></section>
+		</div>
 </section>
 </div>
