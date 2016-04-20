@@ -16,7 +16,7 @@
 	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
 	<!-- Include Styles - end -->
 </head>
-<body ng-app="app" ng-controller="appController as home">
+<body ng-app="app" ng-controller="appController as home" fix-to-top="fixed">
 <header class="main-header" ng-class="home.layout.headerClass" >
 	<div id="head-title"> Welcome to <strong>MEAN</strong> Stack </div>
 	<a class="no-anchor github-icon" target="_blank" href="https://github.com/Jayabratha/MEANDemoApp">
@@ -74,8 +74,9 @@
 <!-- Include Services - end -->
 <!-- Include Directives - start -->
 <script src="scripts/directives/photos_directive.js"></script>
-<script src="scripts/directives/timeline_directive.js"></script>
-<script src="scripts/directives/message_directives.js"></script>
+<script src="scripts/directives/photos_directive.js"></script>
+<!-- <script src="scripts/directives/timeline_directive.js"></script> -->
+<script src="scripts/directives/fix_to_top_directive.js"></script>
 <!-- Include Directives - end -->
 </body>
 </html>

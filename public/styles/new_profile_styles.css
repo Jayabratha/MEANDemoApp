@@ -38,6 +38,8 @@ header.profile-header {
     height: 25px;
     margin: 25px 10px;
     z-index: 6;
+    -webkit-transform: translateZ(0);
+	transform: translateZ(0);
 }
 .menu-icon, .menu-icon:before, .menu-icon:after {
 	position: absolute;
@@ -118,7 +120,8 @@ aside.profile-options {
 	margin: 0;
     text-align: center;
     color: #565555;
-    min-height: 1000px;
+    z-index: 5;
+    background-color: #FFFFFF;
 }
 
 .logout-btn {
@@ -147,10 +150,6 @@ aside.profile-options {
 	position: relative;
 }
 
-.fader {
-	height: 1em;
-	background: linear-gradient(#FFFFFF, transparent);
-}
 nav.profile-nav ul {
 	margin: 0;
 	padding: 0;
@@ -214,7 +213,7 @@ nav.profile-nav span {
 .fixed nav.profile-nav {
 	position: fixed;
 	top: 0;
-	left: 25.5%;
+	left: 25.2%;
 	width: 75%;
 	z-index: 5;
 	-webkit-transform: translateZ(0);
@@ -222,13 +221,23 @@ nav.profile-nav span {
 }
 
 .fixed .profile-content {
-	top: 60px;
+	top: 320px;
 }
 
 .fixed .profile-pic-container {
 	display: none;
 }
 
+.fixed .github-icon {
+	color: #696868;
+}
+
+.fixed .menu-icon, .fixed .menu-icon:before, .fixed .menu-icon:after {
+	background-color: #696868;
+}
+.fixed .menu-icon.close {
+	background-color: transparent;
+}
 /* Fixed Header Styles - end */
 
 @media only screen and (max-width:1000px) {
@@ -267,6 +276,34 @@ nav.profile-nav span {
 	nav.profile-nav li {
 		padding: 2em 0 1em;
 	}
+
+	/* Fixed Header Styles - Starts */
+	.fixed .profile-body{
+		top: 0;
+	}
+
+	.fixed .base-info {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.fixed .profile-main-content {
+		left: 0;
+	}
+
+	.fixed nav.profile-nav {
+		top: 4em;
+		left: 0;
+		width: 100%;
+		z-index: 5;
+	}
+
+	.fixed .profile-content {
+		top: 340px;
+	}
+	/* Fixed Header Styles - end */
 }
 
 @media only screen and (max-width:425px) {
