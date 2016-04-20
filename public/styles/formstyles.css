@@ -123,7 +123,7 @@ display: none;
 	padding: 0.3em;
 }
 
-#login-form {
+#login-form, #register-form {
 	position:relative;
 	min-width: 600px;
 	width: 45%;
@@ -132,7 +132,7 @@ display: none;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
 	margin: auto;
-	z-index:9;
+	margin-bottom: 2em;
 	-webkit-transform: rotateY(0deg);
 	transform: rotateY(0deg);
 	-webkit-transition: all 0.5s ease-out;
@@ -140,20 +140,9 @@ display: none;
 }
 
 #register-form {
-	position:relative;
-	min-width: 600px;
 	width: 55%;
-	top: 5em;
-	height: auto;
-	background-color: #FFFFFF;
-	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
-	margin: auto;
 	padding-bottom: 2em;
 	margin-bottom: 3em;
-	-webkit-transform: rotateY(0deg);
-	transform: rotateY(0deg);
-	-webkit-transition: all 0.5s ease-out;
-	transition: all 0.5s ease-out;
 }
 
 #login-form.fliphide {

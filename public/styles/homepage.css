@@ -170,6 +170,9 @@ header.small #head-title {
 	min-height: 500px;
 	height: auto;
 	margin: auto;
+}
+
+.form-wrapper {
 	-webkit-perspective: 3000px;
 	perspective: 3000px;
 }
