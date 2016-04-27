@@ -36,13 +36,13 @@ body {
 
 .main-header {
 	position:fixed;
-	background-color: #0AB2F8;
+	background: linear-gradient(rgba(10, 178, 248, 0.6), #0AB2F8, #0AB2F8, #0AB2F8);
 	font-size: 3.5em;
 	font-weight: 400;
 	color: #FFFFFF;
 	margin: 0;
 	width: 100%;
-	height: 300px;
+	height: 350px;
 	z-index: 8;
 	border-bottom: 1px solid #0BA2E1;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -95,7 +95,17 @@ body {
 
 .main-header.small {
 	font-size: 2em;
-	height: 70px;
+	line-height: 2em;
+	height: 2em;
+	background: linear-gradient(rgba(10, 178, 248, 0.6), #0AB2F8);
+}
+
+.main-header.small .head-title {
+	padding-top: 0;
+}
+
+.main-header.small .github-icon {
+	top: 0;
 }
 
 .main-header.line {
@@ -103,7 +113,7 @@ body {
 	height: 2px;
 }
 
-.main-header.line #head-title {
+.main-header.line .head-title {
 	display: none;
 }
 
@@ -131,14 +141,10 @@ button:hover {
 	color: #FFFFFF;
 }
 
-#head-title {
+.head-title {
 	position:relative;
-	padding-top: 1.5em;
+	padding-top: 2em;
 	text-align: center;
-}
-
-header.small #head-title {
-	padding-top: 0.5em;
 }
 
 .github-icon {
@@ -177,11 +183,11 @@ header.small #head-title {
 	perspective: 3000px;
 }
 
-#start-btn {
+.start-btn {
 	position: relative;
 	margin: 3em 0 1em;
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
-	font-size: 22px;
+	font-size: 20px;
 	color: #FFFFFF;
 	border: thin solid #FFFFFF;
 }

@@ -56,7 +56,7 @@ display: none;
 	text-align: left;
 	vertical-align: top;
 	padding: 0.5em 0 0.5em 3%;
-	border-left: medium solid #4162DE;
+	border-left: 2px solid #4162DE;
 	box-sizing: border-box;
 }
 .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
@@ -84,10 +84,10 @@ display: none;
 	outline: none;
 }
 .input-container.error {
-	border-left: medium solid #E83535;
+	border-left: 2px solid #E83535;
 }
 .input-container.correct {
-	border-left: medium solid #29C20B;
+	border-left: 2px solid #29C20B;
 }
 .input-container.error input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
 	border-bottom: thin solid #E83535;
