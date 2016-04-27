@@ -1,20 +1,4 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
-
-var db = mongoose.connection;
-
-db.on('error', function() {
-	console.error("Ops! Connection Failed")});
-db.once('open', function() {
-	console.log("Yo! Connection established");
-});
-
-process.on('SIGINT', function() {
-  	db.close(function () {
-    console.log('Mongoose disconnected on app termination');
-    process.exit(0);
-  });
-});
 
 var Schema = mongoose.Schema;
 
