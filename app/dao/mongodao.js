@@ -84,9 +84,7 @@ exports.authUser = function(res, email, password) {
 					message: "No user found. Please register first"
 				});
 			}
-
 		}
-
 	});
 
 }
@@ -121,9 +119,7 @@ exports.getUser = function(res, username, password) {
 					message: "Wrong Password! Please try again"
 				});
 			}
-
 		}
-
 	});
 
 }

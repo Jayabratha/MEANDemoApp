@@ -1,11 +1,3 @@
-#login-form table {
-	width: 100%;
-}
-
-#registerform table {
-	width: 100%;
-}
-
 header.content-header {
 	position:relative;
 	width: 100%;
@@ -55,17 +47,17 @@ display: none;
 	min-height: 45px;
 	text-align: left;
 	vertical-align: top;
-	padding: 0.5em 0 0.5em 3%;
-	border-left: 2px solid #4162DE;
+	padding: 0.5em;
 	box-sizing: border-box;
 }
 .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
     font-size: 1em;
     padding: 0.5em;
-    width: 80%;
+    width: 100%;
     border: none;
     border-bottom: thin solid #ccc;
+    box-sizing: border-box;
 }
 .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']):focus {
 	border-bottom-color: #0ab2f8;
@@ -83,11 +75,18 @@ display: none;
 	border-color: #0ab2f8;
 	outline: none;
 }
-.input-container.error {
+
+#register-form .input-container {
+	border-left: 2px solid #4162DE;
+}
+#register-form .input-container.error {
 	border-left: 2px solid #E83535;
 }
-.input-container.correct {
+#register-form .input-container.correct {
 	border-left: 2px solid #29C20B;
+}
+#register-form .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
+	width: 80%;
 }
 .input-container.error input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
 	border-bottom: thin solid #E83535;
@@ -123,12 +122,12 @@ display: none;
 	padding: 0.3em;
 }
 
-#login-form, #register-form {
+#login-template, #register-form {
 	position:relative;
-	min-width: 600px;
-	width: 45%;
+	min-width: 500px;
+	width: 40%;
 	top: 5em;
-	min-height: 500px;
+	min-height: 400px;
 	background-color: #FFFFFF;
 	box-shadow: 0 0.2em 0.5em rgba(0,0,0,0.3);
 	margin: auto;
@@ -139,17 +138,20 @@ display: none;
 	transition: all 0.5s ease-out;
 }
 
+#login-template section {
+	margin: 1em 0;
+}
+
 #register-form {
 	width: 55%;
 	padding-bottom: 2em;
 	margin-bottom: 3em;
 }
 
-#login-form.fliphide {
+#login-template.fliphide {
 	-webkit-transform: rotateY(-90deg);
 	transform: rotateY(-90deg);
 }
-
 
 #register-form.fliphide {
 	-webkit-transform: rotateY(90deg);
@@ -164,12 +166,44 @@ display: none;
   transition: none !important;
 }
 
+.login-form {
+	padding: 0.5em;
+	text-align: center;
+	text-align: center;
+    border-top: thin dashed #ccc;
+    border-bottom: thin dashed #ccc;
+}
+
+.social-login {
+	text-align: center;
+	margin: 1em;
+}
+
+.fb-login {
+	background-color: #0a4e9b;
+    color: #FFF;
+    height: 38px;
+    line-height: 38px;
+    font-weight: normal;
+    border: thin solid #094284;
+    border-radius: 2px;
+    width: 183px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 4.5px;
+}
+
+.fb-login i {
+	font-size: 1.3em;
+    vertical-align: middle;
+    padding-right: 13px;
+}
 
 .login-footer {
 	position: relative;
 	width: 100%;
 	text-align: center;
-	padding: 2em 0 1em;
+	padding: 0.5em 0 1em;
 }
 
 #main_modal {

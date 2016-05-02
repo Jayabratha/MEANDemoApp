@@ -71,7 +71,7 @@
 		margin-left: -50%;
 	}
 
-	#login-form, #registerform {
+	#login-template, #register-form {
 		min-width: inherit;
 		width: 100%;
 	}
