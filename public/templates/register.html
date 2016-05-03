@@ -52,22 +52,6 @@
 						</div>
 					</div>
 					<div class="form-row">
-						<div rowspan="2" class="label-container">
-							<label>*Role: </label>
-						</div>
-						<div class="input-container" ng-class="{'error' : roleError = !registerCntrl.userData.role.designer && !registerCntrl.userData.role.developer && (registerForm.email.$touched || registerCntrl.notifyErrors), 'correct' : registerCntrl.userData.role.designer || registerCntrl.userData.role.developer }">
-							<div class="side-options">
-								<input name="role" type="checkbox" ng-model="registerCntrl.userData.role.designer" value="Designer" />
-								<label> Designer</label>
-							</div>
-							<div class="side-options">
-								<input name="role" type="checkbox" ng-model="registerCntrl.userData.role.developer" value="Developer" />
-								<label> Developer</label>
-							</div>
-							<div class="message-default" ng-cloak ng-show="roleError"> Please select your role</div>
-						</div>
-					</div>
-					<div class="form-row">
 						<div class="label-container" ng-class="{'correct' : registerForm.email.$valid }">
 							<label for="exp" >Experience: </label>
 						</div>

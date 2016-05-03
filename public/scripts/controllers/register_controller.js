@@ -9,10 +9,6 @@ app.controller('registerController', ['$scope', '$http', '$timeout',
 			sex: '',
 			dob: '',
 			addr: '',
-			role: {
-				designer: false,
-				developer: false
-			},
 			exp: 0,
 			email: '',
 			password: '',

@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var userSchema = new Schema({
+var UserSchema = new Schema({
 	username: {
 		type: String,
 		required: true,
@@ -11,10 +11,6 @@ var userSchema = new Schema({
 	sex: String,
 	dob: Date,
 	address: String,
-	role: {
-		designer: Boolean,
-		developer: Boolean
-	},
 	salary: Number,
 	email: {
 		type: String,
@@ -27,7 +23,7 @@ var userSchema = new Schema({
 });
 
 // Perform these task before each save
-userSchema.pre('save', function(next) {
+UserSchema.pre('save', function(next) {
 	var user = this,
 		currentDate = new Date(),
 		saltRounds = 10;
@@ -60,7 +56,16 @@ userSchema.pre('save', function(next) {
 });
 
 
+//Method to compare password hashes
+UserSchema.methods.comparePassword = function (passw, cb) {
+    bcrypt.compare(passw, this.password, function (err, isMatch) {
+        if (err) {
+            return cb(err);
+        }
+        cb(null, isMatch);
+    });
+};
 
-var User = mongoose.model('User', userSchema);
+var User = mongoose.model('User', UserSchema);
 
 module.exports = User;
