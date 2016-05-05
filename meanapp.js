@@ -4,9 +4,9 @@ var app = express();
 var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
 var multer = require('multer'); // for parsing multipart/form-data
 var mongoose = require('mongoose');
+var passport = require('passport');
 
 //Connect to MongoDB
 mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
@@ -44,12 +44,17 @@ var upload = multer({
 
 // for parsing application/json
 app.use(bodyParser.json());
+
 // for parsing application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
 	extended: true
 }));
-// for parsing cookies
-app.use(cookieParser());
+
+// Use the passport package in our application
+app.use(passport.initialize());
+
+// Configure Passport
+require('./config/passport')(passport);
 
 //Public Views Mapping
 app.use('/', express.static(path.join(__dirname, 'public')));

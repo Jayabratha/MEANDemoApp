@@ -1,12 +1,12 @@
-app.controller('registerController', ['$scope', '$http', '$timeout',
-	function($scope, $http, $timeout) {
+app.controller('registerController', ['$scope', '$http', '$timeout', '$rootScope',
+	function($scope, $http, $timeout, $rootScope) {
 		var homeLayout = $scope.home.layout;
 		homeLayout.setVars('small');
 
 		/* Register Form Model */
 		this.userData = {
 			username: '',
-			sex: '',
+			sex: 'Male',
 			dob: '',
 			addr: '',
 			exp: 0,
@@ -30,9 +30,9 @@ app.controller('registerController', ['$scope', '$http', '$timeout',
 					var responseData = response.data;
 					$scope.displayModal();
 					if (responseData.success) {
-						$scope.setMessage(responseData.message, 'View Profile', 'profile', false);
+						$rootScope.setMessage(responseData.message, 'View Profile', 'profile', false);
 					} else {
-						$scope.setMessage(responseData.message, 'Okay', 'login', false);
+						$rootScope.setMessage(responseData.message, 'Okay', 'login', false);
 					}
 				}, function(error){
 					alert('Error Occurred!');

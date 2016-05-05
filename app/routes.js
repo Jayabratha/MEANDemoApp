@@ -5,15 +5,15 @@ module.exports = function(app, upload, fs) {
 
 	app.post('/register', function(req, res, next) {
 		console.log('Form Data Received for: ' + req.body.username);
-		mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.role, req.body.exp, req.body.email, req.body.password);
+		mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.exp, req.body.email, req.body.password);
 	})
 
 	app.post('/auth', function(req, res, next) {
 		console.log('Authenticating User');
-		mongoDAO.authUser(res, req.body.email, req.body.password);
+		mongoDAO.authenticate(res, req.body.email, req.body.password);
 	})
 
-	app.get('/profile', function(req, res, next) {
+	app.get('/profile', function(req, res) {
 		if (req.cookies.user) {
 			var username = req.cookies.user;
 			var password = new Buffer(req.cookies.token, 'base64').toString().replace(username, '');
@@ -26,7 +26,7 @@ module.exports = function(app, upload, fs) {
 	})
 
 	//Add Photos
-	app.post('/photoupload', upload.single('photo'), function(req, res, next) {
+	app.post('/photoupload', upload.single('photo'), function(req, res) {
 		var newFileName = req.file.originalname;
 		console.log(req.file.originalname);
 		console.log(newFileName);
@@ -34,7 +34,7 @@ module.exports = function(app, upload, fs) {
 	})
 
 	//Remove Photo
-	app.get('/removephoto', function(req, res, next) {
+	app.get('/removephoto', function(req, res) {
 		var username = req.query.username,
 			filename = req.query.filename;
 		fs.unlink(path.join('public/images/userimages/', username, filename), function(err, files) {
@@ -43,7 +43,7 @@ module.exports = function(app, upload, fs) {
 	})
 
 	//Get Uploaded Photos
-	app.get('/photos', function(req, res, next) {
+	app.get('/photos', function(req, res) {
 		var userFolderName = req.query.username.split(' ')[0];
 		fs.readdir(path.join('public/images/userimages/', userFolderName), function(err, files) {
 			var i, sortedFiles = [],

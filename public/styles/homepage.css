@@ -37,7 +37,7 @@ body {
 .main-header {
 	position:fixed;
 	background: linear-gradient(rgba(10, 178, 248, 0.6), #0AB2F8, #0AB2F8, #0AB2F8);
-	font-size: 3.5em;
+	font-size: 2em;
 	font-weight: 400;
 	color: #FFFFFF;
 	margin: 0;
@@ -49,6 +49,25 @@ body {
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
 	text-align: center;
+}
+
+.head-title {
+	position:relative;
+	padding-top: 3em;
+	text-align: center;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+
+.welcome-text {
+	font-weight: lighter;
+	padding: 5px;
+}
+
+.app-name {
+	font-size: 1.7em;
+	-webkit-transition: all 0.5s;
+	transition: all 0.5s;
 }
 
 .clearfix:after, .clearfix:before {
@@ -104,6 +123,10 @@ body {
 	padding-top: 0;
 }
 
+.main-header.small .app-name {
+	font-size: 1em;
+}
+
 .main-header.small .github-icon {
 	top: 0;
 }
@@ -139,12 +162,6 @@ button {
 button:hover {
 	background-color: #0AB2F8;
 	color: #FFFFFF;
-}
-
-.head-title {
-	position:relative;
-	padding-top: 2em;
-	text-align: center;
 }
 
 .github-icon {

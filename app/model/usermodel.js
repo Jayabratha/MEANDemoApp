@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
+var bcrypt = require('bcrypt');
+
 var UserSchema = new Schema({
 	username: {
 		type: String,
@@ -40,30 +42,39 @@ UserSchema.pre('save', function(next) {
 	//Hash the Passwords before saving is the password is modified or the user is new
 	if (user.isModified('password') || user.isNew) {
 		//Generate Salt and Password Hash
+		console.log("Generating Salt");
 		bcrypt.genSalt(saltRounds, function(err, salt) {
 			if (err) {
+				console.log('Salt' + err);
 				return next(err);
 			}
 			bcrypt.hash(user.password, salt, function(err, hash) {
+				console.log("Generating Password Hash");
 				if (err) {
+					console.log('Hash' + err);
 					return next(err);
 				}
+				console.log(hash);
 				user.password = hash;
+				next();
 			});
 		});
+	} else {
+		return next();
 	}
-	next();
 });
 
 
 //Method to compare password hashes
-UserSchema.methods.comparePassword = function (passw, cb) {
-    bcrypt.compare(passw, this.password, function (err, isMatch) {
-        if (err) {
-            return cb(err);
-        }
-        cb(null, isMatch);
-    });
+UserSchema.methods.comparePassword = function(password, cb) {
+	console.log(password + ', ' + this.password)
+	bcrypt.compare(password, this.password, function(err, isMatch) {
+		if (err) {
+			console.log(err);
+			return cb(err);
+		}
+		cb(null, isMatch);
+	});
 };
 
 var User = mongoose.model('User', UserSchema);

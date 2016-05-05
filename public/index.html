@@ -18,12 +18,15 @@
 </head>
 <body ng-app="app" ng-controller="appController as home" fix-to-top="fixed">
 <header class="main-header" ng-class="home.layout.headerClass" >
-	<div class="head-title"> Welcome to <strong>MEAN</strong> Stack </div>
+	<div class="head-title">
+		<div class="welcome-text" ng-class="home.layout.showButton"> Welcome to </div>
+		<div class="app-name"><strong>MEAN</strong> Mess Manager</div>
+	</div>
 	<a class="no-anchor icon github-icon" target="_blank" href="https://github.com/Jayabratha/MEANDemoApp">
 		<i class="ion-social-github" title="View on Github"></i>
 	</a>
 	<button class="start-btn" ng-class="home.layout.showButton" ui-sref="login" > Log In </button>
-	<button class="start-btn" ng-class="home.layout.showButton" > View Demo Profile </button>
+	<button class="start-btn" ng-class="home.layout.showButton" > View Demo </button>
 </header>
 <div id="node-background">
 	<canvas id="background-canvas" width="2000" height="1000" ng-show="home.layout.showCanvas">
@@ -34,7 +37,7 @@
 <!-- Modal- start -->
 	<div id="main_modal" ng-class="showModal">
 	</div>
-	<div id="main_message" ng-class="showModal" message-div messageobj='messageObj' on-close='hideModal()' pop-action='popAction()' >
+	<div id="main_message" ng-class="showModal" message-div message-obj='messageObj' on-close='hideModal()' pop-action='popAction()' >
 	</div>
 <!-- Modal- end -->
 <!-- Main View Content -start -->
@@ -69,7 +72,7 @@
 <!-- Include Services - end -->
 <!-- Include Directives - start -->
 <script src="scripts/directives/photos_directive.js"></script>
-<script src="scripts/directives/photos_directive.js"></script>
+<script src="scripts/directives/message_directive.js"></script>
 <!-- <script src="scripts/directives/timeline_directive.js"></script> -->
 <script src="scripts/directives/fix_to_top_directive.js"></script>
 <!-- Include Directives - end -->
