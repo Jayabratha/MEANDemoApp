@@ -80,39 +80,30 @@ exports.authenticate = function(res, email, password) {
 			});
 		}
 	});
+};
 
-}
-
-exports.getUser = function(res, username, password) {
-	User.find({
+exports.getUser = function(res, username) {
+	User.findOne({
 		"username": username
-	}, function(err, users) {
+	}, function(err, user) {
 		if (err) {
 			console.error("Couldn't find " + username + " in our DB");
 			res.send({
 				success: false,
 				message: "Sorry! Couldn't find " + username + " in our DB"
 			});
+		} 
+		if (!user) {
+			return res.status(403).send({
+				success: false,
+				msg: 'Authentication failed. User not found.'
+			});
 		} else {
-			console.log(users.length + " User found");
-			for (var user in users) {
-				console.log("User found: " + users[user].username);
-			}
-			var firstuser = users[0];
-			if (firstuser.password == password) {
-				console.log(firstuser);
-				res.send({
-					success: true,
-					message: "User found in DB",
-					userObj: firstuser
-				});
-			} else {
-				console.log("WRONG PASSWORD!");
-				res.send({
-					success: false,
-					message: "Wrong Password! Please try again"
-				});
-			}
+			res.json({
+				success: true,
+				msg: 'Welcome in the member area ' + user.name + '!',
+				userObj: user
+			});
 		}
 	});
 

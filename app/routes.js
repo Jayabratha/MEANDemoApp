@@ -2,26 +2,48 @@ module.exports = function(app, upload, fs) {
 	var express = require('express');
 	var path = require('path');
 	var mongoDAO = require('./dao/mongodao');
+	var passport = require('passport');
+	var jwt = require('jwt-simple');
 
+	var getToken = function(headers) {
+		if (headers && headers.authorization) {
+			var parted = headers.authorization.split(' ');
+			if (parted.length === 2) {
+				return parted[1];
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
+	};
+
+	//Register New User
 	app.post('/register', function(req, res, next) {
 		console.log('Form Data Received for: ' + req.body.username);
 		mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.exp, req.body.email, req.body.password);
 	})
 
+	//Authenticate User
 	app.post('/auth', function(req, res, next) {
 		console.log('Authenticating User');
 		mongoDAO.authenticate(res, req.body.email, req.body.password);
 	})
 
-	app.get('/profile', function(req, res) {
-		if (req.cookies.user) {
-			var username = req.cookies.user;
-			var password = new Buffer(req.cookies.token, 'base64').toString().replace(username, '');
-			console.log("Profile Request for " + username + " received");
-			mongoDAO.getUser(res, username, password);
+	//Get Profile Information
+	app.get('/profile', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			console.log(decoded);
+			mongoDAO.getUser(res, decoded.username);
 		} else {
-			console.log("No user logged in");
-			res.send("Profile Info Not Found");
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
 		}
 	})
 

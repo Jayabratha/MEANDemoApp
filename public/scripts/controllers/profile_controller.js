@@ -43,10 +43,6 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 			this.sex = sex;
 			this.dob = dob;
 			this.address = address;
-			this.role = {
-				'designer': designer,
-				'developer': developer
-			}
 			this.salary = salary;
 			this.email = email;
 			this.password = password;
@@ -54,7 +50,7 @@ app.controller('profileController', ['$scope', '$rootScope', '$http', '$cookies'
 			this.updated_at = updated_at;
 		}
 
-		$scope.user = new User(userdata.username, userdata.sex, userdata.dob, userdata.address, userdata.role.designer, userdata.role.developer, userdata.salary, userdata.email, userdata.password, userdata.created_at, userdata.updated_at);
+		$scope.user = new User(userdata.username, userdata.sex, userdata.dob, userdata.address, userdata.salary, userdata.email, userdata.password, userdata.created_at, userdata.updated_at);
 		$rootScope.hideModal();
 	}
 ]);

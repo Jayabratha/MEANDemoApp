@@ -1,5 +1,5 @@
 var JwtStrategy = require('passport-jwt').Strategy,
-    ExtractJwt = require('passport-jwt').ExtractJwt;
+  ExtractJwt = require('passport-jwt').ExtractJwt;
 
 var secretKey = "secret";
 
@@ -11,8 +11,9 @@ module.exports = function(passport) {
   opts.secretOrKey = secretKey;
   opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
   passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
+    console.log(jwt_payload);
     User.findOne({
-      email: jwt_payload.email
+      "username": jwt_payload.username
     }, function(err, user) {
       if (err) {
         return done(err, false);
