@@ -1,0 +1,25 @@
+<section class="add-expense">
+	<form name="expenseForm" class="col-xs-12 col-md-8 col-lg-7 clearfix" no-validate>
+		<div class="input-container" ng-class="{'error' : emailError = loginForm.email.$invalid && (loginForm.email.$touched || loginCntrl.notifyErrors), 'correct' : loginForm.email.$valid }">
+				<i class="expense-inr icon-inr"></i>
+				<input id="exp-amount" name="amount" type="number" placeholder="Enter Expense Amount" ng-model="addExpCntrl.expenseData.amount" required />
+				<div class="message-default" ng-cloak ng-cloack ng-show="emailError"> Please enter expense amount</div>
+		</div>
+		<div class="input-container" ng-class="{'error' : passwordError = loginForm.password.$invalid && (loginForm.password.$touched|| loginCntrl.notifyErrors) , 'correct' : loginForm.password.$valid }">
+			<div class="sub-container exp-type-wrapper">
+				<select id="exp-type" name="type" ng-model="addExpCntrl.expenseData.type" ng-options="expenseType for expenseType in addExpCntrl.expenseTypes" required>
+					<option value=""> Select Expense Type </option>
+				</select>
+				<div class="message-default" ng-cloak ng-cloack ng-show="passwordError"> Please select Expense Type</div>
+			</div>
+			<div class="sub-container">
+				<input id="exp-date" name="date" type="date" ng-model="addExpCntrl.expenseData.date" placeholder="Enter Expense Date" />
+				<div class="message-default" ng-cloak ng-cloack ng-show="passwordError"> Please select Expense Date</div>
+			</div>				
+		</div>
+		<div class="input-container" ng-class="{'error' : emailError = loginForm.email.$invalid && (loginForm.email.$touched || loginCntrl.notifyErrors), 'correct' : loginForm.email.$valid }">
+			<input id="exp-comments" name="comments" type="text" placeholder="Add Comments" ng-model="addExpCntrl.expenseData.comments" />
+		</div>
+		<button class="add-exp"> Add Expense </button>
+	</form>
+</section>

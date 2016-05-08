@@ -16,7 +16,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', '$timeout',
 					if (response.success && response.token) {
 						//Save Token
 						$window.sessionStorage.setItem('token', response.token)
-						$state.go('profile.timeline');
+						$state.go('home.addExpense');
 					} else {
 						$rootScope.displayModal();
 						$rootScope.setMessage(response.message, 'Try Again', 'login', false);

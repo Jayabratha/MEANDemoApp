@@ -1,0 +1,63 @@
+<div id="profile">
+	<div class="menu-icon-container" ng-click="showMenu = !showMenu">
+		<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
+	</div>
+	<header class="profile-header">
+		<div class="profile-menu" ng-class="{'show' : showMenu}">
+			<button class="logout" ng-click="logOut()">Logout</button>
+		</div>
+	</header>
+	<aside class="profile-options col-md-3 col-lg-2">
+		<img class="profile-pic-container" src="../images/profilepic.jpg"/>
+	</aside>
+	<section class="profile-body">
+		<div class="base-info col-md-3 col-lg-2">
+			<h1 class="user-name"> {{homeCntrl.user.username}} </h1>
+			<ul class="profile-options">
+				<li ng-class="{'active': homeCntrl.activeTab === 'addexpense' || homeCntrl.activeTab === 'stats' || homeCntrl.activeTab === 'notifications'}" ui-sref="home.addExpense"> Home </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'profile'}" ui-sref="home.profile"> My Profile </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'expenses'}" ui-sref="home.expenses"> My Expenses </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'group'}" ui-sref="home.group"> My Group </li>
+			</ul>
+			<button class="logout-btn" ng-click="logOut()">Logout</button>
+		</div>
+		<div class="profile-main-content col-md-9 col-lg-10">
+			<nav class="profile-nav">
+				<ul class="clearfix">
+					<li ng-class="{'active': isAddExpenses = homeCntrl.activeTab === 'addexpense'}" ui-sref="home.addExpense" ng-show="isAddExpenses || isStats || isNotifications">
+						<i class="icon-android-add-circle"></i>
+						<span> Add Expense </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="{'active': isStats = homeCntrl.activeTab === 'stats'}" ui-sref="home.stats" ng-show="isAddExpenses || isStats || isNotifications">
+						<i class="icon-ios-pie"></i>
+						<span> Detail Statistics </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="{'active': isNotifications = homeCntrl.activeTab === 'notifications'}" ui-sref="home.notifications" ng-show="isAddExpenses || isStats || isNotifications">
+						<i class="ion-android-notifications"></i>
+						<span> Notifications </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="{'active': isProfile = homeCntrl.activeTab === 'profile'}" ng-show="isProfile">
+						<i class="icon-person"></i>
+						<span> My Profile </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="{'active': isExpenses = homeCntrl.activeTab === 'expenses'}" ng-show="isExpenses">
+						<i class="icon-inr"></i>
+						<span> My Expenses </span>
+						<div class="underline"></div>
+					</li>
+					<li ng-class="{'active': isGroup = homeCntrl.activeTab === 'group'}" ng-show="isGroup">
+						<i class="icon-ios-people"></i>
+						<span> My Group </span>
+						<div class="underline"></div>
+					</li>
+				</ul>
+				<div class="fader"></div>
+			</nav>
+			<section class="profile-content" ui-view ></section>
+		</div>
+</section>
+</div>

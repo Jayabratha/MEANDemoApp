@@ -50,7 +50,7 @@ display: none;
 	padding: 0.5em;
 	box-sizing: border-box;
 }
-.input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
+.input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']), select {
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
     font-size: 1em;
     padding: 0.5em;
@@ -58,6 +58,7 @@ display: none;
     border: none;
     border-bottom: thin solid #ccc;
     box-sizing: border-box;
+    height: 3em;
 }
 .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']):focus {
 	border-bottom-color: #0ab2f8;
@@ -276,3 +277,48 @@ display: none;
 	opacity: 1;
 }
 
+/* Add Expense Form Styles - start */
+section.add-expense form {
+	padding: 2em 3.5em;
+	box-sizing: border-box;
+}
+section.add-expense form .input-container {
+	width: 100%;
+}
+#exp-amount {
+	font-size: 2em;
+	height: 1.5em;
+	padding-left: 1em;
+}
+
+.sub-container {
+	display: inline-block;
+	width: 48%;
+}
+
+.exp-type-wrapper {
+	margin-right: 3%;
+}
+
+.add-exp {
+	display: block;
+	margin-top: 3em;
+}
+.expense-inr {
+	font-size: 2em;
+    position: absolute;
+    margin-top: 10px;
+}
+/* Add Expense Form Styles - end */
+
+@media only screen and (max-width:1000px) {
+	section.add-expense form {
+		padding: 2em 2.5em;
+	}
+}
+
+@media only screen and (max-width:425px) {
+	section.add-expense form {
+		padding: 2em 1.5em;
+	}
+}

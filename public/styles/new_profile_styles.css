@@ -100,7 +100,6 @@ header.profile-header {
 aside.profile-options {
 	position: absolute;
 	top: 0;
-	width: 25%;
 	height: 100%;
 	background-color: rgba(255, 255, 255, 0.5);
 }
@@ -137,7 +136,7 @@ aside.profile-options {
 .user-name {
 	font-size: 2.2em;
 	padding: 0.25em 0;
-    margin: 0 0 0.25em;
+    margin: 0;
     border-bottom: thin solid #ccc;
 }
 
@@ -192,14 +191,33 @@ nav.profile-nav i {
 	font-size: 1.5em;
     vertical-align: middle;
     margin-right: 5px;
+    margin-top: 5px;
+    display: inline-block;
 }
 
 nav.profile-nav span {
 	font-weight: normal;
 }
 
-/* Fixed Header Styles - Starts */
 
+ul.profile-options {
+	margin: 0;
+	padding: 0;
+}
+
+ul.profile-options li {
+	list-style: none;
+	padding: 15px;
+	font-weight: normal;
+	border-bottom: thin solid #fff;
+	cursor: pointer;
+}
+
+ul.profile-options li:hover, ul.profile-options li.active {
+	background-color: #E7E7E7;
+}
+
+/* Fixed Header Styles - Starts */
 .fixed .profile-body{
 	top: 0;
 }
@@ -213,13 +231,12 @@ nav.profile-nav span {
 }
 
 .fixed .profile-main-content {
-	left: 25%;
+	left: 16.66666667%;
 }
 
 .fixed nav.profile-nav {
 	position: fixed;
 	top: 0;
-	left: 25.2%;
 	width: 75%;
 	z-index: 4;
 	-webkit-transform: translateZ(0);
@@ -281,6 +298,10 @@ nav.profile-nav span {
 	}
 	nav.profile-nav li {
 		padding: 2em 0 1em;
+	}
+
+	.profile-options {
+		display: none;
 	}
 
 	/* Fixed Header Styles - Starts */

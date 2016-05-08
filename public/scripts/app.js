@@ -5,10 +5,12 @@ app.config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
 		$urlRouterProvider.otherwise("");
 		$stateProvider.
-		state('home', {
+		state('default', {
 			url: '',
-			templateUrl: 'templates/homepage.html',
-			controller: 'homepageController'
+			template: '',
+			controller: function($scope) {
+				$scope.home.layout.resetVars();
+			}
 		}).
 		state('login', {
 			url: '/login',
@@ -30,11 +32,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				}
 			}
 		}).
-		state('profile', {
-			url: '/profile',
-			templateUrl: 'templates/new_profile.html',
+		state('home', {
+			url: '/home',
+			templateUrl: 'templates/new_home.html',
 			abstract: true,
-			controller: 'profileController',
+			controller: 'homeController as homeCntrl',
 			resolve: {
 				userdata: function($q, getUserService, $rootScope) {
 					var defer = $q.defer();
@@ -50,20 +52,35 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				}
 			}
 		}).
-		state('profile.timeline', {
+		state('home.addExpense', {
 			url: '',
-			templateUrl: 'templates/my_feed.html',
-			controller: 'timelineController'
+			templateUrl: 'templates/add_expense.html',
+			controller: 'addExpenseController as addExpCntrl'
 		}).
-		state('profile.photos', {
-			url: '/photos',
-			templateUrl: 'templates/profile_photos.html',
-			controller: 'photosController'
+		state('home.stats', {
+			url: '/stats',
+			templateUrl: 'templates/stats.html',
+			controller: 'statsController'
 		}).
-		state('profile.edit', {
-			url: '/edit',
-			templateUrl: 'templates/editprofile.html',
-			controller: 'profileEditController'
+		state('home.notifications', {
+			url: '/notifications',
+			templateUrl: 'templates/notifications.html',
+			controller: 'notificationsController'
+		}).
+		state('home.profile', {
+			url: '/profile',
+			templateUrl: 'templates/profile.html',
+			controller: 'profileController'
+		}).
+		state('home.expenses', {
+			url: '/expenses',
+			templateUrl: 'templates/expenses.html',
+			controller: 'expensesController'
+		}).
+		state('home.group', {
+			url: '/group',
+			templateUrl: 'templates/group.html',
+			controller: 'groupController'
 		})
 	}
 ]);
