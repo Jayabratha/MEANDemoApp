@@ -2,10 +2,13 @@ var User = require('../model/usermodel');
 
 var jwt = require('jwt-simple');
 
-exports.insertUser = function(res, username, sex, dob, address, salary, email, password) {
+exports.insertUser = function(res, username, firstname, lastname, phone, sex, dob, address, salary, email, password) {
 	console.log("Request Received in insert User");
 	var user = new User({
 		username: username,
+		firstname: firstname,
+		lastname: lastname,
+		phone: phone,
 		sex: sex,
 		dob: dob,
 		address: address,

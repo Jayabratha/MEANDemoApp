@@ -4,7 +4,7 @@
 	</div>
 	<header class="profile-header">
 		<div class="profile-menu" ng-class="{'show' : showMenu}">
-			<button class="logout" ng-click="logOut()">Logout</button>
+			<button class="logout" ng-click="homeCntrl.logOut()">Logout</button>
 		</div>
 	</header>
 	<aside class="profile-options col-md-3 col-lg-2">
@@ -19,7 +19,7 @@
 				<li ng-class="{'active': homeCntrl.activeTab === 'expenses'}" ui-sref="home.expenses"> My Expenses </li>
 				<li ng-class="{'active': homeCntrl.activeTab === 'group'}" ui-sref="home.group"> My Group </li>
 			</ul>
-			<button class="logout-btn" ng-click="logOut()">Logout</button>
+			<button class="logout-btn" ng-click="homeCntrl.logOut()">Logout</button>
 		</div>
 		<div class="profile-main-content col-md-9 col-lg-10">
 			<nav class="profile-nav">

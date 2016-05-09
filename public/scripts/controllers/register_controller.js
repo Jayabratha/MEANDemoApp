@@ -6,6 +6,9 @@ app.controller('registerController', ['$scope', '$http', '$timeout', '$rootScope
 		/* Register Form Model */
 		this.userData = {
 			username: '',
+			firstname: '',
+			lastname: '',
+			phone: null,
 			sex: 'Male',
 			dob: '',
 			addr: '',
@@ -30,7 +33,7 @@ app.controller('registerController', ['$scope', '$http', '$timeout', '$rootScope
 					var responseData = response.data;
 					$scope.displayModal();
 					if (responseData.success) {
-						$rootScope.setMessage(responseData.message, 'View Profile', 'profile', false);
+						$rootScope.setMessage(responseData.message, 'Sign In', 'login', false);
 					} else {
 						$rootScope.setMessage(responseData.message, 'Okay', 'login', false);
 					}

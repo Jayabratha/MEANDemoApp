@@ -10,6 +10,9 @@ var UserSchema = new Schema({
 		required: true,
 		unique: true
 	},
+	listname: String,
+	lastname: String,
+	phone: Number,
 	sex: String,
 	dob: Date,
 	address: String,

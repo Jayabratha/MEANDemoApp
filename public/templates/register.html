@@ -12,11 +12,38 @@
 				</div>
 				<div class="form-row">
 					<div class="label-container">
-						<label for="username">* Name: </label>
+						<label for="username">* Username: </label>
 					</div>
 					<div class="input-container" ng-class="{'error' : usernameError = registerForm.username.$invalid && (registerForm.username.$touched || registerCntrl.notifyErrors), 'correct' : registerForm.username.$valid } ">
-						<input id="username" name="username" type="text" placeholder="Enter your name" ng-model="registerCntrl.userData.username" required />
+						<input id="username" name="username" type="text" placeholder="Enter a username" ng-model="registerCntrl.userData.username" required />
 						<div class="message-default" ng-cloak ng-cloack ng-show = "usernameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="firstname">* First Name: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : firstnameError = registerForm.firstname.$invalid && (registerForm.firstname.$touched || registerCntrl.notifyErrors), 'correct' : registerForm.firstname.$valid } ">
+						<input id="firstname" name="firstname" type="text" placeholder="Enter your first name" ng-model="registerCntrl.userData.firstname" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "firstnameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="lastname">* Last Name: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : lastnameError = registerForm.lastname.$invalid && (registerForm.lastname.$touched || registerCntrl.notifyErrors), 'correct' : registerForm.lastname.$valid } ">
+						<input id="lastname" name="lastname" type="text" placeholder="Enter your last name" ng-model="registerCntrl.userData.lastname" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "lastnameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="phone">* Contact Number: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : phoneError = registerForm.phone.$invalid && (registerForm.phone.$touched || registerCntrl.notifyErrors), 'correct' : registerForm.phone.$valid } ">
+						<input id="phone" name="phone" type="number" placeholder="Enter your contact number" ng-model="registerCntrl.userData.phone" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "phoneError"> This field can't be empty</div>
 					</div>
 				</div>
 				<div class="form-row">
@@ -53,7 +80,7 @@
 					</div>
 					<div class="form-row">
 						<div class="label-container" ng-class="{'correct' : registerForm.email.$valid }">
-							<label for="exp" >Experience: </label>
+							<label for="exp">Work Experience: </label>
 						</div>
 						<div class="input-container">
 							<div>
