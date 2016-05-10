@@ -22,6 +22,7 @@ var UserSchema = new Schema({
 		required: true,
 		unique: true
 	},
+	group: String,
 	password: String,
 	created_at: Date,
 	updated_at: Date

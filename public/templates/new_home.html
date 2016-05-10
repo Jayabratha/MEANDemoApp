@@ -7,11 +7,11 @@
 			<button class="logout" ng-click="homeCntrl.logOut()">Logout</button>
 		</div>
 	</header>
-	<aside class="profile-options col-md-3 col-lg-2">
+	<aside class="profile-options col-md-2 col-lg-2">
 		<img class="profile-pic-container" src="../images/profilepic.jpg"/>
 	</aside>
 	<section class="profile-body">
-		<div class="base-info col-md-3 col-lg-2">
+		<div class="base-info col-md-2 col-lg-2">
 			<h1 class="user-name"> {{homeCntrl.user.username}} </h1>
 			<ul class="profile-options">
 				<li ng-class="{'active': homeCntrl.activeTab === 'addexpense' || homeCntrl.activeTab === 'stats' || homeCntrl.activeTab === 'notifications'}" ui-sref="home.addExpense"> Home </li>

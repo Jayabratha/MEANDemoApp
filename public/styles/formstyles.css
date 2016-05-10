@@ -59,6 +59,8 @@ display: none;
     border-bottom: thin solid #ccc;
     box-sizing: border-box;
     height: 3em;
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
 }
 .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']):focus {
 	border-bottom-color: #0ab2f8;
@@ -89,7 +91,7 @@ display: none;
 #register-form .input-container input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
 	width: 80%;
 }
-.input-container.error input:not([type="radio"]):not([type="checkbox"]):not([type='range']) {
+.error input:not([type="radio"]):not([type="checkbox"]):not([type='range']), .error select {
 	border-bottom: thin solid #E83535;
 }
 /* Input container Styles - end */
@@ -294,6 +296,7 @@ section.add-expense form .input-container {
 .sub-container {
 	display: inline-block;
 	width: 48%;
+	vertical-align: top;
 }
 
 .exp-type-wrapper {

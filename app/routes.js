@@ -88,4 +88,46 @@ module.exports = function(app, upload, fs) {
 			}
 		});
 	});
+
+	//Add Expense
+	app.post('/addexpense', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			console.log('Adding New Expense')
+			if (decoded.username === req.body.user) {
+				mongoDAO.addExpense(res, req.body.amount, req.body.type, req.body.date, req.body.comment,
+					req.body.user, req.body.group);
+			} else {
+				return res.status(401).send({
+					success: false,
+					msg: 'You are not authorized to perform this action'
+				});
+			}
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
+
+	//Get Expenses
+	app.get('/getexpenses', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			console.log('Getting Expenses for ' + decoded.username);
+			mongoDAO.getExpenses(res, decoded.username);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	})
 };

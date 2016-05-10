@@ -166,7 +166,7 @@ nav.profile-nav li {
 	position: relative;
 	float: left;
 	list-style: none;
-	padding: 1.25em 0 0.5em;
+	padding: 1.05em 0 0.5em;
 	width: 33%;
 	box-sizing: border-box;
 	text-align: center;
@@ -226,6 +226,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	position: fixed;
 	top: 0;
 	left: 0;
+	height: 4em;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
 }
@@ -297,7 +298,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 		margin-top: 0;
 	}
 	nav.profile-nav li {
-		padding: 2em 0 1em;
+		padding: 1.05em 0 1em;
 	}
 
 	.profile-options {

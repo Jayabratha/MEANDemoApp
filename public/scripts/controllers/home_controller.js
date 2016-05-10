@@ -9,6 +9,9 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 
 		this.activeTab = "addexpense";
 
+		//Save Username in Session
+		$window.sessionStorage.setItem('user', userdata.username);
+
 		
 		this.logOut = function() {
 			$window.sessionStorage.removeItem('token');

@@ -15,7 +15,7 @@ app.controller('loginController', ['$scope', '$rootScope', '$state', '$timeout',
 				AuthUser.authenticateUser(credentails, function(response) {
 					if (response.success && response.token) {
 						//Save Token
-						$window.sessionStorage.setItem('token', response.token)
+						$window.sessionStorage.setItem('token', response.token);
 						$state.go('home.addExpense');
 					} else {
 						$rootScope.displayModal();

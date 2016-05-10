@@ -1,4 +1,5 @@
-var User = require('../model/usermodel');
+var User = require('../model/user_model');
+var Expense = require('../model/expense_model')
 
 var jwt = require('jwt-simple');
 
@@ -15,7 +16,7 @@ exports.insertUser = function(res, username, firstname, lastname, phone, sex, do
 		salary: salary,
 		email: email,
 		password: password,
-	})
+	});
 
 	user.save(function(err) {
 		console.log("In Save");
@@ -90,12 +91,11 @@ exports.getUser = function(res, username) {
 		"username": username
 	}, function(err, user) {
 		if (err) {
-			console.error("Couldn't find " + username + " in our DB");
 			res.send({
 				success: false,
 				message: "Sorry! Couldn't find " + username + " in our DB"
 			});
-		} 
+		}
 		if (!user) {
 			return res.status(403).send({
 				success: false,
@@ -109,5 +109,56 @@ exports.getUser = function(res, username) {
 			});
 		}
 	});
+};
 
+exports.addExpense = function(res, amount, type, date, comment, user, group) {
+	console.log("Amount " + amount);
+	var expense = new Expense({
+		amount: amount,
+		type: type,
+		date: date,
+		comment: comment,
+		user: user,
+		group: group
+	});
+
+	expense.save(function(err) {
+		if (err) {
+			console.log(err);
+			res.send({
+				success: false,
+				message: "Sorry! We couldn't create your profile. Please try later"
+			});
+		} else {
+			res.send({
+				success: true,
+				message: "Expense Data succesfully saved"
+			});
+		}
+	})
 }
+
+exports.getExpenses = function(res, username) {
+	Expense.find({
+		"username": username
+	}, function(err, expenses) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "We ran into an Error, Please try later"
+			});
+		}
+		if (!expenses) {
+			return res.status(403).send({
+				success: false,
+				msg: 'Authentication failed. User not found.'
+			});
+		} else {
+			res.json({
+				success: true,
+				msg: 'Expense Data retrieved succesfully',
+				expenses: expenses
+			});
+		}
+	});
+};
