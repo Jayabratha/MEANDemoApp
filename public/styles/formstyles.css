@@ -280,7 +280,7 @@ display: none;
 }
 
 /* Add Expense Form Styles - start */
-section.add-expense form {
+section.add-expense form, .expenses {
 	padding: 2em 3.5em;
 	box-sizing: border-box;
 }
@@ -314,14 +314,33 @@ section.add-expense form .input-container {
 }
 /* Add Expense Form Styles - end */
 
+/* Expenses Table Styles - start */
+.expense-list th {
+	padding: 0.5em;
+	min-width: 9em;
+	border-bottom: thin solid #ccc;
+}
+
+.expense-list td {
+	text-align: center;
+	padding: 0.3em;
+	border-bottom: thin solid #ccc;
+}
+
+.expense-list td.amount {
+	font-size: 1.7em;
+	font-weight: normal;
+}
+/* Expenses Table Styles - end */
+
 @media only screen and (max-width:1000px) {
-	section.add-expense form {
+	section.add-expense form, .expenses {
 		padding: 2em 2.5em;
 	}
 }
 
 @media only screen and (max-width:425px) {
-	section.add-expense form {
+	section.add-expense form, .expenses{
 		padding: 2em 1.5em;
 	}
 }

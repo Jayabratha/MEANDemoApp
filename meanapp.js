@@ -4,7 +4,8 @@ var app = express();
 var path = require('path');
 var fs = require('fs');
 var bodyParser = require('body-parser');
-var multer = require('multer'); // for parsing multipart/form-data
+// for parsing multipart/form-data
+var multer = require('multer');
 var mongoose = require('mongoose');
 var passport = require('passport');
 

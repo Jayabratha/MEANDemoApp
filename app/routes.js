@@ -121,8 +121,9 @@ module.exports = function(app, upload, fs) {
 		var token = getToken(req.headers);
 		if (token) {
 			var decoded = jwt.decode(token, 'secret');
-			console.log('Getting Expenses for ' + decoded.username);
-			mongoDAO.getExpenses(res, decoded.username);
+			var user = req.query.username;
+			console.log('Getting Expenses for ' + user);
+			mongoDAO.getExpenses(res, user);
 		} else {
 			return res.status(403).send({
 				success: false,

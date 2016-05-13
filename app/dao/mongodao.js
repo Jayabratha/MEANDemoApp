@@ -139,8 +139,9 @@ exports.addExpense = function(res, amount, type, date, comment, user, group) {
 }
 
 exports.getExpenses = function(res, username) {
+	console.log(username);
 	Expense.find({
-		"username": username
+		"user": username
 	}, function(err, expenses) {
 		if (err) {
 			res.send({

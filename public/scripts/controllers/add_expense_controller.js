@@ -18,11 +18,18 @@ app.controller('addExpenseController', ['$scope', '$window', 'ExpenseService',
 		this.addExpense = function(isValid, expenseData) {
 			expenseData.user = $window.sessionStorage.getItem('user');
 			expenseData.group = "test";
-				if (isValid) {
-					ExpenseService.addExpense(expenseData);
-				} else {
-					this.notifyErrors = true;
-				}
+			if (isValid) {
+				ExpenseService.addExpense(expenseData).then(
+					function() {
+						alert("Expense Added");
+					},
+					function() {
+						alert("Error Occurred");
+					}
+				);
+			} else {
+				this.notifyErrors = true;
+			}
 		}
 	}
 ])

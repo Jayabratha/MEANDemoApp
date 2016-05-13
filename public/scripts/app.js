@@ -75,7 +75,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		state('home.expenses', {
 			url: '/expenses',
 			templateUrl: 'templates/expenses.html',
-			controller: 'expensesController'
+			controller: 'expensesController as expCntrl'
 		}).
 		state('home.group', {
 			url: '/group',
