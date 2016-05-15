@@ -21,7 +21,7 @@ module.exports = function(app, upload, fs) {
 	//Register New User
 	app.post('/register', function(req, res, next) {
 		console.log('Form Data Received for: ' + req.body.username);
-		mongoDAO.insertUser(res, req.body.username, req.body.sex, req.body.dob, req.body.addr, req.body.exp, req.body.email, req.body.password);
+		mongoDAO.insertUser(res, req.body.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.sex, req.body.dob, req.body.addr, req.body.exp, req.body.email, req.body.password);
 	})
 
 	//Authenticate User

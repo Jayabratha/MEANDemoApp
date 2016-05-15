@@ -40,7 +40,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			resolve: {
 				userdata: function($q, getUserService, $rootScope) {
 					var defer = $q.defer();
-					getUserService.getUserDetails().then(function(responsedata) {
+					getUserService.getUserDetails().then(
+						function(responsedata) {
 						defer.resolve(responsedata);
 					}, function(responsedata) {
 						$rootScope.displayModal();
@@ -70,7 +71,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		state('home.profile', {
 			url: '/profile',
 			templateUrl: 'templates/profile.html',
-			controller: 'profileController'
+			controller: 'profileController as profileCntrl'
 		}).
 		state('home.expenses', {
 			url: '/expenses',
@@ -86,8 +87,8 @@ app.config(['$stateProvider', '$urlRouterProvider',
 ]);
 
 
-app.run(['$rootScope', '$timeout', '$cookies', '$state',
-	function($rootScope, $timeout, $cookies, $state) {
+app.run(['$rootScope', '$timeout', '$window', '$state',
+	function($rootScope, $timeout, $window, $state) {
 		var backgroundAnimation = bgAnimate.getInstance();
 
 		/* Render and Start Background Animation*/
@@ -103,10 +104,10 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 			}
 			/* Go To Profile is user is already logged in */
 			if (toState.name === 'register' || toState.name === 'login') {
-				userName = $cookies.get('user');
+				userName = $window.sessionStorage.getItem('user');
 				if (userName) {
 					event.preventDefault();
-					$state.go('profile.timeline');
+					$state.go('home.addExpense');
 				}
 			}
 		});
@@ -114,13 +115,13 @@ app.run(['$rootScope', '$timeout', '$cookies', '$state',
 			if (toState.name === 'register') {
 				$rootScope.registerState.enter();
 			} else if (toState.name === 'login') {
-				if (fromState.name === 'profile.timeline' || fromState.name === 'profile.photos' || fromState.name === 'profile.edit') {
+				if (fromState.name === 'home.addExpense') {
 					/* Render and Start Background Animation*/
 					backgroundAnimation.renderBackground();
 					backgroundAnimation.startAnimation();
 				}
 				$rootScope.loginState.enter();
-			} else if (toState.name === 'profile.timeline') {
+			} else if (toState.name === 'home.addExpense') {
 				backgroundAnimation.stopAnimation();
 				backgroundAnimation.clearBackground();
 			}

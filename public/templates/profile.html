@@ -1,0 +1,101 @@
+<div class="content">
+	<form name="profileForm" ng-submit="profileCntrl.updateForm(profileForm.$valid, profileCntrl.userData)" novalidate>
+			<div class="profile-container">
+				<header class="form-row">
+					Your Profile Information
+				</header>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="username">* Username: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : usernameError = profileForm.username.$invalid && (profileForm.username.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.username.$valid } ">
+						<input id="username" name="username" type="text" placeholder="Enter a username" ng-model="profileCntrl.userData.username" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "usernameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="firstname">* First Name: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : firstnameError = profileForm.firstname.$invalid && (profileForm.firstname.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.firstname.$valid } ">
+						<input id="firstname" name="firstname" type="text" placeholder="Enter your first name" ng-model="profileCntrl.userData.firstname" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "firstnameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="lastname">* Last Name: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : lastnameError = profileForm.lastname.$invalid && (profileForm.lastname.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.lastname.$valid } ">
+						<input id="lastname" name="lastname" type="text" placeholder="Enter your last name" ng-model="profileCntrl.userData.lastname" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "lastnameError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="phone">* Contact Number: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : phoneError = profileForm.phone.$invalid && (profileForm.phone.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.phone.$valid } ">
+						<input id="phone" name="phone" type="number" placeholder="Enter your contact number" ng-model="profileCntrl.userData.phone" required />
+						<div class="message-default" ng-cloak ng-cloack ng-show = "phoneError"> This field can't be empty</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div rowspan="2" class="label-container">
+						<label>Sex:</label>
+					</div>
+					<div class="input-container" ng-class="{'correct' : profileForm.sex.$valid }">
+						<div class="side-options">
+							<input name="sex" type="radio" ng-model="profileCntrl.userData.sex" value="Male" ng-checked="true" />
+							<label> Male</label>
+						</div>
+						<div class="side-options">
+							<input name="sex" type="radio" ng-model="profileCntrl.userData.sex" value="Female" />
+							<label> Female</label>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="dob">*Date of Birth: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : dobError = profileForm.dob.$invalid && (profileForm.dob.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.dob.$valid }">
+						<input id="dob" name="dob" type="date" placeholder="yyyy-mm-dd" ng-model="profileCntrl.userData.dob" required />
+						<div class="message-default" ng-cloak ng-show="dobError"> Please provide valid date</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container">
+						<label for="addr">*Address: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : addrError = profileForm.addr.$invalid && (profileForm.addr.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.addr.$valid }">
+						<textarea id="addr" name="addr" ng-model="profileCntrl.userData.addr" required ></textarea>
+						<div class="message-default" ng-cloak ng-show="addrError"> Please provide your address</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="label-container" ng-class="{'correct' : profileForm.email.$valid }">
+						<label for="exp">Work Experience: </label>
+					</div>
+					<div class="input-container">
+						<div>
+							<input id="exp" name="exp" type="range" ng-model="profileCntrl.userData.exp" min="0" max="50" step="1" />
+							<div class="side-options"><b>{{profileCntrl.userData.exp}}</b> years</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-row">
+					<div  class="label-container">
+						<label for="email" >e-mail: </label>
+					</div>
+					<div class="input-container" ng-class="{'error' : emailError = profileForm.email.$invalid && (profileForm.email.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.email.$valid }">
+						<input id="email" name="email" ng-model="profileCntrl.userData.email" placeholder="Please enter email id" required type="email" />
+						<div class="message-default" ng-cloak ng-show="emailError"> Please provide valid email</div>
+					</div>
+				</div>
+				<div class="center-text">
+					<button class="submit-btn" name="submit" type="submit">Update</button>
+				</div>
+			</div>
+	</form>
+</div>

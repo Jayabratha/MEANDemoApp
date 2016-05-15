@@ -10,19 +10,20 @@ var UserSchema = new Schema({
 		required: true,
 		unique: true
 	},
-	listname: String,
+	firstname: String,
 	lastname: String,
 	phone: Number,
 	sex: String,
 	dob: Date,
 	address: String,
-	salary: Number,
+	exp: Number,
 	email: {
 		type: String,
 		required: true,
 		unique: true
 	},
 	group: String,
+	admin: Boolean,
 	password: String,
 	created_at: Date,
 	updated_at: Date

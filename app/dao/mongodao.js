@@ -3,7 +3,7 @@ var Expense = require('../model/expense_model')
 
 var jwt = require('jwt-simple');
 
-exports.insertUser = function(res, username, firstname, lastname, phone, sex, dob, address, salary, email, password) {
+exports.insertUser = function(res, username, firstname, lastname, phone, sex, dob, address, exp, email, password) {
 	console.log("Request Received in insert User");
 	var user = new User({
 		username: username,
@@ -13,10 +13,12 @@ exports.insertUser = function(res, username, firstname, lastname, phone, sex, do
 		sex: sex,
 		dob: dob,
 		address: address,
-		salary: salary,
+		exp: exp,
 		email: email,
 		password: password,
 	});
+
+	console.log(user);
 
 	user.save(function(err) {
 		console.log("In Save");

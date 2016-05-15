@@ -1,5 +1,5 @@
-app.controller('addExpenseController', ['$scope', '$window', 'ExpenseService',
-	function($scope, $window, ExpenseService) {
+app.controller('addExpenseController', ['$scope', '$rootScope', '$window', 'ExpenseService',
+	function($scope, $rootScope, $window, ExpenseService) {
 		$scope.homeCntrl.activeTab = "addexpense";
 
 		this.expenseTypes = ['Veg items', 'Non-Veg Items', 'Grocessary', 'Paper', 'Water', 'Sweeper', 'Others'];
@@ -20,11 +20,13 @@ app.controller('addExpenseController', ['$scope', '$window', 'ExpenseService',
 			expenseData.group = "test";
 			if (isValid) {
 				ExpenseService.addExpense(expenseData).then(
-					function() {
-						alert("Expense Added");
+					function(response) {
+						$rootScope.displayModal();
+						$rootScope.setMessage(response.message, 'Okay', '', false);
 					},
-					function() {
-						alert("Error Occurred");
+					function(error) {
+						$rootScope.displayModal();
+						$rootScope.setMessage("Couldn't add your expense", 'Try Again', '', false);
 					}
 				);
 			} else {

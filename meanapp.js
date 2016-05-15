@@ -10,7 +10,8 @@ var mongoose = require('mongoose');
 var passport = require('passport');
 
 //Connect to MongoDB
-mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
+//mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
+mongoose.connect('mongodb://localhost:27017/meanDB');
 
 var db = mongoose.connection;
 

@@ -15,6 +15,10 @@ header.content-header {
 	float: left;
 }
 
+.empty-message {
+	font-size: 1.6em;
+    padding: 1em 0.5em;
+}  
 /* Label Styles - start */
 .label-container {
 	position: relative;
@@ -23,8 +27,9 @@ header.content-header {
 	min-height: 45px;
 	height: auto;
 	text-align: right;
-	padding: 0.5em 3% 0.5em 0;
+	padding: 1em 3% 0.5em 0;
 	vertical-align: top;
+	font-size: 0.9em;
 	box-sizing: border-box;
 }
 .label-container label {
@@ -280,7 +285,7 @@ display: none;
 }
 
 /* Add Expense Form Styles - start */
-section.add-expense form, .expenses {
+section.add-expense form, .content {
 	padding: 2em 3.5em;
 	box-sizing: border-box;
 }
@@ -315,15 +320,18 @@ section.add-expense form .input-container {
 /* Add Expense Form Styles - end */
 
 /* Expenses Table Styles - start */
+.expense-list {
+	border-collapse: collapse;
+}
 .expense-list th {
 	padding: 0.5em;
 	min-width: 9em;
-	border-bottom: thin solid #ccc;
+	background-color: #E4E3E3;
 }
 
 .expense-list td {
 	text-align: center;
-	padding: 0.3em;
+	padding: 0.2em;
 	border-bottom: thin solid #ccc;
 }
 
@@ -331,16 +339,20 @@ section.add-expense form .input-container {
 	font-size: 1.7em;
 	font-weight: normal;
 }
+.expense-list i {
+	top: 4px;
+    position: relative;
+}
 /* Expenses Table Styles - end */
 
 @media only screen and (max-width:1000px) {
-	section.add-expense form, .expenses {
+	section.add-expense form, .content {
 		padding: 2em 2.5em;
 	}
 }
 
 @media only screen and (max-width:425px) {
-	section.add-expense form, .expenses{
+	section.add-expense form, .content{
 		padding: 2em 1.5em;
 	}
 }

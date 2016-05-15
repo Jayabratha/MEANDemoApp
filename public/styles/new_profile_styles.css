@@ -245,7 +245,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 }
 
 .fixed .profile-content {
-	top: 320px;
+	margin-top: 320px;
 }
 
 .fixed .profile-pic-container {
@@ -263,6 +263,21 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	background-color: transparent;
 }
 /* Fixed Header Styles - end */
+
+.profile-container {
+		min-width: 600px;
+	}
+
+.profile-main-content header {
+	font-size: 1.3em;
+    padding: 0 0.5em 1em;
+    border-bottom: thin solid #0ab2f8;
+    margin-bottom: 1em;
+}
+
+.profile-container .label-container {
+	width: 20%;
+}
 
 @media only screen and (max-width:1000px) {
 	header.profile-header {
@@ -329,7 +344,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	}
 
 	.fixed .profile-content {
-		top: 340px;
+		margin-top: 340px;
 	}
 	/* Fixed Header Styles - end */
 }

@@ -15,6 +15,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 		
 		this.logOut = function() {
 			$window.sessionStorage.removeItem('token');
+			$window.sessionStorage.removeItem('user');
 			$location.path('login');
 		};
 		this.showMenuFunc = function() {
