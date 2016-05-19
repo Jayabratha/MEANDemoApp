@@ -114,21 +114,16 @@ body {
 
 .main-header.small {
 	font-size: 2em;
-	line-height: 2em;
 	height: 2em;
 	background: linear-gradient(rgba(10, 178, 248, 0.6), #0AB2F8);
 }
 
 .main-header.small .head-title {
-	padding-top: 0;
+	padding-top: 0.45em;
 }
 
 .main-header.small .app-name {
 	font-size: 1em;
-}
-
-.main-header.small .github-icon {
-	top: 0;
 }
 
 .main-header.line {

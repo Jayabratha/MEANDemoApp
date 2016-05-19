@@ -2,6 +2,7 @@ app.factory('ExpenseService', ['$http', '$q', '$window', function($http, $q, $wi
 	var addExpense, getExpenses;
 
 	addExpense = function(expenseData) {
+		console.log(expenseData);
 		var deferred = $q.defer(),
 			token = $window.sessionStorage.getItem('token');
 		$http({
