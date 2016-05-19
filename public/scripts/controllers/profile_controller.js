@@ -11,7 +11,7 @@ app.controller('profileController',['$scope', 'getUserService',  '$rootScope',
 			phone: null,
 			sex: 'Male',
 			dob: '',
-			addr: '',
+			address: '',
 			exp: 0,
 			email: ''
 		}
@@ -25,7 +25,7 @@ app.controller('profileController',['$scope', 'getUserService',  '$rootScope',
 			self.userData.phone = userData.phone;
 			self.userData.sex = userData.sex;
 			self.userData.dob = new Date(userData.dob);
-			self.userData.addr = userData.addr;
+			self.userData.address = userData.address;
 			self.userData.exp = userData.exp;
 			self.userData.email = userData.email;
 		},

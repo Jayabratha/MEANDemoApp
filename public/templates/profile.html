@@ -66,10 +66,10 @@
 				</div>
 				<div class="form-row">
 					<div class="label-container">
-						<label for="addr">*Address: </label>
+						<label for="address">*Address: </label>
 					</div>
-					<div class="input-container" ng-class="{'error' : addrError = profileForm.addr.$invalid && (profileForm.addr.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.addr.$valid }">
-						<textarea id="addr" name="addr" ng-model="profileCntrl.userData.addr" required ></textarea>
+					<div class="input-container" ng-class="{'error' : addrError = profileForm.address.$invalid && (profileForm.address.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.address.$valid }">
+						<textarea id="address" name="address" ng-model="profileCntrl.userData.address" required ></textarea>
 						<div class="message-default" ng-cloak ng-show="addrError"> Please provide your address</div>
 					</div>
 				</div>
@@ -94,7 +94,7 @@
 					</div>
 				</div>
 				<div class="center-text">
-					<button class="submit-btn" name="submit" type="submit">Update</button>
+					<button class="update-btn" name="submit" type="submit">Update</button>
 				</div>
 			</div>
 	</form>

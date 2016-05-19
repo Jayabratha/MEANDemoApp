@@ -279,6 +279,35 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	width: 20%;
 }
 
+.update-btn {
+	float: left;
+	margin: 5em;
+}
+
+/* Group Styles - start */
+.member {
+    margin: 2em;
+    position: relative;
+}
+.member-dp {
+    position: relative;
+    display: inline-block;
+    height: 5em;
+    width: 5em;
+    border: medium solid;
+    border-radius: 50%;
+    vertical-align: middle;
+}
+.member-name {
+    position: relative;
+    display: inline-block;
+    padding: 1em;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+/* Group Styles - end */
+
 @media only screen and (max-width:1000px) {
 	header.profile-header {
 		position: absolute;
