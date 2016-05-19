@@ -114,14 +114,18 @@ app.run(['$rootScope', '$timeout', '$window', '$state',
 		$rootScope.$on('$stateChangeSuccess', function(event, toState, toParam, fromState, fromParams) {
 			if (toState.name === 'register') {
 				$rootScope.registerState.enter();
-			} else if (toState.name === 'login') {
-				if (fromState.name === 'home.addExpense') {
-					/* Render and Start Background Animation*/
-					backgroundAnimation.renderBackground();
-					backgroundAnimation.startAnimation();
-				}
+			} 
+			if (toState.name === 'login') {
 				$rootScope.loginState.enter();
-			} else if (toState.name === 'home.addExpense') {
+			}
+
+			//Background Animate Start Stop Logic
+			if ((toState.name === 'login' || toState.name === 'register' || toState.name === 'default') &&
+			 (fromState.name !== 'login' || fromState.name !== 'register' || fromState.name !== 'default')) {
+				/* Render and Start Background Animation*/
+				backgroundAnimation.renderBackground();
+				backgroundAnimation.startAnimation();
+			} else {
 				backgroundAnimation.stopAnimation();
 				backgroundAnimation.clearBackground();
 			}

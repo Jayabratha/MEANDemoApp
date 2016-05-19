@@ -271,8 +271,6 @@ ul.profile-options li:hover, ul.profile-options li.active {
 .profile-main-content header {
 	font-size: 1.3em;
     padding: 0 0.5em 1em;
-    border-bottom: thin solid #0ab2f8;
-    margin-bottom: 1em;
 }
 
 .profile-container .label-container {

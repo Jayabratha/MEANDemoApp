@@ -16,6 +16,8 @@ exports.insertUser = function(res, username, firstname, lastname, phone, sex, do
 		exp: exp,
 		email: email,
 		password: password,
+		group: "Jyoti Tower",
+		admin: false
 	});
 
 	console.log(user);
@@ -91,6 +93,8 @@ exports.authenticate = function(res, email, password) {
 exports.getUser = function(res, username) {
 	User.findOne({
 		"username": username
+	}, {
+		"password": false
 	}, function(err, user) {
 		if (err) {
 			res.send({

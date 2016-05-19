@@ -294,20 +294,17 @@ section.add-expense form .input-container {
 }
 #exp-amount {
 	font-size: 2em;
-	height: 1.5em;
-	padding-left: 1em;
+    height: 1.7em;
+    padding: 0 1em 0;
 }
-
 .sub-container {
 	display: inline-block;
 	width: 48%;
 	vertical-align: top;
 }
-
 .exp-type-wrapper {
 	margin-right: 3%;
 }
-
 .add-exp {
 	display: block;
 	margin-top: 3em;

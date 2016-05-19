@@ -25,6 +25,7 @@ var UserSchema = new Schema({
 	group: String,
 	admin: Boolean,
 	password: String,
+	dpLink: String,
 	created_at: Date,
 	updated_at: Date
 });
