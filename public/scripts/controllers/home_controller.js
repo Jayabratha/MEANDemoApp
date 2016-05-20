@@ -1,5 +1,5 @@
-app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '$location', 'userdata', '$window',
-	function($scope, $rootScope, $http, $cookies, $location, userdata, $window) {
+app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '$location', 'userdata', '$window', '$sce',
+	function($scope, $rootScope, $http, $cookies, $location, userdata, $window, $sce) {
 		var Profile, homeLayout = $scope.home.layout;
 		homeLayout.setVars('line');
 
@@ -24,7 +24,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 			}
 		};
 
-		var User = function(username, firstname, lastname, phone, sex, dob, address, designer, developer, salary, email, group, admin, dpLink, created_at, updated_at) {
+		var User = function(username, firstname, lastname, phone, sex, dob, address, exp, email, group, admin, dpLink, created_at, updated_at) {
 			this.username = username;
 			this.firstname = firstname;
 			this.lastname = lastname;
@@ -32,7 +32,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 			this.sex = sex;
 			this.dob = dob;
 			this.address = address;
-			this.salary = salary;
+			this.exp = exp;
 			this.email = email;
 			this.group = group;
 			this.admin = admin;
@@ -41,7 +41,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 			this.updated_at = updated_at;
 		};
 
-		this.user = new User(userdata.username, userdata.firstname, userdata.lastname, userdata.phone, userdata.sex, userdata.dob, userdata.address, userdata.salary, userdata.group, userdata.admin, userdata.email, userdata.dpLink, userdata.created_at, userdata.updated_at);
+		this.user = new User(userdata.username, userdata.firstname, userdata.lastname, userdata.phone, userdata.sex, userdata.dob, userdata.address, userdata.exp, userdata.group, userdata.admin, userdata.email, userdata.dpLink, userdata.created_at, userdata.updated_at);
 		$rootScope.hideModal();
 	}
 ]);

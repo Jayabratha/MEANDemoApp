@@ -82,7 +82,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			url: '/group',
 			templateUrl: 'templates/group.html',
 			controller: 'groupController'
-		})
+		});
 	}
 ]);
 

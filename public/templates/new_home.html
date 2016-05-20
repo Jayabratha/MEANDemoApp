@@ -8,7 +8,9 @@
 		</div>
 	</header>
 	<aside class="profile-options col-md-2 col-lg-2">
-		<img class="profile-pic-container" src="{{homeCntrl.user.dpLink}}"/>
+		<div ng-show="homeCntrl.user.dpLink">
+			<img class="profile-pic-container" ng-src="{{homeCntrl.user.dpLink}}"/>
+		</div>
 	</aside>
 	<section class="profile-body clearfix">
 		<div class="base-info col-md-2 col-lg-2">
