@@ -97,6 +97,24 @@ header.profile-header {
 	z-index: 2;
 }
 
+.no-dp {
+	background-color: #0A9085;
+	text-align: center;
+    line-height: 10em;
+}
+.no-dp span {
+	font-size: 6em;
+	color: #FFFFFF;
+	text-transform: uppercase;
+}
+
+.member-dp.no-dp {
+	line-height: 5em;
+}
+.member-dp.no-dp span {
+	font-size: 3em;
+}
+
 aside.profile-options {
 	position: absolute;
 	top: 0;
@@ -264,10 +282,6 @@ ul.profile-options li:hover, ul.profile-options li.active {
 }
 /* Fixed Header Styles - end */
 
-.profile-container {
-		min-width: 600px;
-	}
-
 .profile-main-content header {
 	font-size: 1.3em;
     padding: 0 0.5em 1em;
@@ -283,6 +297,10 @@ ul.profile-options li:hover, ul.profile-options li.active {
 }
 
 /* Group Styles - start */
+.members-container {
+	display: inline-block;
+	width: 45%;
+}
 .member {
     margin: 2em;
     position: relative;

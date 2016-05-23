@@ -1,16 +1,15 @@
 <div class="content">
 	<div class="profile-container">
 		<header class="form-row">
-			Jyoti Tower Mess Members
+			{{groupCntrl.group}} Members
 		</header>
-		<div class="members-container">
+		<div class="members-container" ng-repeat="member in groupCntrl.groupMembers">
 			<div class="member">
-				<div class="member-dp"></div>
-				<div class="member-name">Jayabratha</div>
-			</div>
-			<div class="member">
-				<div class="member-dp"></div>
-				<div class="member-name">Sourav</div>
+				<img ng-if="member.dpLink" class="member-dp" ng-src="{{member.dpLink}}"/>
+				<div ng-if="!member.dpLink" class="member-dp no-dp">
+					<span>{{member.firstname.charAt(0)}}</span>
+				</div>
+				<div class="member-name">{{member.firstname}} {{member.lastname}}</div>
 			</div>
 		</div>
 	</div>

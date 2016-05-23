@@ -169,3 +169,32 @@ exports.getExpenses = function(res, username) {
 		}
 	});
 };
+
+exports.getGroupMembers = function(res, group) {
+	User.find({
+		"group": group
+	},{
+		"firstname": true,
+		"lastname": true,
+		"dpLink": true
+	}, function(err, members) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "We ran into an Error, Please try later"
+			});
+		}
+		if (!members) {
+			return res.status(403).send({
+				success: false,
+				msg: 'Authentication failed. Group not found.'
+			});
+		} else {
+			res.json({
+				success: true,
+				msg: 'Group Members retrieved succesfully',
+				members: members
+			});
+		}
+	});
+};

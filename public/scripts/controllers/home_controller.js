@@ -9,6 +9,8 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 
 		//Save Username in Session
 		$window.sessionStorage.setItem('user', userdata.username);
+		//Save Group Name in Session
+		$window.sessionStorage.setItem('group', userdata.group);
 
 		
 		this.logOut = function() {

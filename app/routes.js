@@ -130,5 +130,24 @@ module.exports = function(app, upload, fs) {
 				msg: 'No token provided.'
 			});
 		}
-	})
+	});
+
+	//Get Group Info
+	app.get('/getgroup', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			var group = req.query.group;
+			console.log('Getting Group info for ' + group);
+			mongoDAO.getGroupMembers(res, group);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
+
 };

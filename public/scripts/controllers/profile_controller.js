@@ -1,5 +1,5 @@
-app.controller('profileController',['$scope', 'getUserService',  '$rootScope',
- function($scope, getUserService, $rootScope){
+app.controller('profileController',['$scope', 'UserService',  '$rootScope',
+ function($scope, UserService, $rootScope){
 	$scope.homeCntrl.activeTab = "profile";
 
 	var self = this;
@@ -16,7 +16,7 @@ app.controller('profileController',['$scope', 'getUserService',  '$rootScope',
 			email: ''
 		}
 
-	getUserService.getUserDetails().then(
+	UserService.getUserDetails().then(
 		function(userData) {
 			console.log(userData);
 			self.userData.username = userData.username;

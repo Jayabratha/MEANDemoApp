@@ -38,9 +38,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			abstract: true,
 			controller: 'homeController as homeCntrl',
 			resolve: {
-				userdata: function($q, getUserService, $rootScope) {
+				userdata: function($q, UserService, $rootScope) {
 					var defer = $q.defer();
-					getUserService.getUserDetails().then(
+					UserService.getUserDetails().then(
 						function(responsedata) {
 						defer.resolve(responsedata);
 					}, function(responsedata) {
@@ -81,7 +81,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		state('home.group', {
 			url: '/group',
 			templateUrl: 'templates/group.html',
-			controller: 'groupController'
+			controller: 'groupController as groupCntrl'
 		});
 	}
 ]);

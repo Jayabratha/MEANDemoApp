@@ -8,8 +8,11 @@
 		</div>
 	</header>
 	<aside class="profile-options col-md-2 col-lg-2">
-		<div ng-show="homeCntrl.user.dpLink">
-			<img class="profile-pic-container" ng-src="{{homeCntrl.user.dpLink}}"/>
+		<div>
+			<img ng-if="homeCntrl.user.dpLink" class="profile-pic-container" ng-src="{{homeCntrl.user.dpLink}}"/>
+			<div ng-if="!homeCntrl.user.dpLink" class="profile-pic-container no-dp">
+				<span>{{homeCntrl.user.username.charAt(0)}}</span>
+			</div>
 		</div>
 	</aside>
 	<section class="profile-body clearfix">
