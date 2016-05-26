@@ -5,9 +5,10 @@ app.controller('groupController', ['$scope', '$window', 'UserService',
 
 		this.groupMembers = [];
 
-		Member = function(firstname, lastname, dpLink) {
+		Member = function(firstname, lastname, isAdmin, dpLink) {
 			this.firstname = firstname;
 			this.lastname = lastname;
+			this.isAdmin = isAdmin;
 			this.dpLink = dpLink;
 		}
 
@@ -18,7 +19,7 @@ app.controller('groupController', ['$scope', '$window', 'UserService',
 			function(members) {
 				var memberObj;
 				members.forEach(function(member, index) {
-					memberObj = new Member(member.firstname, member.lastname, member.dpLink);
+					memberObj = new Member(member.firstname, member.lastname, member.admin, member.dpLink);
 					self.groupMembers.push(memberObj);
 				});
 			},

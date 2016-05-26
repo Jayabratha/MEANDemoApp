@@ -1,5 +1,5 @@
-<section class="add-expense">
-	<form name="expenseForm" ng-submit="addExpCntrl.addExpense(expenseForm.$valid, addExpCntrl.expenseData)" class="col-xs-12 col-md-8 col-lg-7 clearfix" novalidate >
+<section class="add-expense content">
+	<form name="expenseForm" ng-submit="addExpCntrl.addExpense(expenseForm.$valid, addExpCntrl.expenseData)" novalidate >
 		<div class="input-container" ng-class="{'error' : amountError = expenseForm.amount.$invalid && (expenseForm.amount.$touched || addExpCntrl.notifyErrors), 'correct' : expenseForm.amount.$valid }">
 				<i class="expense-inr icon-inr"></i>
 				<input id="exp-amount" name="amount" type="number" placeholder="Enter Expense Amount" ng-model="addExpCntrl.expenseData.amount" required />

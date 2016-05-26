@@ -171,6 +171,7 @@ aside.profile-options {
 
 .profile-content {
 	position: relative;
+	width: 75%;
 }
 
 nav.profile-nav ul {
@@ -286,16 +287,17 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	font-size: 1.3em;
     padding: 0 0.5em 1em;
 }
-
 .profile-container .label-container {
 	width: 20%;
 }
-
 .update-btn {
 	float: left;
 	margin: 5em;
 }
-
+.content {
+	padding: 2em 3.5em;
+	box-sizing: border-box;
+}
 /* Group Styles - start */
 .members-container {
 	display: inline-block;
@@ -314,13 +316,16 @@ ul.profile-options li:hover, ul.profile-options li.active {
     border-radius: 50%;
     vertical-align: middle;
 }
-.member-name {
+.member-details {
     position: relative;
     display: inline-block;
     padding: 1em;
     vertical-align: middle;
-    font-size: 1.2em;
+}
+.member-details .name {
+	font-size: 1.2em;
     font-weight: normal;
+    padding: 0.2em 0;
 }
 /* Group Styles - end */
 
@@ -360,7 +365,9 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	nav.profile-nav li {
 		padding: 1.05em 0 1em;
 	}
-
+	.profile-content {
+		width: 100%;
+	}
 	.profile-options {
 		display: none;
 	}

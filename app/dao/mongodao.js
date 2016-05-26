@@ -176,6 +176,7 @@ exports.getGroupMembers = function(res, group) {
 	},{
 		"firstname": true,
 		"lastname": true,
+		"admin": true,
 		"dpLink": true
 	}, function(err, members) {
 		if (err) {
