@@ -148,7 +148,7 @@ aside.profile-options {
 }
 
 .logout-btn {
-	top: 5em;
+	top: 2em;
 }
 
 .user-name {
@@ -288,11 +288,13 @@ ul.profile-options li:hover, ul.profile-options li.active {
     padding: 0 0.5em 1em;
 }
 .profile-container .label-container {
-	width: 20%;
+	width: 37%;
+}
+.profile-container .input-container {
+	width: 60%;
 }
 .update-btn {
-	float: left;
-	margin: 5em;
+	margin: 3em 0;
 }
 .content {
 	padding: 2em 3.5em;
@@ -330,6 +332,17 @@ ul.profile-options li:hover, ul.profile-options li.active {
 /* Group Styles - end */
 
 @media only screen and (max-width:1000px) {
+	@media only screen and (max-width:1000px) {
+		.content {
+			padding: 2em 2.5em;
+		}
+	}
+
+	@media only screen and (max-width:425px) {
+		.content{
+			padding: 2em 1.5em;
+		}
+	}
 	header.profile-header {
 		position: absolute;
 	}

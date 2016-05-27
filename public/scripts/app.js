@@ -68,6 +68,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'templates/notifications.html',
 			controller: 'notificationsController'
 		}).
+		state('home.manage', {
+			url: '/management',
+			templateUrl: 'templates/management.html',
+			controller: 'managementController as managementCntrl'
+		}).
 		state('home.profile', {
 			url: '/profile',
 			templateUrl: 'templates/profile.html',

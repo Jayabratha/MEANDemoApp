@@ -43,7 +43,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '
 			this.updated_at = updated_at;
 		};
 
-		this.user = new User(userdata.username, userdata.firstname, userdata.lastname, userdata.phone, userdata.sex, userdata.dob, userdata.address, userdata.exp, userdata.group, userdata.admin, userdata.email, userdata.dpLink, userdata.created_at, userdata.updated_at);
+		this.user = new User(userdata.username, userdata.firstname, userdata.lastname, userdata.phone, userdata.sex, userdata.dob, userdata.address, userdata.exp, userdata.email, userdata.group, userdata.admin, userdata.dpLink, userdata.created_at, userdata.updated_at);
 		$rootScope.hideModal();
 	}
 ]);
