@@ -17,7 +17,7 @@ app.controller('addExpenseController', ['$scope', '$rootScope', '$window', 'Expe
 
 		this.addExpense = function(isValid, expenseData) {
 			expenseData.user = $window.sessionStorage.getItem('user');
-			expenseData.group = "test";
+			expenseData.group = "Jyoti Tower";
 			if (isValid) {
 				ExpenseService.addExpense(expenseData).then(
 					function(response) {

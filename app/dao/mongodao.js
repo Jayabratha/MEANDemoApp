@@ -172,8 +172,9 @@ exports.getExpenses = function(res, username) {
 
 exports.getGroupMembers = function(res, group) {
 	User.find({
-		"group": group
+		group: group
 	},{
+		"username": true,
 		"firstname": true,
 		"lastname": true,
 		"admin": true,
@@ -199,3 +200,34 @@ exports.getGroupMembers = function(res, group) {
 		}
 	});
 };
+
+exports.getGroupExpenses = function(res, group) {
+	Expense.aggregate([
+		{ $match: {
+            "group": group
+        }},
+        {$group : {
+        	_id : "$user",
+        	expense : {$sum : "$amount"}
+        }}
+        ], function (err, result) {
+			if (err) {
+				res.send({
+					success: false,
+					message: "We ran into an Error, Please try later"
+				});
+			}
+			if (!result) {
+				return res.status(403).send({
+					success: false,
+					msg: 'Authentication failed. Group not found.'
+				});
+			} else {
+				res.json({
+					success: true,
+					msg: 'Group Expenses retrived successfully',
+					result: result
+				});
+			}
+	});
+}

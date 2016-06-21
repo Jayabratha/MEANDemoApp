@@ -1,5 +1,5 @@
 app.factory('ExpenseService', ['$http', '$q', '$window', function($http, $q, $window) {
-	var addExpense, getExpenses;
+	var addExpense, getExpenses, getGroupExpenses;
 
 	addExpense = function(expenseData) {
 		console.log(expenseData);
@@ -44,8 +44,34 @@ app.factory('ExpenseService', ['$http', '$q', '$window', function($http, $q, $wi
 		return deferred.promise;
 	}
 
+	getGroupExpenses = function(group) {
+		var deferred = $q.defer(),
+			token = $window.sessionStorage.getItem('token');
+		$http({
+			method: 'GET',
+			url: '/getgroupexpenses',
+			params: {group: group},
+			headers: {
+				'Authorization': 'JWT ' + token,
+				'Content-Type': 'application/json'
+			}
+		}).then(function(response) {
+			var responseData = response.data;
+			if (responseData.success) {
+				deferred.resolve(responseData.result);
+			} else {
+				deferred.reject("Failed to load Data");
+			}
+		}, function(error) {
+			deferred.reject(error);
+		});
+
+		return deferred.promise;
+	}
+
 	return {
 		addExpense: addExpense,
-		getExpenses: getExpenses
+		getExpenses: getExpenses,
+		getGroupExpenses: getGroupExpenses
 	}
 }]);

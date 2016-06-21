@@ -61,7 +61,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		state('home.stats', {
 			url: '/stats',
 			templateUrl: 'templates/stats.html',
-			controller: 'statsController'
+			controller: 'statsController as statsCntrl'
 		}).
 		state('home.notifications', {
 			url: '/notifications',

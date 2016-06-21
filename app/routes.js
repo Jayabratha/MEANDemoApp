@@ -150,4 +150,22 @@ module.exports = function(app, upload, fs) {
 		}
 	});
 
+	//Get Group Expenses
+	app.get('/getgroupexpenses', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			var group = req.query.group;
+			console.log('Getting Group Expense info for ' + group);
+			mongoDAO.getGroupExpenses(res, group);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
+
 };

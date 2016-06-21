@@ -1,0 +1,14 @@
+.stats-container .members-container {
+	width: 95%;
+}
+
+.stats-container .expense {
+	font-size: 2.5em;
+    color: #b1b0b0;
+    font-weight: normal;
+}
+
+.stats-container .expense .icon-inr {
+	position: relative;
+	top: 8px;
+}
