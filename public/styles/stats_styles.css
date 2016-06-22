@@ -12,3 +12,13 @@
 	position: relative;
 	top: 8px;
 }
+
+.stats-container .member-details {
+	width: 70%;
+}
+
+.expense-bar {
+	width: 100%;
+    height: 2px;
+    background-color: green;
+}

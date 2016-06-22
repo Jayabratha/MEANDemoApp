@@ -1,7 +1,7 @@
 <section class="content">
-	<div class="stats-container">
+	<div class="group-container">
 		<header class="form-row">
-			{{groupCntrl.group}} Expenses Stats
+			{{groupCntrl.group}} Mess Members
 		</header>
 		<div class="members-container" ng-repeat="member in groupCntrl.groupMembers">
 			<div class="member">
@@ -11,6 +11,7 @@
 				</div>
 				<div class="member-details">
 					<div class="name">{{member.firstname}} {{member.lastname}}</div>
+					<div ng-show="member.isAdmin"> admin </div>
 				</div>
 			</div>
 		</div>

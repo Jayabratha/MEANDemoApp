@@ -303,7 +303,8 @@ ul.profile-options li:hover, ul.profile-options li.active {
 /* Group Styles - start */
 .members-container {
 	display: inline-block;
-	width: 45%;
+	width: 50%;
+	vertical-align: top;
 }
 .member {
     margin: 2em;
