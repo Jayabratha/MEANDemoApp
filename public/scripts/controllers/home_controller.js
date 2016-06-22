@@ -1,5 +1,5 @@
-app.controller('homeController', ['$scope', '$rootScope', '$http', '$cookies', '$location', 'userdata', '$window', '$sce',
-	function($scope, $rootScope, $http, $cookies, $location, userdata, $window, $sce) {
+app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 'userdata', '$window', '$sce',
+	function($scope, $rootScope, $http, $location, userdata, $window, $sce) {
 		var Profile, homeLayout = $scope.home.layout;
 		homeLayout.setVars('line');
 

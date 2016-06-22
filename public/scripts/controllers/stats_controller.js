@@ -1,23 +1,30 @@
-app.controller('statsController',['$scope', '$window', 'UserService', 'ExpenseService',
-	function($scope, $window, UserService, ExpenseService) {
+app.controller('statsController',['$scope', '$window', '$interval', 'UserService', 'ExpenseService', '$state',
+	function($scope, $window, $interval, UserService, ExpenseService, $state) {
 		var Member, getMemberByUsername, vm = this, getTopContributor, updateContributions;
 		vm.group = $window.sessionStorage.getItem('group');
 		$scope.homeCntrl.activeTab = "stats";
 
 		vm.groupMembers = [];
+		vm.topExpense = 100;
 
-		Member = function(username, firstname, lastname, dpLink, expense, expenseBarWidth) {
+		Member = function(username, firstname, lastname, dpLink, expense) {
 			this.username = username
 			this.firstname = firstname;
 			this.lastname = lastname;
 			this.dpLink = dpLink;
 			this.expense = expense;
-			this.expenseBarWidth = expenseBarWidth;
 		}
 
-		Member.prototype.updateExpense = function (expense, expenseBarWidth) {
-			this.expense = expense;
-			this.expenseBarWidth = expenseBarWidth;
+		Member.prototype.updateExpense = function (expense) {
+			var self = this, updater;
+			 performUpdate = function () {
+			 	if (expense > self.expense) {
+			 		self.expense++;
+			 	} else {
+			 		 $interval.cancel(updater);
+			 	}
+			 };
+			updater = $interval(performUpdate, 2);		
 		}
 
 		//Get Member by Username
@@ -46,19 +53,17 @@ app.controller('statsController',['$scope', '$window', 'UserService', 'ExpenseSe
 			contributions.sort(compare);
 
 			return contributions[contributions.length - 1];
-
 		}
 
 		//Fetch Expense Data and update
 		updateContributions = function (group) {
 			ExpenseService.getGroupExpenses(group).then(
 			function(expenses) {
-				var user, expenseBarWidth, topContributor = getTopContributor(expenses),
-				 topExpense = topContributor.expense;
+				var user, expenseBarWidth, topContributor = getTopContributor(expenses);
+				 vm.topExpense = topContributor.expense;
 				expenses.forEach(function(expenseObj, index) {
 					user = getMemberByUsername(expenseObj._id);
-					expenseBarWidth = (expenseObj.expense / topExpense) * 100;
-					user.updateExpense(expenseObj.expense, expenseBarWidth);
+					user.updateExpense(expenseObj.expense);
 				});
 			},
 			function(error) {
@@ -66,12 +71,17 @@ app.controller('statsController',['$scope', '$window', 'UserService', 'ExpenseSe
 			})
 		}
 
+		//Show Contribution Details
+		vm.showContributionDetails = function (username) {
+			$state.go('home.expenseDetail', {username: username});
+		}
+
 		//Get Group Members
 		UserService.getGroupMembers(vm.group).then(
 			function(members) {
 				var memberObj;
 				members.forEach(function(member, index) {
-					memberObj = new Member(member.username, member.firstname, member.lastname, member.dpLink, 0, 0);
+					memberObj = new Member(member.username, member.firstname, member.lastname, member.dpLink, 0);
 					vm.groupMembers.push(memberObj);
 				});
 				updateContributions(vm.group);

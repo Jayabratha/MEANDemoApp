@@ -1,5 +1,13 @@
 .stats-container .members-container {
 	width: 95%;
+	background-color: #FFFFFF;
+	cursor: pointer;
+	-webkit-transition: background-color 1s;
+	transition: background-color 1s;
+}
+
+.stats-container .members-container:hover {
+	background-color: #E7E7E7;
 }
 
 .stats-container .expense {
@@ -21,4 +29,6 @@
 	width: 100%;
     height: 2px;
     background-color: green;
+    -webkit-transition: all 0.5s;
+	transition: all 0.5s;
 }

@@ -1,6 +1,9 @@
 <section class="expenses content">
-	<header>
-		Your Expenses for this Month
+	<header ng-if="!expCntrl.isStats">
+		Your Expense Contributions for this Month
+	</header>
+	<header ng-if="expCntrl.isStats">
+		Expense Contributions by {{expCntrl.user}} for this Month
 	</header>
 	<table class="expense-list" ng-show="expCntrl.expenseList.length > 0">
 		<tr>

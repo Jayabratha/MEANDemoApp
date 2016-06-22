@@ -1,5 +1,5 @@
 /* Initialize The Angular App */
-var app = angular.module('app', ['ui.router', 'ngCookies']);
+var app = angular.module('app', ['ui.router', 'ngAnimate']);
 
 app.config(['$stateProvider', '$urlRouterProvider',
 	function($stateProvider, $urlRouterProvider) {
@@ -62,6 +62,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			url: '/stats',
 			templateUrl: 'templates/stats.html',
 			controller: 'statsController as statsCntrl'
+		}).
+		state('home.expenseDetail', {
+			url: '/expense/:username',
+			templateUrl: 'templates/expenses.html',
+			controller: 'expensesController as expCntrl'
 		}).
 		state('home.notifications', {
 			url: '/notifications',

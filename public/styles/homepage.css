@@ -34,6 +34,19 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+[ui-view].profile-content.ng-enter {
+	position: relative;
+	overflow: hidden;
+	-webkit-transition: left 0.5s ease-out;
+	-moz-transition: left 0.5s ease-out;
+	-o-transition: left 0.5s ease-out;
+	transition: left 0.5s ease-out;
+	left: 1200px;
+}
+[ui-view].profile-content.ng-enter-active {
+	left: 0;
+}
+
 .main-header {
 	position:fixed;
 	background: linear-gradient(rgba(10, 178, 248, 0.6), #0AB2F8, #0AB2F8, #0AB2F8);

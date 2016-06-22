@@ -1,5 +1,5 @@
-app.factory('UserService', ['$q', '$http', '$cookies', '$rootScope', '$window',
-	function($q, $http, $cookies, $rootScope, $window) {
+app.factory('UserService', ['$q', '$http', '$rootScope', '$window',
+	function($q, $http, $rootScope, $window) {
 		var getUserDetails, getGroupMembers;
 
 		getUserDetails = function() {
