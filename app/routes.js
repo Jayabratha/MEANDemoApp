@@ -168,4 +168,22 @@ module.exports = function(app, upload, fs) {
 		}
 	});
 
+	//Update Rentals
+	app.post('/updaterentals', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			var group = req.body.group;
+			console.log('Getting Group Expense info for ' + group);
+			mongoDAO.setCharges(res, group);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
+
 };

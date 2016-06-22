@@ -2,13 +2,14 @@ app.controller('expensesController', ['$scope', 'ExpenseService', '$window', '$s
 	function($scope, ExpenseService, $window, $stateParams) {
 		this.user;
 		this.isStats = false;
-		$scope.homeCntrl.activeTab = "expenses";
+		this.totalExpense = 0;
 
 		if ($stateParams.username) {
 			this.user = $stateParams.username;
 			this.isStats = true;
 		} else {
 			this.user = $window.sessionStorage.getItem('user');
+			$scope.homeCntrl.activeTab = "expenses";
 		}
 
 		var Expense = function(amount, type, date, comment, user, group) {
@@ -31,6 +32,7 @@ app.controller('expensesController', ['$scope', 'ExpenseService', '$window', '$s
 					expenses.forEach(function(expense, index) {
 						expenseObj = new Expense(expense.amount, expense.type, expense.date, expense.comment, expense.user, expense.group);
 						self.expenseList.push(expenseObj);
+						self.totalExpense = self.totalExpense + expense.amount;
 					})
 				}
 			},

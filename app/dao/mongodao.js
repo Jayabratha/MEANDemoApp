@@ -1,5 +1,6 @@
 var User = require('../model/user_model');
-var Expense = require('../model/expense_model')
+var Expense = require('../model/expense_model');
+var Mess = require('../model/mess_model');
 
 var jwt = require('jwt-simple');
 
@@ -230,4 +231,22 @@ exports.getGroupExpenses = function(res, group) {
 				});
 			}
 	});
+}
+
+exports.setCharges = function(res, group, rentals) {
+	Mess.update({"name" : group},
+	 {"rentals" : rentals},
+	 {upsert: true}, function (err) {
+	 		if (err) {
+				res.send({
+					success: false,
+					message: "We ran into an Error, Please try later"
+				});
+			} else {
+				res.json({
+					success: true,
+					msg: 'Rentals updated'
+				});
+			}
+	 });
 }

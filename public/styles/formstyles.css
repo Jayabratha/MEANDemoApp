@@ -325,10 +325,21 @@ section.add-expense form .input-container {
 	background-color: #E4E3E3;
 }
 
+.expense-list tr {
+	border-bottom: thin solid #ccc;
+}
+
+.expense-list tr:last-child {
+	border-bottom: none;
+	font-size: 1.2em;
+}
+.expense-list tr:last-child td{
+	padding: 10px;
+}
+
 .expense-list td {
 	text-align: center;
 	padding: 0.2em;
-	border-bottom: thin solid #ccc;
 }
 
 .expense-list td.amount {

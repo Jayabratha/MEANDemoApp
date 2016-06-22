@@ -2,8 +2,6 @@ var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
 
-var bcrypt = require('bcryptjs');
-
 var ExpenseSchema = new Schema({
 	amount: {
 		type: Number,

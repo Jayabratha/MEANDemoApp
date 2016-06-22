@@ -18,6 +18,12 @@
 			<td>{{expense.type}}</td>
 			<td>{{expense.comment}}</td>
 		</tr>
+		<tr class="total-expense">
+			<td>Total Expense:</td>
+			<td class="amount">{{expCntrl.totalExpense}}</td>
+			<td></td>
+			<td></td>
+		</tr>
 	</table>
 	<div class="empty-message" ng-show="expCntrl.expenseList.length === 0"> No expenses for this month done yet.</div>
 </section>
