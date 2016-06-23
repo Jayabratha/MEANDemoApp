@@ -1,0 +1,28 @@
+.header-container {
+	padding: 0.5em;
+    min-width: 9em;
+    background-color: #E4E3E3;
+    font-weight: bold;
+    border-bottom: thin solid #ccc;
+}
+
+.rental-form {
+	width: 60%;
+	min-width: 500px;
+}
+
+.rental-form .input-container {
+	width: 100%;
+	padding: 0;
+}
+
+.rental-form .sub-container:last-child {
+	float: right;
+}
+
+@media only screen and (max-width:425px) {
+	.rental-form {
+		width: 100%;
+		min-width: 0;
+	}
+}

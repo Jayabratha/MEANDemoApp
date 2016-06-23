@@ -1,6 +1,6 @@
 var User = require('../model/user_model');
 var Expense = require('../model/expense_model');
-var Mess = require('../model/mess_model');
+var Rental = require('../model/rental_model');
 
 var jwt = require('jwt-simple');
 
@@ -233,20 +233,73 @@ exports.getGroupExpenses = function(res, group) {
 	});
 }
 
-exports.setCharges = function(res, group, rentals) {
-	Mess.update({"name" : group},
-	 {"rentals" : rentals},
-	 {upsert: true}, function (err) {
-	 		if (err) {
-				res.send({
-					success: false,
-					message: "We ran into an Error, Please try later"
-				});
-			} else {
-				res.json({
-					success: true,
-					msg: 'Rentals updated'
-				});
+exports.getGroupRentals = function(res, group) {
+	Rental.find({
+		group: group
+	}, function (err, rentals) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "We ran into an Error, Please try later"
+			});
+		}
+		if (!rentals) {
+			return res.status(403).send({
+				success: false,
+				msg: 'Authentication failed. Group not found.'
+			});
+		} else {
+			res.json({
+				success: true,
+				msg: 'Group Members retrieved succesfully',
+				rentals: rentals
+			});
+		}
+	})
+}
+
+exports.saveAndUpdateRentals = function(res, group, rentals) {
+	var removalSuccessful = true; insertSuccessful = true;
+	Rental.remove({"group": group}, function(err) {
+		if(err) {
+				removalSuccessful = false;
 			}
-	 });
+	});
+
+	if (removalSuccessful) {
+		rentals.forEach(function (rentalObj, index) {
+			var rental, rentalName, rentalAmount;
+			rentalName = rentalObj.name;
+			rentalAmount = rentalObj.amount;
+
+			rental = new Rental({
+				name: rentalName,
+				amount: rentalAmount,
+				group: group
+			});
+
+			rental.save(function(err) {
+				if(err) {
+					insertSuccessful = false;
+				}
+			});
+		});
+
+		if (insertSuccessful) {
+			res.send({
+				success: true,
+				message: "We have succesfully saved your rentals"
+			});
+		} else {
+			res.send({
+				success: false,
+				message: "Sorry! Failed to save your rentals"
+			});
+		}
+	} else {
+		res.send({
+			success: false,
+			message: "Sorry! Failed to save your rentals"
+		});
+	}	
 }

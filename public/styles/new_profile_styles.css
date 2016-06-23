@@ -285,8 +285,27 @@ ul.profile-options li:hover, ul.profile-options li.active {
 
 .profile-main-content header {
 	font-size: 1.3em;
-    padding: 0 0.5em 1em;
+    width: 100%;
+    background: linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, transparent);
+    padding: 15px 0;
+    height: 30px;
+    z-index: 5;
 }
+
+.fixed .profile-main-content header {
+	position: fixed;
+	top: 68px;
+}
+
+.profile-main-content .main-content {
+	position: relative;
+    padding-top: 10px;
+}
+
+.fixed .profile-main-content .main-content {
+    padding-top: 70px;
+}
+
 .profile-container .label-container {
 	width: 37%;
 }
@@ -297,7 +316,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	margin: 3em 0;
 }
 .content {
-	padding: 2em 3.5em;
+	padding: 0 3.5em;
 	box-sizing: border-box;
 }
 /* Group Styles - start */
@@ -333,16 +352,12 @@ ul.profile-options li:hover, ul.profile-options li.active {
 /* Group Styles - end */
 
 @media only screen and (max-width:1000px) {
-	@media only screen and (max-width:1000px) {
-		.content {
-			padding: 2em 2.5em;
-		}
+	.content {
+		padding: 0 2.5em;
 	}
 
-	@media only screen and (max-width:425px) {
-		.content{
-			padding: 2em 1.5em;
-		}
+	.fixed .profile-main-content header {
+		top: 128px;
 	}
 	header.profile-header {
 		position: absolute;
@@ -418,5 +433,8 @@ ul.profile-options li:hover, ul.profile-options li.active {
 @media only screen and (max-width:425px) {
 	.profile-pic-container {
 		margin-top: 3.5em;
+	}
+	.content {
+		padding: 2em 1.5em;
 	}
 }

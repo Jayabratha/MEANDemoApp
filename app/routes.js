@@ -168,16 +168,36 @@ module.exports = function(app, upload, fs) {
 		}
 	});
 
-	//Update Rentals
-	app.post('/updaterentals', passport.authenticate('jwt', {
+	//Get Rentals
+	app.get('/getrentals', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			var group = req.query.group;
+			console.log('Getting Rentals info for ' + group);
+			mongoDAO.getGroupRentals(res, group);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	})
+
+	//Save Rentals
+	app.post('/saverentals', passport.authenticate('jwt', {
 		session: false
 	}), function(req, res) {
 		var token = getToken(req.headers);
 		if (token) {
 			var decoded = jwt.decode(token, 'secret');
 			var group = req.body.group;
-			console.log('Getting Group Expense info for ' + group);
-			mongoDAO.setCharges(res, group);
+			var rentals = req.body.rentals;
+			console.log('Setting Rentals info for ' + group);
+			console.log(rentals);
+			mongoDAO.saveAndUpdateRentals(res, group, rentals);
 		} else {
 			return res.status(403).send({
 				success: false,

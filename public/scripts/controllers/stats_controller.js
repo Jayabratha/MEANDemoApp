@@ -5,7 +5,9 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 		$scope.homeCntrl.activeTab = "stats";
 
 		vm.groupMembers = [];
+		vm.rentals = [];
 		vm.topExpense = 100;
+		vm.totalContributions = 0;
 
 		Member = function(username, firstname, lastname, dpLink, expense) {
 			this.username = username
@@ -64,6 +66,7 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 				expenses.forEach(function(expenseObj, index) {
 					user = getMemberByUsername(expenseObj._id);
 					user.updateExpense(expenseObj.expense);
+					vm.totalContributions = vm.totalContributions + expenseObj.expense;
 				});
 			},
 			function(error) {

@@ -38,6 +38,6 @@ app.controller('expensesController', ['$scope', 'ExpenseService', '$window', '$s
 			},
 			function(error) {
 				alert("Couldn't load data");
-			})
+			});
 	}
-])
+]);
