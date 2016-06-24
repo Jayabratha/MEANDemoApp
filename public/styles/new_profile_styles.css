@@ -10,6 +10,15 @@ header.profile-header {
     background-color: #7448AD;
 }
 
+.month-year {
+	position: absolute;
+    right: 0;
+    margin: 0.5em;
+    font-size: 2em;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.37);
+}
+
 .profile-menu {
 	position: fixed;
 	top: 0;
@@ -85,18 +94,25 @@ header.profile-header {
 
 .profile-pic-container {
 	position: relative;
-	height: 10em;
-	width: 10em;
-	left: 50%;
-	margin-top: 4em;
-    margin-left: -5em;
-	border: 3px solid #FFFFFF;
-	border-radius: 50%;
-	background-color: #FFFFFF;
-	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
-	z-index: 2;
+    height: 10em;
+    width: 10em;
+    margin: auto;
+    margin-top: 4em;
+    z-index: 2;
+    line-height: 10em;
 }
 
+.profile-form {
+	width: 70%;
+}
+.dp {
+	height: 100%;
+	width: 100%;
+	border: 3px solid #FFFFFF;
+	border-radius: 50%;
+	box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
 .no-dp {
 	background-color: #0A9085;
 	text-align: center;
@@ -107,7 +123,39 @@ header.profile-header {
 	color: #FFFFFF;
 	text-transform: uppercase;
 }
-
+.change-dp {
+    position: absolute;
+    top: 0;
+    font-size: 2em;
+    color: transparent;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    -webkit-transition: all 0.5s;
+	transition: all 0.5s;
+}
+.change-dp i {
+	position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+}
+.change-dp input {
+	position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+.change-dp:hover {
+	color: #FFFFFF;
+	background: rgba(0, 0, 0, 0.21);
+}
 .member-dp.no-dp {
 	line-height: 5em;
 }
@@ -290,10 +338,10 @@ ul.profile-options li:hover, ul.profile-options li.active {
 
 .profile-main-content header {
 	font-size: 1.3em;
-    width: 100%;
     background: rgba(255, 255, 255, 0.9);
     padding: 12px 65px;
     height: 25px;
+    line-height: 25px;
     z-index: 5;
     border-top: thin solid #E7E7E7;
     border-bottom: thin solid #E7E7E7;
@@ -302,6 +350,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 .fixed .profile-main-content header {
 	position: fixed;
 	top: 60px;
+	width: 100%;
 }
 
 .profile-main-content .main-content {
@@ -342,7 +391,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
     display: inline-block;
     height: 5em;
     width: 5em;
-    border: medium solid;
+    border: thin solid #ccc;
     border-radius: 50%;
     vertical-align: middle;
 }
@@ -361,11 +410,14 @@ ul.profile-options li:hover, ul.profile-options li.active {
 
 @media only screen and (max-width:1000px) {
 	.content {
+		width: 100%;
 		padding: 0 2.5em;
 	}
-
+	.profile-form {
+		width: 100%;
+	}
 	.fixed .profile-main-content header {
-		top: 128px;
+		top: 112px;
 	}
 	header.profile-header {
 		position: absolute;
@@ -379,7 +431,6 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	    background-color: transparent;
 	    width: 100%;
 	    margin-top: 3.5em;
-	    padding-bottom: 0.5em;
 	}
 	.profile-pic-container {
 		margin-top: 1em;

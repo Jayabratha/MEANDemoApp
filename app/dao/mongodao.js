@@ -50,6 +50,27 @@ exports.insertUser = function(res, username, firstname, lastname, phone, sex, do
 	})
 };
 
+exports.updateDpLink = function(res, dpLink, username) {
+	User.update({
+		username: username
+	}, {
+		dpLink: dpLink
+	}, function (err) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "Failed to update your display pic"
+			});
+		} else {
+			res.send({
+				success: true,
+				message: "Successfully Updated Display pic"
+			});
+		}
+
+	})
+}
+
 exports.authenticate = function(res, email, password) {
 	console.log("Authentication Request rceived for: " + email);
 	User.findOne({

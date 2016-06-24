@@ -3,15 +3,20 @@
 		<div class="menu-icon" ng-class="{'close' : showMenu}"></div>
 	</div>
 	<header class="profile-header">
+		<div class="month-year">{{homeCntrl.currentMonth}}, {{homeCntrl.currentYear}}</div>
 		<div class="profile-menu" ng-class="{'show' : showMenu}">
 			<button class="logout" ng-click="homeCntrl.logOut()">Logout</button>
 		</div>
 	</header>
 	<aside class="profile-options col-md-2 col-lg-2">
-		<div>
-			<img ng-if="homeCntrl.user.dpLink" class="profile-pic-container" ng-src="{{homeCntrl.user.dpLink}}"/>
-			<div ng-if="!homeCntrl.user.dpLink" class="profile-pic-container no-dp">
+		<div class="profile-pic-container">
+			<img ng-if="homeCntrl.user.dpLink" class="dp" ng-src="{{homeCntrl.user.dpLink}}"/>
+			<div ng-if="!homeCntrl.user.dpLink" class="dp no-dp">
 				<span>{{homeCntrl.user.username.charAt(0)}}</span>
+			</div>
+			<div class="change-dp">
+				<i class="ion-camera"></i>
+				<input type="file" accept="image/*" file-model="homeCntrl.dpPhotoUpload" />
 			</div>
 		</div>
 	</aside>

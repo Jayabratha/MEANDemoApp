@@ -1,11 +1,20 @@
-app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 'userdata', '$window', '$sce',
-	function($scope, $rootScope, $http, $location, userdata, $window, $sce) {
-		var Profile, homeLayout = $scope.home.layout;
+app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 'userdata', '$window', '$sce', 'fileReaderService', 'photoUploadService',
+	function($scope, $rootScope, $http, $location, userdata, $window, $sce, fileReaderService, photoUploadService) {
+		var vm = this, Profile, homeLayout = $scope.home.layout;
 		homeLayout.setVars('line');
 
-		this.showMenu = false;
+		var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+						'November', 'December'];
 
-		this.activeTab = "addexpense";
+		vm.showMenu = false;
+
+		vm.activeTab = "addexpense";
+
+		vm.currentMonth = months[(new Date()).getMonth()];
+
+		vm.currentYear = (new Date()).getFullYear();
+
+		vm.dpPhotoUpload;
 
 		//Save Username in Session
 		$window.sessionStorage.setItem('user', userdata.username);
@@ -13,17 +22,35 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 
 		$window.sessionStorage.setItem('group', userdata.group);
 
 		
-		this.logOut = function() {
+		vm.logOut = function() {
 			$window.sessionStorage.removeItem('token');
 			$window.sessionStorage.removeItem('user');
 			$location.path('login');
 		};
-		this.showMenuFunc = function() {
+
+		vm.showMenuFunc = function() {
 			if ($scope.showMenu === "show") {
 				$scope.showMenu = "";
 			} else {
 				$scope.showMenu = "show";
 			}
+		};
+
+		vm.createDPPreview = function(){
+			var file = vm.dpPhotoUpload;
+			fileReaderService.readAsDataUrl(file, $scope)
+					 .then(function(result) {
+					 	file = result.file
+	                    vm.user.dpLink = result.src;
+	                 });
+		};
+
+		vm.uploadDp = function(){
+			console.log(vm.dpPhotoUpload);
+			photoUploadService.uploadPhotos(vm.dpPhotoUpload, userdata.username).then(function(uploadedFile){
+				uploadedFileName = uploadedFile.filename;
+				console.log(uploadedFileName);
+			});
 		};
 
 		var User = function(username, firstname, lastname, phone, sex, dob, address, exp, email, group, admin, dpLink, created_at, updated_at) {

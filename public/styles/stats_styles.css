@@ -28,7 +28,7 @@
 }
 
 .stats-container .member-details {
-	width: 60%;
+	width: 50%;
 }
 
 .expense-bar {
@@ -41,14 +41,14 @@
 
 .total-contributions {
 	font-size: 1.3em;
-	padding: 10px 10px 20px;
+	padding: 20px 10px;
 }
 
 .dp-bill-wrapper {
 	position: relative;
     display: inline-block;
     height: 100%;
-    width: 200px;
+    width: 250px;
     vertical-align: top;
     background-color: green;
 }

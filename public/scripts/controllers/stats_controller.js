@@ -1,6 +1,7 @@
 app.controller('statsController',['$scope', '$window', '$interval', 'UserService', 'ExpenseService', '$state',
 	function($scope, $window, $interval, UserService, ExpenseService, $state) {
-		var Member, getMemberByUsername, vm = this, getTopContributor, updateContributions;
+		var Member, getMemberByUsername, vm = this, getTopContributor, updateContributions, getRentals,
+		 calculatePerHead;
 		vm.group = $window.sessionStorage.getItem('group');
 		$scope.homeCntrl.activeTab = "stats";
 
@@ -8,6 +9,8 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 		vm.rentals = [];
 		vm.topExpense = 100;
 		vm.totalContributions = 0;
+		vm.totalMonthlyExpense = 0;
+		vm.monthyExpensePerHead = 0;
 
 		Member = function(username, firstname, lastname, dpLink, expense) {
 			this.username = username
@@ -15,6 +18,11 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 			this.lastname = lastname;
 			this.dpLink = dpLink;
 			this.expense = expense;
+		}
+
+		Rental = function (name, amount) {
+			this.name = name;
+			this.amount = amount;
 		}
 
 		Member.prototype.updateExpense = function (expense) {
@@ -57,6 +65,34 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 			return contributions[contributions.length - 1];
 		}
 
+		//Calculate Per Head
+		calculatePerHead = function() {
+			var i, rentalsLength = vm.rentals.length, totalRentals = 0,
+			 	numberOfMembers = vm.groupMembers.length;
+			
+			for (i = 0; i < rentalsLength; i++) {
+				totalRentals = totalRentals + vm.rentals[i].amount;
+			}
+			vm.totalMonthlyExpense = (vm.totalContributions + totalRentals);
+			vm.monthyExpensePerHead =  vm.totalMonthlyExpense / numberOfMembers;
+		}
+
+		//Get Rentals
+		getRentals = function (group) {
+			ExpenseService.getGroupRentals(group).then(
+				function(rentals) {
+					var rentalObj;
+					rentals.forEach(function(rental, index) {
+						rentalObj = new Rental(rental.name, rental.amount);
+						vm.rentals.push(rentalObj);
+					});
+					calculatePerHead();
+				},
+				function(error) {
+					alert("Couldn't load data");
+				});
+		}
+
 		//Fetch Expense Data and update
 		updateContributions = function (group) {
 			ExpenseService.getGroupExpenses(group).then(
@@ -68,6 +104,7 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 					user.updateExpense(expenseObj.expense);
 					vm.totalContributions = vm.totalContributions + expenseObj.expense;
 				});
+				getRentals(vm.group);
 			},
 			function(error) {
 				alert("Couldn't load data");
@@ -78,6 +115,8 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 		vm.showContributionDetails = function (username) {
 			$state.go('home.expenseDetail', {username: username});
 		}
+
+		
 
 		//Get Group Members
 		UserService.getGroupMembers(vm.group).then(
@@ -92,5 +131,5 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 			function(error) {
 				alert("Couldn't load data");
 			});
-
+		
 }])

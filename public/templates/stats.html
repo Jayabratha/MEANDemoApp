@@ -4,7 +4,14 @@
 <section class="content">
 	<div class="stats-container">
 		<div class="main-content">
-			<div class="total-contributions">Total Contributions: <strong><i class="icon-inr"></i>{{statsCntrl.totalContributions}}</strong></div>
+			<div class="total-contributions">
+				<span>Per Head Bill: </span>
+				<strong>{{statsCntrl.totalContributions}}</strong>
+				<span class="rentals" ng-repeat="rental in statsCntrl.rentals">
+					+ {{rental.amount}}
+				</span>
+				<span> = <strong>{{statsCntrl.totalMonthlyExpense}}</strong> / {{statsCntrl.groupMembers.length}} = <i class="icon-inr"></i><strong>{{statsCntrl.monthyExpensePerHead}}</strong></span>
+			</div>
 			<div class="members-container" ng-repeat="member in statsCntrl.groupMembers">
 				<div class="member" ng-click="statsCntrl.showContributionDetails(member.username)">
 					<div class="dp-bill-wrapper">
@@ -12,7 +19,7 @@
 						<div ng-if="!member.dpLink" class="member-dp no-dp">
 							<span>{{member.firstname.charAt(0)}}</span>
 						</div>
-						<div class="bill"><i class="icon-inr"></i>{{statsCntrl.totalContributions - member.expense}}</div>
+						<div class="bill"><i class="icon-inr"></i>{{statsCntrl.monthyExpensePerHead - member.expense}}</div>
 					</div>
 					<div class="member-details">
 						<div class="expense"><i class="icon-inr"></i>{{member.expense}}</div>

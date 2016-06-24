@@ -2,6 +2,21 @@
 	#form-content {
 		width: 100%;
 	}
+
+	h1.user-name {
+	 	padding: 0.25em 0;
+    	height: 1.22em;
+    }
+
+    nav.profile-nav li {
+    	padding: 0.5em 0;
+	    height: 3em;
+	    line-height: 3em;
+    }
+
+    .underline {
+    	margin-top: -2px;
+    }  	
 }
 
 @media only screen and (min-width:701px) and (max-width:900px) {
@@ -64,6 +79,10 @@
 
 	body {
 		font-size: 14px;
+	}
+
+	.profile-main-content header {
+		text-align: center;
 	}
 
 	#main_message {
@@ -151,6 +170,9 @@
 }
 
 @media only screen and (max-width:400px) {
+	body {
+		font-size: 12px;
+	}
 	.user_title {
 	    height: 2.5em;
 	}

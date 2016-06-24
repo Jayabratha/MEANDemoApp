@@ -48,11 +48,21 @@ module.exports = function(app, upload, fs) {
 	})
 
 	//Add Photos
-	app.post('/photoupload', upload.single('photo'), function(req, res) {
-		var newFileName = req.file.originalname;
-		console.log(req.file.originalname);
-		console.log(newFileName);
-		res.send(newFileName);
+	app.post('/photoupload', upload.single('photo'), passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers), newFilePath;
+		if (token) {
+			var decoded = jwt.decode(token, 'secret'),
+				newFilePath = '../images/userimages/' + decoded.username + '/' + req.file.originalname;
+			console.log(decoded);
+			mongoDAO.updateDpLink(res, newFilePath, decoded.username);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
 	})
 
 	//Remove Photo

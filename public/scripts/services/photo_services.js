@@ -1,36 +1,40 @@
-app.factory('photoUploadService', ['$q', '$http', function($q, $http){
+app.factory('photoUploadService', ['$q', '$http', '$window', function($q, $http, $window){
 	return {
 		uploadPhotos: function(photoFile, username){
-			var i, uploadedFileName,
+			var i, uploadedFileName, token = $window.sessionStorage.getItem('token')
 				fd = new FormData(),
 				deferred = $q.defer();
-			fd.append('username', username);
-			console.log(photoFile.file);
-			fd.append('photo', photoFile.file);
-			$http({
-					method  : 'POST',
-					url     : '/photoupload',
-					headers : { 
-						'Content-Type': undefined ,
-						'Cache-Control': 'no-cache, no-store, must-revalidate',
-						'Pragma' : 'no-cache',
-	                    'Expires' : '0'
-	                     },
-	                data    : fd,
-					cache   : false
-				}).	
-				then( function(response){
-					if(response.status === 200){
-						console.log(response);
-						uploadedFileName = response.data;						
-						console.log(uploadedFileName + " Uploaded");
-						deferred.resolve({'filename': uploadedFileName});					
-					}
-				},
-				function(response){
-					deferred.reject(response.status);
-				});
-
+			if (token) {
+				fd.append('username', username);
+				console.log(photoFile);
+				fd.append('photo', photoFile);
+				$http({
+						method  : 'POST',
+						url     : '/photoupload',
+						headers : { 
+							'Authorization': 'JWT ' + token,
+							'Content-Type': undefined ,
+							'Cache-Control': 'no-cache, no-store, must-revalidate',
+							'Pragma' : 'no-cache',
+		                    'Expires' : '0'
+		                     },
+		                data    : fd,
+						cache   : false
+					}).	
+					then( function(response){
+						if(response.status === 200){
+							console.log(response);
+							uploadedFileName = response.data;						
+							console.log(uploadedFileName + " Uploaded");
+							deferred.resolve({'filename': uploadedFileName});					
+						}
+					},
+					function(response){
+						deferred.reject(response.status);
+					});
+			} else {
+				deferred.reject("Please login first");
+			}
 			return deferred.promise;
 		}
 	}

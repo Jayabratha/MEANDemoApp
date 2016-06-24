@@ -7,8 +7,10 @@ app.directive('fileModel', ['$parse', function($parse) {
 
 			element.bind('change', function(){
 				scope.$apply(function(){
-					modelSetter(scope, element[0].files);
-					scope.createPreview();
+					modelSetter(scope, element[0].files[0]);
+					scope.homeCntrl.createDPPreview();
+					scope.homeCntrl.uploadDp();
+					console.log(element[0].files);
 				});
 			});
 		}

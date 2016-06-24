@@ -8,7 +8,6 @@ app.controller('managementController',['$scope', 'ExpenseService', '$window', '$
 		this.amount = amount;
 	}
 
-
 	vm.rentals = [];
 	vm.group = $window.sessionStorage.getItem('group');
 
