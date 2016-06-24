@@ -17,14 +17,14 @@
 }
 
 .stats-container .expense {
-	font-size: 2.5em;
+	font-size: 2em;
     color: #b1b0b0;
     font-weight: normal;
 }
 
-.stats-container .expense .icon-inr {
+.stats-container .icon-inr {
 	position: relative;
-	top: 8px;
+	top: 6px;
 }
 
 .stats-container .member-details {
@@ -40,7 +40,8 @@
 }
 
 .total-contributions {
-	font-size: 2em;
+	font-size: 1.3em;
+	padding: 10px 10px 20px;
 }
 
 .dp-bill-wrapper {
@@ -64,7 +65,7 @@
 
 .dp-bill-wrapper .bill {
 	display: inline-block;
-	font-size: 3em;
+	font-size: 2em;
 	padding: 0 10px;
 	vertical-align: middle;
 	color: #FFFFFF;

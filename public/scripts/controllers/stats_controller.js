@@ -26,7 +26,7 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 			 		 $interval.cancel(updater);
 			 	}
 			 };
-			updater = $interval(performUpdate, 2);		
+			updater = $interval(performUpdate, 0.2);		
 		}
 
 		//Get Member by Username

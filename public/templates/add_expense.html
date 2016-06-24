@@ -1,30 +1,30 @@
+<header>
+	Add your expense contribution
+</header>
 <section class="add-expense content">
-	<header>
-		Add your expense contribution
-	</header>
-	<div class="main-content">
-		<form name="expenseForm" ng-submit="addExpCntrl.addExpense(expenseForm.$valid, addExpCntrl.expenseData)" novalidate >
-			<div class="input-container" ng-class="{'error' : amountError = expenseForm.amount.$invalid && (expenseForm.amount.$touched || addExpCntrl.notifyErrors), 'correct' : expenseForm.amount.$valid }">
-					<i class="expense-inr icon-inr"></i>
-					<input id="exp-amount" name="amount" type="number" placeholder="Enter Expense Amount" ng-model="addExpCntrl.expenseData.amount" required />
-					<div class="message-default" ng-cloak ng-cloack ng-show="amountError"> Please enter expense amount</div>
+<div class="main-content">
+	<form name="expenseForm" ng-submit="addExpCntrl.addExpense(expenseForm.$valid, addExpCntrl.expenseData)" novalidate >
+		<div class="input-container" ng-class="{'error' : amountError = expenseForm.amount.$invalid && (expenseForm.amount.$touched || addExpCntrl.notifyErrors), 'correct' : expenseForm.amount.$valid }">
+				<i class="expense-inr icon-inr"></i>
+				<input id="exp-amount" name="amount" type="number" placeholder="Enter Expense Amount" ng-model="addExpCntrl.expenseData.amount" required />
+				<div class="message-default" ng-cloak ng-cloack ng-show="amountError"> Please enter expense amount</div>
+		</div>
+		<div class="input-container">
+			<div class="sub-container exp-type-wrapper" ng-class="{'error' : typeError = expenseForm.type.$invalid && (expenseForm.type.$touched|| addExpCntrl.notifyErrors) , 'correct' : expenseForm.type.$valid }">
+				<select id="exp-type" name="type" ng-model="addExpCntrl.expenseData.type" ng-options="expenseType for expenseType in addExpCntrl.expenseTypes" required>
+					<option value=""> Select Expense Type </option>
+				</select>
+				<div class="message-default" ng-cloak ng-cloack ng-show="typeError"> Please select Expense Type</div>
 			</div>
-			<div class="input-container">
-				<div class="sub-container exp-type-wrapper" ng-class="{'error' : typeError = expenseForm.type.$invalid && (expenseForm.type.$touched|| addExpCntrl.notifyErrors) , 'correct' : expenseForm.type.$valid }">
-					<select id="exp-type" name="type" ng-model="addExpCntrl.expenseData.type" ng-options="expenseType for expenseType in addExpCntrl.expenseTypes" required>
-						<option value=""> Select Expense Type </option>
-					</select>
-					<div class="message-default" ng-cloak ng-cloack ng-show="typeError"> Please select Expense Type</div>
-				</div>
-				<div class="sub-container" ng-class="{'error' : dateError = expenseForm.date.$invalid && (expenseForm.date.$touched|| addExpCntrl.notifyErrors) , 'correct' : expenseForm.date.$valid }">
-					<input id="exp-date" name="date" type="date" ng-model="addExpCntrl.expenseData.date" placeholder="Enter Expense Date" />
-					<div class="message-default" ng-cloak ng-cloack ng-show="dateError"> Please select Expense Date</div>
-				</div>				
-			</div>
-			<div class="input-container">
-				<input id="exp-comments" name="comments" type="text" placeholder="Add Comments" ng-model="addExpCntrl.expenseData.comments" />
-			</div>
-			<button class="add-exp" type="submit"> Add Expense </button>
-		</form>
-	</div>
+			<div class="sub-container" ng-class="{'error' : dateError = expenseForm.date.$invalid && (expenseForm.date.$touched|| addExpCntrl.notifyErrors) , 'correct' : expenseForm.date.$valid }">
+				<input id="exp-date" name="date" type="date" ng-model="addExpCntrl.expenseData.date" placeholder="Enter Expense Date" />
+				<div class="message-default" ng-cloak ng-cloack ng-show="dateError"> Please select Expense Date</div>
+			</div>				
+		</div>
+		<div class="input-container">
+			<input id="exp-comments" name="comments" type="text" placeholder="Add Comments" ng-model="addExpCntrl.expenseData.comments" />
+		</div>
+		<button class="add-exp" type="submit"> Add Expense </button>
+	</form>
+</div>
 </section>

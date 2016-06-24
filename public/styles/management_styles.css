@@ -9,6 +9,7 @@
 .rental-form {
 	width: 60%;
 	min-width: 500px;
+	padding: 0.5em;
 }
 
 .rental-form .input-container {

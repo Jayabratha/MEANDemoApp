@@ -151,9 +151,10 @@ aside.profile-options {
 	top: 2em;
 }
 
-.user-name {
+h1.user-name {
 	font-size: 2.2em;
-	padding: 0.25em 0;
+	padding: 10px 0;
+	height: 40px;
     margin: 0;
     border-bottom: thin solid #ccc;
 }
@@ -171,10 +172,12 @@ aside.profile-options {
 
 .profile-content {
 	position: relative;
-	width: 75%;
+	width: 100%;
 }
 
 nav.profile-nav ul {
+	position: relative;
+	width: 100%;
 	margin: 0;
 	padding: 0;
 	clear: both;
@@ -185,18 +188,19 @@ nav.profile-nav li {
 	position: relative;
 	float: left;
 	list-style: none;
-	padding: 1.05em 0 0.5em;
+	padding: 10px 0;
+	height: 40px;
+	line-height: 40px;
 	width: 33%;
-	box-sizing: border-box;
 	text-align: center;
 	cursor: pointer;
 }
 
 .underline {
 	position: relative;
-    height: 2px;
+    height: 3px;
     width: 25%;
-    margin: 10px auto 0;
+    margin: 2px auto 0;
     -webkit-transition: all 0.3s ease-out;
 	transition: all 0.3s ease-out;
 }
@@ -227,6 +231,7 @@ ul.profile-options {
 ul.profile-options li {
 	list-style: none;
 	padding: 15px;
+	height: 20px;
 	font-weight: normal;
 	border-bottom: thin solid #fff;
 	cursor: pointer;
@@ -257,7 +262,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 .fixed nav.profile-nav {
 	position: fixed;
 	top: 0;
-	width: 75%;
+	width: inherit;
 	z-index: 4;
 	-webkit-transform: translateZ(0);
 	transform: translateZ(0);
@@ -286,15 +291,17 @@ ul.profile-options li:hover, ul.profile-options li.active {
 .profile-main-content header {
 	font-size: 1.3em;
     width: 100%;
-    background: linear-gradient(#FFFFFF, #FFFFFF, #FFFFFF, transparent);
-    padding: 15px 0;
-    height: 30px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 12px 65px;
+    height: 25px;
     z-index: 5;
+    border-top: thin solid #E7E7E7;
+    border-bottom: thin solid #E7E7E7;
 }
 
 .fixed .profile-main-content header {
 	position: fixed;
-	top: 68px;
+	top: 60px;
 }
 
 .profile-main-content .main-content {
@@ -303,7 +310,7 @@ ul.profile-options li:hover, ul.profile-options li.active {
 }
 
 .fixed .profile-main-content .main-content {
-    padding-top: 70px;
+    top: 48px;
 }
 
 .profile-container .label-container {
@@ -316,8 +323,9 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	margin: 3em 0;
 }
 .content {
-	padding: 0 3.5em;
-	box-sizing: border-box;
+	width: 80%;
+    padding: 0 1em 0 3.5em;
+    box-sizing: border-box;
 }
 /* Group Styles - start */
 .members-container {
@@ -390,9 +398,6 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	}
 	.base-info {
 		margin-top: 0;
-	}
-	nav.profile-nav li {
-		padding: 1.05em 0 1em;
 	}
 	.profile-content {
 		width: 100%;

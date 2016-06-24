@@ -318,6 +318,7 @@ section.add-expense form .input-container {
 /* Expenses Table Styles - start */
 .expense-list {
 	border-collapse: collapse;
+	margin: 0.5em;
 }
 .expense-list th {
 	padding: 0.5em;
