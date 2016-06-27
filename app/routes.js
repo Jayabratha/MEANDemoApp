@@ -22,13 +22,13 @@ module.exports = function(app, upload, fs) {
 	app.post('/register', function(req, res, next) {
 		console.log('Form Data Received for: ' + req.body.username);
 		mongoDAO.insertUser(res, req.body.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.sex, req.body.dob, req.body.addr, req.body.exp, req.body.email, req.body.password);
-	})
+	});
 
 	//Authenticate User
 	app.post('/auth', function(req, res, next) {
 		console.log('Authenticating User');
 		mongoDAO.authenticate(res, req.body.email, req.body.password);
-	})
+	});
 
 	//Get Profile Information
 	app.get('/profile', passport.authenticate('jwt', {
@@ -45,7 +45,41 @@ module.exports = function(app, upload, fs) {
 				msg: 'No token provided.'
 			});
 		}
-	})
+	});
+
+	//Update Profile Info
+	app.post('/updateprofile', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		var token = getToken(req.headers);
+		console.log(req.body);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			mongoDAO.updateProfile(res, decoded.username, req.body.firstname, req.body.lastname, req.body.phone, req.body.sex, req.body.dob, req.body.address, req.body.exp);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
+
+	//Delete User Account
+	app.delete('/deleteprofile', passport.authenticate('jwt', {
+		session: false
+	}), function(req, res) {
+		console.log("Test");
+		var token = getToken(req.headers);
+		if (token) {
+			var decoded = jwt.decode(token, 'secret');
+			mongoDAO.deleteProfile(res, decoded.username, req.query.userToDelete);
+		} else {
+			return res.status(403).send({
+				success: false,
+				msg: 'No token provided.'
+			});
+		}
+	});
 
 	//Add Photos
 	app.post('/photoupload', upload.single('photo'), passport.authenticate('jwt', {
@@ -63,7 +97,7 @@ module.exports = function(app, upload, fs) {
 				msg: 'No token provided.'
 			});
 		}
-	})
+	});
 
 	//Remove Photo
 	app.get('/removephoto', function(req, res) {
@@ -72,7 +106,7 @@ module.exports = function(app, upload, fs) {
 		fs.unlink(path.join('public/images/userimages/', username, filename), function(err, files) {
 			res.status(204).end();
 		})
-	})
+	});
 
 	//Get Uploaded Photos
 	app.get('/photos', function(req, res) {
@@ -194,7 +228,7 @@ module.exports = function(app, upload, fs) {
 				msg: 'No token provided.'
 			});
 		}
-	})
+	});
 
 	//Save Rentals
 	app.post('/saverentals', passport.authenticate('jwt', {

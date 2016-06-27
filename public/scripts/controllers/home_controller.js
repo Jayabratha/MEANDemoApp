@@ -1,5 +1,5 @@
-app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 'userdata', '$window', '$sce', 'fileReaderService', 'photoUploadService',
-	function($scope, $rootScope, $http, $location, userdata, $window, $sce, fileReaderService, photoUploadService) {
+app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 'userdata', '$window', '$sce', 'fileReaderService', 'photoUploadService', 'AuthUser',
+	function($scope, $rootScope, $http, $location, userdata, $window, $sce, fileReaderService, photoUploadService, AuthUser) {
 		var vm = this, Profile, homeLayout = $scope.home.layout;
 		homeLayout.setVars('line');
 
@@ -23,9 +23,7 @@ app.controller('homeController', ['$scope', '$rootScope', '$http', '$location', 
 
 		
 		vm.logOut = function() {
-			$window.sessionStorage.removeItem('token');
-			$window.sessionStorage.removeItem('user');
-			$location.path('login');
+			AuthUser.logoutUser();
 		};
 
 		vm.showMenuFunc = function() {
