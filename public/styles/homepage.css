@@ -79,8 +79,16 @@ body {
 
 .app-name {
 	font-size: 1.7em;
+}
+
+#home-buttons {
+	opacity: 1;
 	-webkit-transition: all 0.5s;
 	transition: all 0.5s;
+}
+
+#home-buttons.loading {
+	opacity: 0;
 }
 
 .clearfix:after, .clearfix:before {
@@ -139,7 +147,7 @@ body {
 	font-size: 1em;
 }
 
-.main-header.line {
+.main-header.line, .main-header.loading{
 	font-size: 0;
 	height: 2px;
 }
