@@ -74,7 +74,7 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 				totalRentals = totalRentals + vm.rentals[i].amount;
 			}
 			vm.totalMonthlyExpense = (vm.totalContributions + totalRentals);
-			vm.monthyExpensePerHead =  vm.totalMonthlyExpense / numberOfMembers;
+			vm.monthyExpensePerHead =  Math.ceil(vm.totalMonthlyExpense / numberOfMembers);
 		}
 
 		//Get Rentals

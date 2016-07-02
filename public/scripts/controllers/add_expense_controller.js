@@ -2,13 +2,13 @@ app.controller('addExpenseController', ['$scope', '$rootScope', '$window', 'Expe
 	function($scope, $rootScope, $window, ExpenseService) {
 		$scope.homeCntrl.activeTab = "addexpense";
 
-		this.expenseTypes = ['Veg items', 'Non-Veg Items', 'Grocessary', 'Paper', 'Water', 'Sweeper', 'Others'];
+		this.expenseTypes = ['Veg items', 'Non-Veg Items', 'Grocery', 'Paper', 'Water', 'Sweeper', 'Others'];
 
 		this.expenseData = {
 			amount: '',
 			type: '',
 			date: new Date(),
-			comments: '',
+			comment: '',
 			user: '',
 			group: ''
 		};
