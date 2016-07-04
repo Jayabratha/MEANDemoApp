@@ -191,6 +191,7 @@ aside.profile-options {
 	position: relative;
 	min-height: 500px;
 	top: 250px;
+	font-size: 15px;
 	color: #565555;
 	background-color: #FFFFFF;
 	border-left: thin solid #ccc;

@@ -99,12 +99,6 @@ app.config(['$stateProvider', '$urlRouterProvider',
 
 app.run(['$rootScope', '$timeout', '$window', '$state',
 	function($rootScope, $timeout, $window, $state) {
-		var backgroundAnimation = bgAnimate.getInstance();
-
-		/* Render and Start Background Animation*/
-		backgroundAnimation.renderBackground();
-		backgroundAnimation.startAnimation();
-
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParam, fromState, fromParams) {
 			var userName;
 			if (fromState.name === 'login') {
