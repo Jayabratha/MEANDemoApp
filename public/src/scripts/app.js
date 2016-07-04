@@ -8,18 +8,18 @@ app.config(['$stateProvider', '$urlRouterProvider',
 		state('default', {
 			url: '',
 			template: '',
-			controller: function($scope) {
+			controller: ['$scope', function($scope) {
 				$scope.home.layout.resetVars();
-			}
+			}]
 		}).
 		state('login', {
 			url: '/login',
 			templateUrl: 'templates/login.html',
 			controller: 'loginController as loginCntrl',
 			resolve: {
-				go: function(flipService) {
+				go: ['flipService', function(flipService) {
 					return flipService.flip();
-				}
+				}]
 			}
 		}).
 		state('register', {
@@ -27,9 +27,9 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			templateUrl: 'templates/register.html',
 			controller: 'registerController as registerCntrl',
 			resolve: {
-				go: function(flipService) {
+				go: ['flipService', function(flipService) {
 					return flipService.flip();
-				}
+				}]
 			}
 		}).
 		state('home', {
@@ -38,7 +38,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 			abstract: true,
 			controller: 'homeController as homeCntrl',
 			resolve: {
-				userdata: function($q, UserService, $rootScope) {
+				userdata: ['$q', 'UserService', '$rootScope', function($q, UserService, $rootScope) {
 					var defer = $q.defer();
 					UserService.getUserDetails().then(
 						function(responsedata) {
@@ -50,7 +50,7 @@ app.config(['$stateProvider', '$urlRouterProvider',
 						defer.reject(responsedata);
 					});
 					return defer.promise;
-				}
+				}]
 			}
 		}).
 		state('home.addExpense', {

@@ -1,4 +1,4 @@
-app.directive('messageDiv', function(){
+app.directive('messageDiv', [function(){
 	return {
 		restrict: 'A',
 		scope: {
@@ -8,4 +8,4 @@ app.directive('messageDiv', function(){
 		},
 		templateUrl: 'templates/message_modal.html',
 	};
-});
+}]);
