@@ -5,6 +5,13 @@
 	<header class="profile-header">
 		<div class="month-year">{{homeCntrl.currentMonth}}, {{homeCntrl.currentYear}}</div>
 		<div class="profile-menu" ng-class="{'show' : showMenu}">
+			<ul class="options">
+				<li ng-class="{'active': homeCntrl.activeTab === 'addexpense' || homeCntrl.activeTab === 'stats' || homeCntrl.activeTab === 'notifications'}" ui-sref="home.addExpense"> Home </li>
+				<li ng-if="homeCntrl.user.admin" ng-class="{'active': homeCntrl.activeTab === 'manage'}" ui-sref="home.manage"> Manage Mess </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'profile'}" ui-sref="home.profile"> My Profile </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'expenses'}" ui-sref="home.expenses"> My Expenses </li>
+				<li ng-class="{'active': homeCntrl.activeTab === 'group'}" ui-sref="home.group"> My Group </li>
+			</ul>
 			<button class="logout" ng-click="homeCntrl.logOut()">Logout</button>
 		</div>
 	</header>

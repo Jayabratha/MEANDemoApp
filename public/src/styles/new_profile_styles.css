@@ -18,34 +18,6 @@ header.profile-header {
     font-weight: bold;
     color: rgba(255, 255, 255, 0.37);
 }
-
-.profile-menu {
-	position: fixed;
-	top: 0;
-    background-color: #FFFFFF;
-    opacity: 0.2;
-    width: 100%;
-    height: 100%;
-    border-bottom: thin solid #ccc;
-    z-index: 5;
-    padding: 50px 5px 10px;
-	text-align: center;
-	box-sizing: border-box;
-	display: none;
-}
-
-.profile-menu .logout {
-	position: absolute;
-	bottom: 2em;
-}
-
-.profile-menu.show {
-	display: block;
-	opacity: 0.85;
-	-webkit-transition: opacity 0.5s ease-out;
-	transition: opacity 0.5s ease-out;
-}
-
 .menu-icon-container {
 	position: fixed;
 	display: none;
@@ -418,6 +390,35 @@ ul.profile-options li:hover, ul.profile-options li.active {
     padding: 0.2em 0;
 }
 /* Group Styles - end */
+
+/* Mobile Menu Styles - start */
+.profile-menu {
+	position: fixed;
+	top: 0;
+    background-color: #FFFFFF;
+    opacity: 0.2;
+    width: 100%;
+    height: 100%;
+    border-bottom: thin solid #ccc;
+    z-index: 5;
+    padding: 50px 5px 10px;
+	text-align: center;
+	box-sizing: border-box;
+	display: none;
+}
+
+.profile-menu .logout {
+	position: absolute;
+	bottom: 2em;
+}
+
+.profile-menu.show {
+	display: block;
+	opacity: 0.85;
+	-webkit-transition: opacity 0.5s ease-out;
+	transition: opacity 0.5s ease-out;
+}
+/* Mobile Menu Styles - end */
 
 @media only screen and (max-width:1000px) {
 	.content {
