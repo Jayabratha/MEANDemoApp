@@ -4,7 +4,7 @@ var Rental = require('../model/rental_model');
 
 var jwt = require('jwt-simple');
 
-exports.insertUser = function(res, username, firstname, lastname, phone, sex, dob, address, exp, email, password) {
+var insertUser = function(res, username, firstname, lastname, phone, sex, dob, address, exp, email, password) {
 	console.log("Request Received in insert User");
 	var user = new User({
 		username: username,
@@ -50,28 +50,7 @@ exports.insertUser = function(res, username, firstname, lastname, phone, sex, do
 	})
 };
 
-exports.updateDpLink = function(res, dpLink, username) {
-	User.update({
-		username: username
-	}, {
-		dpLink: dpLink
-	}, function (err) {
-		if (err) {
-			res.send({
-				success: false,
-				message: "Failed to update your display pic"
-			});
-		} else {
-			res.send({
-				success: true,
-				message: "Successfully Updated Display pic"
-			});
-		}
-
-	})
-}
-
-exports.authenticate = function(res, email, password) {
+var authenticate = function(res, email, password) {
 	console.log("Authentication Request rceived for: " + email);
 	User.findOne({
 		"email": email
@@ -112,7 +91,34 @@ exports.authenticate = function(res, email, password) {
 	});
 };
 
-exports.getUser = function(res, username) {
+var updateProfile = function (res, username, firstname, lastname, phone, sex, dob, address, exp) {
+	console.log(username + ',' + firstname + ',' + lastname + ',' + phone + ',' + sex + ',' + dob + ',' + address + ',' + exp)
+	User.update({
+		username: username
+	}, {
+		firstname: firstname,
+		lastname: lastname,
+		phone: phone,
+		sex: sex,
+		dob: dob,
+		address: address,
+		exp: exp
+	}, function (err) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "Failed to update profile info"
+			});
+		} else {
+			res.send({
+				success: true,
+				message: "Successfully Updated Profile Information"
+			});
+		}
+	})
+};
+
+var getUser = function(res, username) {
 	User.findOne({
 		"username": username
 	}, {
@@ -139,7 +145,67 @@ exports.getUser = function(res, username) {
 	});
 };
 
-exports.addExpense = function(res, amount, type, date, comment, user, group) {
+var deleteProfile = function (res, username, userToDelete) {
+	var isAdmin = false;
+	User.findOne({
+		"username": username
+	}, {
+		"isAdmin": true
+	}, function(err, user) {
+		console.log("Test2");
+		if (user && user.admin) {
+			console.log("Test3");
+			isAdmin = true;
+		}
+		console.log(username + ',' + userToDelete);
+		if (isAdmin || (username === userToDelete)) {
+			console.log("Test4");
+			User.remove({
+				username: userToDelete
+			}, function (err) {
+				console.log("Test5");
+				if (err) {
+					res.send({
+						success: false,
+						message: "Failed to delete profile"
+					});
+				} else {
+					res.send({
+						success: true,
+						message: "Successfully Deleted Your Profile"
+					});
+				}
+			})
+		} else {
+			res.send({
+				success: false,
+				message: "You are not authorized to delete this profile"
+			});
+		}
+	});
+};
+
+var updateDpLink = function(res, dpLink, username) {
+	User.update({
+		username: username
+	}, {
+		dpLink: dpLink
+	}, function (err) {
+		if (err) {
+			res.send({
+				success: false,
+				message: "Failed to update your display pic"
+			});
+		} else {
+			res.send({
+				success: true,
+				message: "Successfully Updated Display pic"
+			});
+		}
+	})
+};
+
+var addExpense = function(res, amount, type, date, comment, user, group) {
 	console.log("Amount " + amount);
 	var expense = new Expense({
 		amount: amount,
@@ -164,9 +230,9 @@ exports.addExpense = function(res, amount, type, date, comment, user, group) {
 			});
 		}
 	})
-}
+};
 
-exports.getExpenses = function(res, username) {
+var getExpenses = function(res, username) {
 	console.log(username);
 	Expense.find({
 		"user": username
@@ -192,7 +258,7 @@ exports.getExpenses = function(res, username) {
 	});
 };
 
-exports.getGroupMembers = function(res, group) {
+var getGroupMembers = function(res, group) {
 	User.find({
 		group: group
 	},{
@@ -223,7 +289,7 @@ exports.getGroupMembers = function(res, group) {
 	});
 };
 
-exports.getGroupExpenses = function(res, group) {
+var getGroupExpenses = function(res, group) {
 	Expense.aggregate([
 		{ $match: {
             "group": group
@@ -252,9 +318,9 @@ exports.getGroupExpenses = function(res, group) {
 				});
 			}
 	});
-}
+};
 
-exports.getGroupRentals = function(res, group) {
+var getGroupRentals = function(res, group) {
 	Rental.find({
 		group: group
 	}, function (err, rentals) {
@@ -277,9 +343,9 @@ exports.getGroupRentals = function(res, group) {
 			});
 		}
 	})
-}
+};
 
-exports.saveAndUpdateRentals = function(res, group, rentals) {
+var saveAndUpdateRentals = function(res, group, rentals) {
 	var removalSuccessful = true; insertSuccessful = true;
 	Rental.remove({"group": group}, function(err) {
 		if(err) {
@@ -323,4 +389,19 @@ exports.saveAndUpdateRentals = function(res, group, rentals) {
 			message: "Sorry! Failed to save your rentals"
 		});
 	}	
+};
+
+module.exports = {
+	insertUser: insertUser,
+	authenticate: authenticate,
+	updateProfile: updateProfile,
+	deleteProfile: deleteProfile,
+	getUser: getUser,
+	updateDpLink: updateDpLink,
+	addExpense: addExpense,
+	getExpenses: getExpenses,
+	getGroupMembers: getGroupMembers,
+	getGroupExpenses: getGroupExpenses,
+	getGroupRentals: getGroupRentals,
+	saveAndUpdateRentals: saveAndUpdateRentals
 }

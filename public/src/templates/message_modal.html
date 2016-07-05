@@ -1,0 +1,6 @@
+<div id="closemodal" ng-click="close()" ><img src="images/closebtn.png"></div>
+<div class="message">{{messageObj.message}}</div>
+<div class="action">
+	<div id="progressbar" ng-show="messageObj.inprogress" > </div>
+	<button class="actionbtn" ng-show="!messageObj.inprogress" ng-click="action()" >{{messageObj.action}}</button>
+</div>

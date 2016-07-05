@@ -82,9 +82,9 @@ app.controller('appController', ['$q', '$scope', '$rootScope', '$location', '$ti
 		$scope.popAction = function() {
 			if ($rootScope.messageObj.action == 'Okay') {
 				$rootScope.hideModal();
-			} else if ($rootScope.messageObj.link == 'profile') {
+			} else if ($rootScope.messageObj.link == 'home') {
 				$rootScope.hideModal();
-				$location.path('profile');
+				$location.path('home');
 			} else if ($rootScope.messageObj.link == 'login') {
 				$rootScope.hideModal();
 				$location.path('login');

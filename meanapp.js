@@ -59,7 +59,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 //Public Views Mapping
-app.use('/', express.static(path.join(__dirname, 'public')));
+app.use('/', express.static(path.join(__dirname, 'public/deploy')));
 
 //Configure Routes
 require('./app/routes.js')(app, upload, fs);

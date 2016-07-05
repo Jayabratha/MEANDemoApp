@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<!-- Include Styles - start -->
+	<!-- build:css styles/mean_styles.css -->
 	<link rel="stylesheet" type="text/css" href="styles/homepage.css" />
 	<link rel="stylesheet" type="text/css" href="styles/bootstrap-responsive.css" /> 
 	<link rel="stylesheet" type="text/css" href="styles/formstyles.css">
@@ -16,10 +17,11 @@
 	<link rel="stylesheet" type="text/css" href="styles/stats_styles.css" />
 	<link rel="stylesheet" type="text/css" href="styles/management_styles.css" />
 	<link rel="stylesheet" type="text/css" href="styles/ionicons.min.css" />
+	<!-- endbuild -->
 	<!-- Include Styles - end -->
 </head>
-<body ng-app="app" ng-controller="appController as home" fix-to-top="fixed">
-<header class="main-header" ng-class="home.layout.headerClass" >
+<body ng-controller="appController as home" fix-to-top="fixed">
+<header id="main-header" class="main-header loading" ng-class="home.layout.headerClass" >
 	<div class="head-title">
 		<div class="welcome-text" ng-class="home.layout.showButton"> Welcome to </div>
 		<div class="app-name"><strong>MEAN</strong> Mess Manager</div>
@@ -27,9 +29,12 @@
 	<!-- <a class="no-anchor icon github-icon" target="_blank" href="https://github.com/Jayabratha/MEANDemoApp">
 		<i class="ion-social-github" title="View on Github"></i>
 	</a> -->
-	<button class="start-btn" ng-class="home.layout.showButton" ui-sref="login" > Log In </button>
-	<button class="start-btn" ng-class="home.layout.showButton" > View Demo </button>
+	<div id="home-buttons" class="loading">
+		<button class="start-btn" ng-class="home.layout.showButton" ui-sref="login" > Log In </button>
+		<button class="start-btn" ng-class="home.layout.showButton" > View Demo </button>
+	</div>
 </header>
+<div id="app-loading" class="loading-icon start-ani"></div>
 <div id="node-background">
 	<canvas id="background-canvas" width="2000" height="1000">
 		Your browser doesn't support canvas. Please upgrade your browser.
@@ -46,13 +51,15 @@
 	<div id="form-content" ui-view ></div>
 <!-- Main View Content -end -->
 </div>
+<!-- build:js scripts/aurora_scripts.js -->
 <!-- Include Dependencies - start -->
-<script src="bower_components/jquery/dist/jquery.min.js" ></script>
-<script src="bower_components/angular/angular.js" ></script>
-<script src="bower_components/angular-animate/angular-animate.js" ></script>
-<script src="bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
+<script src="../bower_components/jquery/dist/jquery.min.js" ></script>
+<script src="../bower_components/angular/angular.js" ></script>
+<script src="../bower_components/angular-animate/angular-animate.js" ></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.js" ></script>
 <!-- Include Dependencies - end -->
 <script src="scripts/background-animate.js"></script>
+<script src="scripts/app-bootstrap.js" ></script>
 <script src="scripts/app.js"></script>
 <!-- Include Controllers - start -->
 <script src="scripts/controllers/app_controller.js"></script>
@@ -81,5 +88,6 @@
 <script src="scripts/directives/message_directive.js"></script>
 <script src="scripts/directives/fix_to_top_directive.js"></script>
 <!-- Include Directives - end -->
+<!-- endbuild -->
 </body>
 </html>

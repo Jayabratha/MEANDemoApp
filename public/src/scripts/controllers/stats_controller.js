@@ -28,13 +28,14 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 		Member.prototype.updateExpense = function (expense) {
 			var self = this, updater;
 			 performUpdate = function () {
-			 	if (expense > self.expense) {
-			 		self.expense++;
+			 	var newVal = self.expense + 10;
+			 	if (expense > newVal) {
+			 		self.expense = newVal;
 			 	} else {
 			 		 $interval.cancel(updater);
 			 	}
 			 };
-			updater = $interval(performUpdate, 0.2);		
+			updater = $interval(performUpdate, 0.01);		
 		}
 
 		//Get Member by Username

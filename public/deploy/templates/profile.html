@@ -1,17 +1,25 @@
 <header class="form-row">
 	Your Profile Information
+	<button class="delete-profile" type="button" ng-click="profileCntrl.deleteAccount(profileCntrl.userData.username)" >Delete Account</button>
 </header>
 <div class="content">
 	<div class="profile-container">	
 		<div class="main-content">
-			<form name="profileForm" class="profile-form" ng-submit="profileCntrl.updateForm(profileForm.$valid, profileCntrl.userData)" novalidate>
+			<form name="profileForm" class="profile-form" ng-submit="profileCntrl.updateProfile(profileForm.$valid, profileCntrl.userData)" novalidate>
 				<div class="form-row">
 					<div class="label-container">
-						<label for="username">* Username: </label>
+						<label for="username">Username: </label>
 					</div>
-					<div class="input-container" ng-class="{'error' : usernameError = profileForm.username.$invalid && (profileForm.username.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.username.$valid } ">
-						<input id="username" name="username" type="text" placeholder="Enter a username" ng-model="profileCntrl.userData.username" required />
-						<div class="message-default" ng-cloak ng-cloack ng-show = "usernameError"> This field can't be empty</div>
+					<div class="input-container">
+						<input id="username" name="username" type="text" placeholder="Enter a username" ng-model="profileCntrl.userData.username" required disabled />
+					</div>
+				</div>
+				<div class="form-row">
+					<div  class="label-container">
+						<label for="email" >Email: </label>
+					</div>
+					<div class="input-container">
+						<input id="email" name="email" ng-model="profileCntrl.userData.email" placeholder="Please enter email id" required type="email" disabled />
 					</div>
 				</div>
 				<div class="form-row">
@@ -83,15 +91,6 @@
 							<input id="exp" name="exp" type="range" ng-model="profileCntrl.userData.exp" min="0" max="50" step="1" />
 							<div class="side-options"><b>{{profileCntrl.userData.exp}}</b> years</div>
 						</div>
-					</div>
-				</div>
-				<div class="form-row">
-					<div  class="label-container">
-						<label for="email" >e-mail: </label>
-					</div>
-					<div class="input-container" ng-class="{'error' : emailError = profileForm.email.$invalid && (profileForm.email.$touched || profileCntrl.notifyErrors), 'correct' : profileForm.email.$valid }">
-						<input id="email" name="email" ng-model="profileCntrl.userData.email" placeholder="Please enter email id" required type="email" />
-						<div class="message-default" ng-cloak ng-show="emailError"> Please provide valid email</div>
 					</div>
 				</div>
 				<div class="form-row">

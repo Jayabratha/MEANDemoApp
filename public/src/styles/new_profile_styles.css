@@ -105,6 +105,16 @@ header.profile-header {
 .profile-form {
 	width: 70%;
 }
+.delete-profile {
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 0.8em;
+}
+.fixed .delete-profile {
+	top: 60px;
+	position: fixed;
+}
 .dp {
 	height: 100%;
 	width: 100%;
@@ -172,15 +182,16 @@ aside.profile-options {
 
 .profile-main-content {
 	position: relative;
-	min-height: 1000px;
+	min-height: 500px;
 	border-left: thin solid #ccc;
 	box-sizing: border-box;
 }
 
 .profile-body {
 	position: relative;
-	min-height: 1000px;
+	min-height: 500px;
 	top: 250px;
+	font-size: 15px;
 	color: #565555;
 	background-color: #FFFFFF;
 	border-left: thin solid #ccc;
@@ -415,6 +426,9 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	}
 	.profile-form {
 		width: 100%;
+	}
+	.fixed .delete-profile {
+		top: 112px;
 	}
 	.fixed .profile-main-content header {
 		top: 112px;
