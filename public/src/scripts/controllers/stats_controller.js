@@ -11,6 +11,8 @@ app.controller('statsController',['$scope', '$window', '$interval', 'UserService
 		vm.totalContributions = 0;
 		vm.totalMonthlyExpense = 0;
 		vm.monthyExpensePerHead = 0;
+		vm.currentMonth
+		vm.currentYear
 
 		Member = function(username, firstname, lastname, dpLink, expense) {
 			this.username = username

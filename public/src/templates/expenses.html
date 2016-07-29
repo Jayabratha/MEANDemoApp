@@ -1,8 +1,9 @@
-<header ng-if="!expCntrl.isStats">
-	Your Expense Contributions for this Month
-</header>
-<header ng-if="expCntrl.isStats">
-	Expense Contributions by {{expCntrl.user}} for this Month
+<header>
+	<span ng-if="!expCntrl.isStats">Your Expense Contributions for this Month</span>
+	<span ng-if="expCntrl.isStats">Expense Contributions by {{expCntrl.user}} for this Month</span>
+	<div class="right-controls-container">
+		<month-picker current-month="expCntrl.currentMonth" current-year="expCntrl.currentYear"></month-picker>
+	</div>
 </header>
 <section class="expenses content">
 	<div class="main-content">

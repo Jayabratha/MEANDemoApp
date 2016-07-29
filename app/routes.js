@@ -166,8 +166,10 @@ module.exports = function(app, upload, fs) {
 		if (token) {
 			var decoded = jwt.decode(token, 'secret');
 			var user = req.query.username;
+			var month = req.query.month;
+			var year = req.query.year;
 			console.log('Getting Expenses for ' + user);
-			mongoDAO.getExpenses(res, user);
+			mongoDAO.getExpenses(res, user, month, year);
 		} else {
 			return res.status(403).send({
 				success: false,

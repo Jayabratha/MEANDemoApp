@@ -70,3 +70,26 @@
 	vertical-align: middle;
 	color: #FFFFFF;
 }
+
+.right-controls-container {
+	position: relative;
+    display: inline-block;
+    float: right;
+}
+
+.fixed .right-controls-container {
+	position: fixed;
+	top: 73px;
+	right: 65px;
+}
+
+.right-controls-container i {
+	cursor: pointer;
+}
+
+.current-month {
+	display: inline-block;
+    width: 80px;
+    padding: 0 15px;
+    text-align: center;
+}
