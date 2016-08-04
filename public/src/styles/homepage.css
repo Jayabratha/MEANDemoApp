@@ -34,6 +34,18 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.data-modal {
+	position: absolute;
+	display: block;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	opacity: 0.7;
+	z-index: 3;
+}
+
 [ui-view].profile-content.ng-enter {
 	position: relative;
 	overflow: hidden;
@@ -46,9 +58,13 @@ body {
 [ui-view].profile-content.ng-enter-active {
 	left: 0;
 }
+#app-loading.loading-icon {
+	left: 50%;
+	top: 200px;
+}
 
 .loading-icon {
-	position: relative;
+	position: absolute;
     height: 40px;
     width: 40px;
     background-color: transparent;
@@ -58,8 +74,8 @@ body {
     border-top: medium solid #005A70;
     color: transparent !important;
     cursor: inherit;
-    top: 200px;
-    left: 50%;
+    top: 100px;
+    left: 20%;
     margin-left: -20px;
     z-index: 10;
 }
@@ -232,6 +248,17 @@ button {
 button:hover {
 	background-color: #0AB2F8;
 	color: #FFFFFF;
+}
+
+button.side-button {
+	font-size: 1.5em;
+	margin: 0;
+    padding: 0.3em 1em;
+    border: thin solid #ccc;
+    border-radius: 0;
+    border-top: none;
+    border-bottom: none;
+    height: 100%;
 }
 
 .github-icon {

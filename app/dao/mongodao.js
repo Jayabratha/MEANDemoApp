@@ -233,13 +233,15 @@ var addExpense = function(res, amount, type, date, comment, user, group) {
 };
 
 var getExpenses = function(res, username, month, year) {
-	var startDate = new Date(year, month, 1);
-	var endDate = new Date(year, month + 1, 0);
+	var startDate = new Date(year, month);
+	var endDate = new Date(year, parseInt(month, 10) + 1);
 	console.log(username + month + year);
+	console.log(startDate + ',' + endDate);
 	Expense.find({
 		"user": username,
 		"date": {$gte: startDate, $lt: endDate}
 	}, function(err, expenses) {
+		console.log(expenses);
 		if (err) {
 			res.send({
 				success: false,

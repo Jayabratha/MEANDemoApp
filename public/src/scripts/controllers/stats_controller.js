@@ -1,18 +1,21 @@
 app.controller('statsController',['$scope', '$window', '$interval', 'UserService', 'ExpenseService', '$state',
 	function($scope, $window, $interval, UserService, ExpenseService, $state) {
-		var Member, getMemberByUsername, vm = this, getTopContributor, updateContributions, getRentals,
-		 calculatePerHead;
-		vm.group = $window.sessionStorage.getItem('group');
+		var Member, getMemberByUsername, getTopContributor, updateContributions, getRentals,
+		 	calculatePerHead,
+		  	vm = this,
+		  	date = new Date();
+		
 		$scope.homeCntrl.activeTab = "stats";
 
+		vm.group = $window.sessionStorage.getItem('group');
 		vm.groupMembers = [];
 		vm.rentals = [];
 		vm.topExpense = 100;
 		vm.totalContributions = 0;
 		vm.totalMonthlyExpense = 0;
 		vm.monthyExpensePerHead = 0;
-		vm.currentMonth
-		vm.currentYear
+		vm.currentMonth = date.getMonth(),
+		vm.currentYear = date.getFullYear();
 
 		Member = function(username, firstname, lastname, dpLink, expense) {
 			this.username = username

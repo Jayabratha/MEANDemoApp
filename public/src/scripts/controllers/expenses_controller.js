@@ -9,6 +9,7 @@ app.controller('expensesController', ['$scope', 'ExpenseService', '$window', '$s
 		vm.isStats = false;
 		vm.totalExpense = 0;
 		vm.expenseList = [];
+		vm.expenseLoaded = false;
 
 		if ($stateParams.username) {
 			vm.user = $stateParams.username;
@@ -31,11 +32,14 @@ app.controller('expensesController', ['$scope', 'ExpenseService', '$window', '$s
 
 		//Fetch Expense Data
 		getExpenseDetails = function (user, month, year) {
+			vm.expenseLoaded = false;
 			ExpenseService.getExpenses(user, month, year).then(
 			function(data) {
 				if (data.success) {
 					var expenseObj, expenses = data.expenses;
 					vm.expenseList = [];
+					vm.totalExpense = 0;
+					vm.expenseLoaded = true;
 					expenses.forEach(function(expense, index) {
 						expenseObj = new Expense(expense.amount, expense.type, expense.date, expense.comment, expense.user, expense.group);
 						vm.expenseList.push(expenseObj);

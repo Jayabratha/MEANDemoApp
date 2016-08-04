@@ -4,6 +4,7 @@ app.controller('profileController',['$scope', 'UserService',  '$rootScope', 'Aut
 
 	$scope.homeCntrl.activeTab = "profile";
 
+	vm.profileLoaded = false;
 	vm.notifyErrors = false;
 	vm.userData = {
 			username: '',
@@ -19,7 +20,7 @@ app.controller('profileController',['$scope', 'UserService',  '$rootScope', 'Aut
 
 	UserService.getUserDetails().then(
 		function(userData) {
-			console.log(userData);
+			vm.profileLoaded = true;
 			vm.userData.username = userData.username;
 			vm.userData.firstname = userData.firstname;
 			vm.userData.lastname = userData.lastname;

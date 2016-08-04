@@ -7,6 +7,7 @@
 </header>
 <section class="expenses content">
 	<div class="main-content">
+		<loading-data ng-show="!expCntrl.expenseLoaded"></loading-data>
 		<table class="expense-list" ng-show="expCntrl.expenseList.length > 0">
 			<tr>
 				<th>Date</th>
