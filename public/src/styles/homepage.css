@@ -254,11 +254,16 @@ button.side-button {
 	font-size: 1.5em;
 	margin: 0;
     padding: 0.3em 1em;
-    border: thin solid #ccc;
+    border: none;
+    border-left: thin solid #ccc;
     border-radius: 0;
-    border-top: none;
-    border-bottom: none;
-    height: 100%;
+    height: 51px;
+    color: #565555;
+}
+
+button.side-button:hover {
+	background-color: #E7E7E7;
+	color: #565555
 }
 
 .github-icon {

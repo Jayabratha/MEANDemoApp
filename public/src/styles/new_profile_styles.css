@@ -82,10 +82,13 @@ header.profile-header {
 	right: 0;
 	top: 0;
 	font-size: 0.8em;
+	-webkit-transition: margin-top 0.3s ease-out;
+	transition: margin-top 0.3s ease-out;
 }
 .fixed .delete-profile {
-	top: 60px;
 	position: fixed;
+	top: 51px;
+	margin-top: -51px;
 }
 .dp {
 	height: 100%;
@@ -179,7 +182,14 @@ aside.profile-options {
 }
 
 .logout-btn {
-	top: 2em;
+	position: relative;
+    top: 1em;
+    font-size: 2em;
+    cursor: pointer;
+}
+
+.negative-btn:hover {
+	color: #d43838;
 }
 
 h1.user-name {
@@ -429,9 +439,6 @@ ul.profile-options li:hover, ul.profile-options li.active {
 	}
 	.profile-form {
 		width: 100%;
-	}
-	.fixed .delete-profile {
-		top: 112px;
 	}
 	.fixed .profile-main-content header {
 		top: 112px;
