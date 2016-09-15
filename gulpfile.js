@@ -23,4 +23,9 @@ gulp.task('copy-fonts', function() {
         .pipe(gulp.dest('./public/deploy/fonts'));
 });
 
-gulp.task('default', ['usemin', 'copy-html-templates', 'copy-fonts']);
+gulp.task('copy-images', function() {
+    gulp.src('./public/src/images/**/*')
+        .pipe(gulp.dest('./public/deploy/images'));
+});
+
+gulp.task('default', ['usemin', 'copy-html-templates', 'copy-fonts', 'copy-images']);

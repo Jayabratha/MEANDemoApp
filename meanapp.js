@@ -30,11 +30,11 @@ process.on('SIGINT', function() {
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, 'public/images/userimages/')
+		cb(null, 'public/deploy/images/userimages/')
 	},
 	filename: function(req, file, cb) {
 		var userFolderName = req.body.username.split(' ')[0];
-		fs.mkdir(path.join('public/images/userimages/', userFolderName), function() {
+		fs.mkdir(path.join('public/deploy/images/userimages/', userFolderName), function() {
 			cb(null, path.join(userFolderName, file.originalname));
 		});
 	}
