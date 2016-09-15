@@ -29,6 +29,9 @@ node_modules
 #Bower Dependencies
 bower_components
 
+#Build Package
+deploy
+
 #MacOSX
 .DS_Store
 
