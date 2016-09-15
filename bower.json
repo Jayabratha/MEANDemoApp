@@ -1,5 +1,5 @@
 {
-  "name": "MEANDemoApp",
+  "name": "meandemoapp",
   "main": "index.html",
   "version": "1.0.0",
   "homepage": "https://github.com/Jayabratha/MEANDemoApp",
@@ -21,9 +21,12 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.5.7",
+    "angular": "1.5.8",
     "jquery": "~2.1.4",
     "angular-ui-router": "~0.2.15",
-    "angular-animate": "~1.5.7"
-  }
+    "angular-animate": "1.5.8"
+  },
+  "resolutions": {
+    "angular": "1.5.8"
+    }
 }
