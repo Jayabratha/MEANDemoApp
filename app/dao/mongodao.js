@@ -232,11 +232,16 @@ var addExpense = function(res, amount, type, date, comment, user, group) {
 	})
 };
 
-var getExpenses = function(res, username) {
-	console.log(username);
+var getExpenses = function(res, username, month, year) {
+	var startDate = new Date(year, month);
+	var endDate = new Date(year, parseInt(month, 10) + 1);
+	console.log(username + month + year);
+	console.log(startDate + ',' + endDate);
 	Expense.find({
-		"user": username
+		"user": username,
+		"date": {$gte: startDate, $lt: endDate}
 	}, function(err, expenses) {
+		console.log(expenses);
 		if (err) {
 			res.send({
 				success: false,
@@ -289,7 +294,7 @@ var getGroupMembers = function(res, group) {
 	});
 };
 
-var getGroupExpenses = function(res, group) {
+var getGroupExpenses = function(res, group, month, year) {
 	Expense.aggregate([
 		{ $match: {
             "group": group

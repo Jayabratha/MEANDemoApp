@@ -12,6 +12,11 @@ app.config(['$stateProvider', '$urlRouterProvider',
 				$scope.home.layout.resetVars();
 			}]
 		}).
+		state('me', {
+			url: '/me',
+			templateUrl: 'templates/me.html',
+			controller: 'meController as meCntrl'
+		}).
 		state('login', {
 			url: '/login',
 			templateUrl: 'templates/login.html',
@@ -124,7 +129,7 @@ app.run(['$rootScope', '$timeout', '$window', '$state',
 			}
 
 			//Background Animate Start Stop Logic
-			if ((toState.name === 'login' || toState.name === 'register' || toState.name === 'default') &&
+			if ((toState.name === 'login' || toState.name === 'register' || toState.name === 'default' || toState.name === 'me') &&
 			 (fromState.name !== 'login' || fromState.name !== 'register' || fromState.name !== 'default')) {
 				/* Render and Start Background Animation*/
 				backgroundAnimation.renderBackground();

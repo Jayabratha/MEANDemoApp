@@ -1,10 +1,13 @@
 <header class="form-row">
 	Your Profile Information
-	<button class="delete-profile" type="button" ng-click="profileCntrl.deleteAccount(profileCntrl.userData.username)" >Delete Account</button>
+	<button class="delete-profile side-button" type="button" ng-click="profileCntrl.deleteAccount(profileCntrl.userData.username)" >
+		<i class="ion-ios-trash-outline negative-btn"></i>
+	</button>
 </header>
 <div class="content">
 	<div class="profile-container">	
 		<div class="main-content">
+			<loading-data ng-show="!profileCntrl.profileLoaded"></loading-data>
 			<form name="profileForm" class="profile-form" ng-submit="profileCntrl.updateProfile(profileForm.$valid, profileCntrl.userData)" novalidate>
 				<div class="form-row">
 					<div class="label-container">

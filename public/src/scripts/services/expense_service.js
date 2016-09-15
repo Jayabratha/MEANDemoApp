@@ -23,13 +23,17 @@ app.factory('ExpenseService', ['$http', '$q', '$window', function($http, $q, $wi
 		return deferred.promise;
 	};
 
-	getExpenses = function(username) {
+	getExpenses = function(username, month, year) {
 		var deferred = $q.defer(),
 			token = $window.sessionStorage.getItem('token');
 		$http({
 			method: 'GET',
 			url: '/getexpenses',
-			params: {username: username},
+			params: {
+				username: username,
+				month: month,
+				year: year
+			},
 			headers: {
 				'Authorization': 'JWT ' + token,
 				'Content-Type': 'application/json'
