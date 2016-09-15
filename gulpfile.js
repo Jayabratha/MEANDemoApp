@@ -23,11 +23,4 @@ gulp.task('copy-fonts', function() {
         .pipe(gulp.dest('./public/deploy/fonts'));
 });
 
-gulp.task('test', function(done) {
-    return new Server({
-        configFile: __dirname + '/karma.conf.js',
-        singleRun: true
-    }, done).start();
-});
-
 gulp.task('default', ['usemin', 'copy-html-templates', 'copy-fonts']);
