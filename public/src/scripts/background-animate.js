@@ -106,7 +106,7 @@ var bgAnimate = (function() {
 
 		/* Animate Background */
 		startAnimation = function() {
-			animation = setInterval(draw, 1000);
+			animation = setInterval(draw, 500);
 		}
 
 		/* Stop Background Animation */

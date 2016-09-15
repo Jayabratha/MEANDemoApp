@@ -22,6 +22,20 @@
 	src: url(../fonts/RobotoCondensed-Bold.ttf);
 }
 
+@font-face {
+	font-family: Playfair Display;
+	font-style: regular;
+	font-weight: 100;
+	src: url(../fonts/Playfair_Display/PlayfairDisplay-Regular.ttf);
+}
+
+@font-face {
+	font-family: Playfair Display;
+	font-style: italic;
+	font-weight: 100;
+	src: url(../fonts/Playfair_Display/PlayfairDisplay-Italic.ttf);
+}
+
 body {
 	background-color: #F3F3F3;
 	font-family: 'Roboto Condensed', Helvetica, Arial, sans-serif;
@@ -224,6 +238,32 @@ body {
 
 .main-header.line .head-title, .main-header.loading .head-title {
 	margin-top: -10em;
+}
+
+.main-header.invisible {
+	height: 0;
+	margin-top: -1px;
+}
+
+.main-header.invisible .welcome-text, .main-header.invisible .app-name, .main-header.invisible #home-buttons {
+	display: none;
+}
+
+.main-header.hello .welcome-text, .main-header.hello .app-name, .main-header.hello #home-buttons {
+	display: none;
+}
+
+.main-header.hello .head-title {
+    margin-top: 6em;
+}
+
+.hi_there {
+	display: none;
+	font-size: 40px;
+}
+
+.main-header.hello .hi_there {
+	display: block;
 }
 
 input {
