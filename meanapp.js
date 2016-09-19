@@ -9,6 +9,22 @@ var multer = require('multer');
 var mongoose = require('mongoose');
 var passport = require('passport');
 
+//Get Environment argument
+var agrs = process.argv.slice(2);
+var serveLocation, env = agrs[0];
+
+switch (env) {
+	case 'dev' :
+		serveLocation = 'public/src';
+		break;
+	case 'prod' :
+		serveLocation = 'public/deploy';
+		break;
+	default :
+		serveLocation = 'public/src';
+		break;
+}
+
 //Connect to MongoDB
 mongoose.connect('mongodb://jaydb:mongomeandb@ds051833.mongolab.com:51833/meandb');
 //mongoose.connect('mongodb://localhost:27017/meanDB');
@@ -30,11 +46,11 @@ process.on('SIGINT', function() {
 
 var storage = multer.diskStorage({
 	destination: function(req, file, cb) {
-		cb(null, 'public/deploy/images/userimages/')
+		cb(null, serveLocation + '/images/userimages/')
 	},
 	filename: function(req, file, cb) {
 		var userFolderName = req.body.username.split(' ')[0];
-		fs.mkdir(path.join('public/deploy/images/userimages/', userFolderName), function() {
+		fs.mkdir(path.join(serveLocation + '/images/userimages/', userFolderName), function() {
 			cb(null, path.join(userFolderName, file.originalname));
 		});
 	}
@@ -59,7 +75,7 @@ app.use(passport.initialize());
 require('./config/passport')(passport);
 
 //Public Views Mapping
-app.use('/', express.static(path.join(__dirname, 'public/deploy')));
+app.use('/', express.static(path.join(__dirname, serveLocation)));
 
 //Configure Routes
 require('./app/routes.js')(app, upload, fs);

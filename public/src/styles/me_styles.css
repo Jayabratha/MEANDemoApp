@@ -70,14 +70,14 @@
 }
 
 #my_portfolio header h1 {
-	font-size: 40px;
+	font-size: 2.5em;
     font-weight: 100;
     color: #696868;
     margin: 0;
 }
 
 .me_title {
-	font-size: 14px;
+	font-size: 0.8em;
 	padding: 10px;
     color: #696868;
     text-transform: uppercase;
@@ -87,8 +87,109 @@
 
 .about_me {
 	text-align: center;
-    font-size: 25px;
-    padding: 50px 100px;
+    font-size: 1.8em;
+    padding: 2em 2em;
     color: rgba(9, 66, 132, 0.84);
     font-style: italic;
+}
+
+/* Skill Badges Styles - Start */
+.skill_list {
+	width: 100%;
+	list-style: none;
+	padding: 0;
+	margin: 120px 0;
+}
+.skill_list:after, .skill_list:before {
+	display: table;
+	content: "";
+	clear: both;
+}
+.skill_list li {
+	position: relative;
+	float: left;
+	width: 20%;
+	height: 180px;
+	text-align: center;
+}
+.skill_list li.html {
+	background-color: #f66135;
+}
+.skill_list li.css {
+	background-color: #0c68ec;
+}
+.skill_list li.javascript {
+	background-color: #f7df1e;
+}
+.skill_list li.angular {
+	background-color: #b10b28;
+}
+.skill_list li.node {
+	background-color: #545353;
+}
+.skill_list li img {
+	display: inline-block;
+	width: 120px;
+	position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.skill_list li.html img, .skill_list li.css img {
+	width: 100px;
+}
+/* Skill Badges Styles - End */
+@media only screen and (min-width:1000px) and (max-width:1100px) {
+	#my_portfolio section {
+		width: 80%;
+		margin-left: -40%;
+	}
+}
+
+@media only screen and (min-width:900px) and (max-width:1000px) {
+	#my_portfolio section {
+		width: 86%;
+		margin-left: -43%;
+	}
+}
+
+@media only screen and (max-width:900px) {
+	#my_portfolio .background {
+		height: 226px;
+	}
+	#my_portfolio header {
+		height: 135px;
+	}
+	#my_portfolio .profile-pic-container {
+		left: 50%;
+	    top: 130px;
+	    margin: 0;
+	    margin-left: -5px;
+	    height: 10px;
+	    width: 10px;
+	}
+	#my_portfolio.visible .profile-pic-container {
+		left: 50%;
+	    top: 120px;
+	    margin: 0;
+	    margin-left: -55px;
+	    height: 110px;
+	    width: 110px;
+	}
+	#my_portfolio section {
+		width: 94%;
+		margin-left: -47%;
+	}
+	.about_me {
+		padding: 2em 1em;
+	}
+	.skill_list {
+		margin: 100px 0;
+	}
+	.skill_list li {
+		width: 25%;
+	}
+	.skill_list li img {
+		width: 90px;
+	}
 }
