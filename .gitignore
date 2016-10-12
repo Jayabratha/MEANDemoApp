@@ -29,6 +29,9 @@ node_modules
 #Bower Dependencies
 bower_components
 
+#Visual Studio Code
+.vscode
+
 #Build Package
 deploy
 
