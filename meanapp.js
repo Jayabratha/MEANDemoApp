@@ -21,7 +21,7 @@ switch (env) {
 		serveLocation = 'public/deploy';
 		break;
 	default :
-		serveLocation = 'public/src';
+		serveLocation = 'public/deploy';
 		break;
 }
 
